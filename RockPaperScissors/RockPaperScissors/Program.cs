@@ -52,60 +52,64 @@ namespace RockPaperScissors
              * 
              * - informuj uzivatele, jake mel skore on/a a pocitac a kdo vyhral.
              */
-            int skorePocitac = 0;
-            int skoreHrac = 0;
-            int pocetKol = 0;
-            Random rng = new Random(); //instance tridy Random pro generovani nahodnych cisel
-            
+            int skorePocitac;
+            int skoreHrac;
+            int pocetKol;
+            string vstup;
+            string repeat = "a";
             int pocitac;
-            Console.WriteLine("Vitej u hry kamen nuzky papir! \n Hraje se na tri kola. Muzes hrat\n kamen(napis k) \n nuzky(napis n) \n papir(napis p)");
-            while (skoreHrac < 3 || skorePocitac < 3)
-            {
-                
-                pocetKol++;
-                string vstup = " ";
-                while (vstup != "k" || vstup != "n" || vstup != "p") ;
-                {
-                    vstup = Console.ReadLine();
-                } 
-                
-                pocitac = rng.Next(3);
-                // kamen = 1, nuzky = 2 papir = 3
-                if ((pocitac == 1 && vstup == "k") || (pocitac == 2 && vstup == "n") || (pocitac == 3 && vstup == "p"))
-                {
-                    Console.WriteLine("Remiza! Bod neziskava nikdo");
-                }
-                else if (pocitac == 1 && vstup == "n" || pocitac == 2 && vstup == "p" || pocitac == 3 && vstup == "k")
-                {
-                    Console.WriteLine("Prohral jsi! Souper ziskava bod");
-                    skorePocitac++;
-                }
-                else
-                {
-                    Console.WriteLine("Vyhral jsi! Ziskavas bod");
-                    skoreHrac++;
-                }
-                Console.WriteLine("Skore je" + skoreHrac + " : " + skorePocitac);
-            }
-            if (skorePocitac == 3)
-            {
-                Console.WriteLine("Bohuzel jsi prohral:(");
-            }
-            else
-            {
-                Console.WriteLine("Gratuluji, jsi vitez!!!");
-            }
-            Console.WriteLine("Chces hrat znovu? Napis ano");
-            string repeat = Console.ReadLine();
-            if (repeat == "ano" || repeat == "Ano")
+            Random rng = new Random(); //instance tridy Random pro generovani nahodnych ciselint pocitac;
+            while (repeat == "a" || repeat == "A")
             {
                 skorePocitac = 0;
                 skoreHrac = 0;
+                pocetKol = 0;
+                Console.WriteLine("Vitej u hry kamen nuzky papir! \n Hraje se na tri kola. Muzes hrat\n kamen(napis k) \n nuzky(napis n) \n papir(napis p)");
+                while (skoreHrac < 3 && skorePocitac < 3)
+                {
+                    pocetKol++;
+                    Console.WriteLine(pocetKol + ". kolo");
+
+                    do
+                    {
+                        vstup = Console.ReadLine();
+                    } while (vstup != "k" && vstup != "n" && vstup != "p");
+
+                    pocitac = rng.Next(3) + 1;
+
+                    // kamen = 1, nuzky = 2 papir = 3
+                    if ((pocitac == 1 && vstup == "k") || (pocitac == 2 && vstup == "n") || (pocitac == 3 && vstup == "p"))
+                    {
+                        Console.WriteLine("Remiza! Bod neziskava nikdo");
+                    }
+                    else if ((pocitac == 1 && vstup == "n") || (pocitac == 2 && vstup == "p") || (pocitac == 3 && vstup == "k"))
+                    {
+                        Console.WriteLine("Prohral jsi! Souper ziskava bod");
+                        skorePocitac++;
+                    }
+                    else if ((pocitac == 1 && vstup == "p") || (pocitac == 2 && vstup == "k") || (pocitac == 3 && vstup == "n"))
+                    {
+                        Console.WriteLine("Vyhral jsi! Ziskavas bod");
+                        skoreHrac++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Zase tam mas ERROR!!!:(");
+                    }
+                    Console.WriteLine("Skore je " + skoreHrac + " : " + skorePocitac);
+                    Console.WriteLine(pocitac);
+                }
+                if (skorePocitac == 3)
+                {
+                    Console.WriteLine("Bohuzel jsi prohral:(");
+                }
+                else
+                {
+                    Console.WriteLine("Gratuluji, jsi vitez!!!");
+                }
+                Console.WriteLine("Chces hrat znovu? Napis 'a'");
+                 repeat = Console.ReadLine();
             }
-            
-
-
-
             Console.ReadKey(); //Aby se nam to hnedka neukoncilo
         }
     }
