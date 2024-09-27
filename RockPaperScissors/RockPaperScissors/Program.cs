@@ -97,7 +97,7 @@ namespace RockPaperScissors
                         Console.WriteLine("Zase tam mas ERROR!!!:(");
                     }
                     Console.WriteLine("Skore je " + skoreHrac + " : " + skorePocitac);
-                    Console.WriteLine(pocitac);
+                   Console.WriteLine(pocitac);
                 }
                 if (skorePocitac == 3)
                 {
