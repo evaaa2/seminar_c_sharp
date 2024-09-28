@@ -34,16 +34,25 @@ namespace Calculator
              *       - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
              * 3) Umozni uzivateli zadavat i desetinna cisla, tedy prekopej kalkulacku tak, aby umela pracovat s floaty
              */
+
             //1),2),3) - Nacteni vstupu
             Console.WriteLine("Zadej prvni cislo");
             int firstInput = Convert.ToInt32(Console.ReadLine());
+            
             Console.WriteLine("Zadej druhe cislo");
             int secondInput = Convert.ToInt32(Console.ReadLine());
             //4) - Nacteni operace
-            Console.WriteLine("Jakou operaci chces provest? Zadej +, -, * nebo /");
-            string operation = Console.ReadLine();
+            string operation;
+            do
+            {
+                Console.WriteLine("Jakou operaci chces provest? Zadej +, -, * nebo /");
+                operation = Console.ReadLine();
+
+            } while (operation != "+" && operation != "-" && operation != "*" && operation != "/");
+
             //5)
-            int result = 0;
+                int result = 0;
+
             //6) - provedeni chtene operace
             if (operation == "+")
             {
