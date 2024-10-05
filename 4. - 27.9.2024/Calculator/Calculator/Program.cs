@@ -13,6 +13,20 @@ namespace Calculator
 {
     internal class Program
     {
+        
+        /*static double WriteTheNumbers()
+        {
+            //1),2),3) - Nacteni vstupu
+            Console.WriteLine("Zadej prvni cislo");
+            double firstInput = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Zadej druhe cislo");
+            double secondInput = Convert.ToDouble(Console.ReadLine());
+            return firstInput + secondInput;
+            
+        }
+        */
+    
+        
         static void Main(string[] args)
         {
             /*
@@ -34,15 +48,16 @@ namespace Calculator
              *       - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
              * 3) Umozni uzivateli zadavat i desetinna cisla, tedy prekopej kalkulacku tak, aby umela pracovat s floaty
              */
-
-            //1),2),3) - Nacteni vstupu
-            Console.WriteLine("Zadej prvni cislo");
-            double firstInput = Convert.ToDouble(Console.ReadLine());
+            //zavedeni promennych
             
-            Console.WriteLine("Zadej druhe cislo");
-            double secondInput = Convert.ToDouble(Console.ReadLine());
-            //4) - Nacteni operace
             string operation;
+            double result = 0.0;
+            double firstInput, secondInput;
+            string firstInputString, secondInputString;
+
+            
+            
+            //4) - Nacteni operace
             do
             {
                 Console.WriteLine("Jakou operaci chces provest? Zadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum ");
@@ -50,24 +65,70 @@ namespace Calculator
 
             } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign");
 
-            //5)
-                double result = 0.0;
+            //1),2),3) - Nacteni vstupu
+            /*metoda TryParse z https://learn.microsoft.com/cs-cz/dotnet/api/system.double.tryparse?view=net-8.0#system-double-tryparse(system-string-system-double@) - kontrola jestli je input číslo
+             */
+            do
+            {
+               Console.WriteLine("Zadej prvni cislo");
+               firstInputString = Console.ReadLine();
+            } while (!Double.TryParse(firstInputString, out firstInput));
+
+            do
+            {
+                Console.WriteLine("Zadej druhe cislo");
+                secondInputString = Console.ReadLine();
+            } while (!Double.TryParse(secondInputString, out secondInput));
 
             //6) - provedeni chtene operace
-            if (operation == "+")
+            switch (operation)
             {
+                case "+":
+                    result = firstInput + secondInput;
+                    break;
+                case "-":
+                    result = firstInput - secondInput;
+                    break;
+                case "*":   
+                    result = firstInput * secondInput;
+                    break;
+                case "/":
+                    result = firstInput / secondInput;
+                    break;
+                case "^":
+                    result = Math.Pow(firstInput, secondInput);
+                    break;
+                case "ˇ":
+                    result = Math.Pow(secondInput, 1 / firstInput);
+                    break;
+                case "Abs":
+                    result = Math.Abs(firstInput);
+                    break;
+                case "Sign":
+                    result = Math.Sign(firstInput);
+                    break;
+                default:
+                    Console.WriteLine("Zadal jsi spatnou operaci");
+                    break;
+            }
+            /*if (operation == "+")
+            {
+                //WriteTheNumbers();
                 result = firstInput + secondInput;
             }
             else if (operation == "-")
             {
+                //WriteTheNumbers();
                 result = firstInput - secondInput;
             }
             else if (operation == "*")
             {
+                //WriteTheNumbers();
                 result = firstInput * secondInput;
             }
             else if(operation == "/")
             {
+                //WriteTheNumbers(); 
                 result = firstInput / secondInput;
             }
             else if( operation == "^")
@@ -82,10 +143,11 @@ namespace Calculator
             {
                 result = Math.Abs(firstInput);
             }
-            else if (operation == "ˇ")
+            else if (operation == "Sign")
             {
                 result = Math.Sign(firstInput);
             }
+            */
             //7) - vypsani vysledku do konzole
             Console.WriteLine("Vysledek: " + result);
 
