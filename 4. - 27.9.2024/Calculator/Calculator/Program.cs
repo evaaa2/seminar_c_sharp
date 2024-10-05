@@ -14,17 +14,40 @@ namespace Calculator
     internal class Program
     {
         
-        /*static double WriteTheNumbers()
+        static double WhatIsTheResult(string operation, double result, double firstInput, double secondInput )
         {
-            //1),2),3) - Nacteni vstupu
-            Console.WriteLine("Zadej prvni cislo");
-            double firstInput = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Zadej druhe cislo");
-            double secondInput = Convert.ToDouble(Console.ReadLine());
-            return firstInput + secondInput;
-            
+            switch (operation)
+            {
+                case "+":
+                    result = firstInput + secondInput;
+                    break;
+                case "-":
+                    result = firstInput - secondInput;
+                    break;
+                case "*":
+                    result = firstInput * secondInput;
+                    break;
+                case "/":
+                    result = firstInput / secondInput;
+                    break;
+                case "^":
+                    result = Math.Pow(firstInput, secondInput);
+                    break;
+                case "ˇ":
+                    result = Math.Pow(secondInput, 1 / firstInput);
+                    break;
+                case "Abs":
+                    result = Math.Abs(firstInput);
+                    break;
+                case "Sign":
+                    result = Math.Sign(firstInput);
+                    break;
+                default:
+                    Console.WriteLine("Zadal jsi spatnou operaci");
+                    break;
+            }
+            return result;
         }
-        */
     
         
         static void Main(string[] args)
@@ -80,74 +103,9 @@ namespace Calculator
                 secondInputString = Console.ReadLine();
             } while (!Double.TryParse(secondInputString, out secondInput));
 
-            //6) - provedeni chtene operace
-            switch (operation)
-            {
-                case "+":
-                    result = firstInput + secondInput;
-                    break;
-                case "-":
-                    result = firstInput - secondInput;
-                    break;
-                case "*":   
-                    result = firstInput * secondInput;
-                    break;
-                case "/":
-                    result = firstInput / secondInput;
-                    break;
-                case "^":
-                    result = Math.Pow(firstInput, secondInput);
-                    break;
-                case "ˇ":
-                    result = Math.Pow(secondInput, 1 / firstInput);
-                    break;
-                case "Abs":
-                    result = Math.Abs(firstInput);
-                    break;
-                case "Sign":
-                    result = Math.Sign(firstInput);
-                    break;
-                default:
-                    Console.WriteLine("Zadal jsi spatnou operaci");
-                    break;
-            }
-            /*if (operation == "+")
-            {
-                //WriteTheNumbers();
-                result = firstInput + secondInput;
-            }
-            else if (operation == "-")
-            {
-                //WriteTheNumbers();
-                result = firstInput - secondInput;
-            }
-            else if (operation == "*")
-            {
-                //WriteTheNumbers();
-                result = firstInput * secondInput;
-            }
-            else if(operation == "/")
-            {
-                //WriteTheNumbers(); 
-                result = firstInput / secondInput;
-            }
-            else if( operation == "^")
-            {
-                result = Math.Pow(firstInput, secondInput);
-            }
-            else if (operation == "ˇ")
-            {
-                result =  Math.Pow(secondInput, 1 / firstInput);
-            }
-            else if (operation == "Abs")
-            {
-                result = Math.Abs(firstInput);
-            }
-            else if (operation == "Sign")
-            {
-                result = Math.Sign(firstInput);
-            }
-            */
+            //6) - precteni a provedeni chtene operace
+            result = WhatIsTheResult(operation, result, firstInput, secondInput);
+            
             //7) - vypsani vysledku do konzole
             Console.WriteLine("Vysledek: " + result);
 
