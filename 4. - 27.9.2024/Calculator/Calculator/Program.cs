@@ -37,21 +37,21 @@ namespace Calculator
 
             //1),2),3) - Nacteni vstupu
             Console.WriteLine("Zadej prvni cislo");
-            int firstInput = Convert.ToInt32(Console.ReadLine());
+            double firstInput = Convert.ToDouble(Console.ReadLine());
             
             Console.WriteLine("Zadej druhe cislo");
-            int secondInput = Convert.ToInt32(Console.ReadLine());
+            double secondInput = Convert.ToDouble(Console.ReadLine());
             //4) - Nacteni operace
             string operation;
             do
             {
-                Console.WriteLine("Jakou operaci chces provest? Zadej +, -, * nebo /");
+                Console.WriteLine("Jakou operaci chces provest? Zadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum ");
                 operation = Console.ReadLine();
 
-            } while (operation != "+" && operation != "-" && operation != "*" && operation != "/");
+            } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign");
 
             //5)
-                int result = 0;
+                double result = 0.0;
 
             //6) - provedeni chtene operace
             if (operation == "+")
@@ -66,9 +66,25 @@ namespace Calculator
             {
                 result = firstInput * secondInput;
             }
-            else
+            else if(operation == "/")
             {
                 result = firstInput / secondInput;
+            }
+            else if( operation == "^")
+            {
+                result = Math.Pow(firstInput, secondInput);
+            }
+            else if (operation == "ˇ")
+            {
+                result =  Math.Pow(secondInput, 1 / firstInput);
+            }
+            else if (operation == "Abs")
+            {
+                result = Math.Abs(firstInput);
+            }
+            else if (operation == "ˇ")
+            {
+                result = Math.Sign(firstInput);
             }
             //7) - vypsani vysledku do konzole
             Console.WriteLine("Vysledek: " + result);
