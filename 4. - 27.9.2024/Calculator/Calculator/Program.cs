@@ -46,24 +46,14 @@ namespace Calculator
                 case "Round":
                     result = Math.Round(firstInput);
                     break;
+                
                 default:
                     Console.WriteLine("Zadal jsi spatnou operaci");
                     break;
             }
             return result;
         }
-        static void OneNumber(string firstInputString, double firstInput)
-        {
-            do
-            {
-                Console.WriteLine("Zadej prvni cislo");
-                firstInputString = Console.ReadLine();
-            } while (!Double.TryParse(firstInputString, out firstInput));
-
-           
-
-        }
-
+        
 
         static void Main(string[] args)
         {
@@ -90,7 +80,7 @@ namespace Calculator
             
             string operation;
             double result = 0.0;
-            double firstInput;
+            double firstInput = 0.0;
             double secondInput = 0.0;
             string stopCalculator = " ";
             string firstInputString, secondInputString;
@@ -101,17 +91,17 @@ namespace Calculator
                 //4) - Nacteni operace
                 do
                 {
-                    Console.WriteLine("Jakou operaci chces provest? \nZadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum nebo Round pro zaokrouhlení na nejbližší celé číslo ");
+                    Console.WriteLine("Jakou operaci chces provest? \nZadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum, Round pro zaokrouhlení na nejbližší celé číslo nebo 2 pro převod čísla do dvojkové soustavy ");
                     operation = Console.ReadLine();
 
-                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign" && operation != "Round");
+                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign" && operation != "Round" && operation != "2");
 
                 //1),2),3) - Nacteni vstupu
                 /*metoda TryParse z https://learn.microsoft.com/cs-cz/dotnet/api/system.double.tryparse?view=net-8.0#system-double-tryparse(system-string-system-double@) - kontrola jestli je input číslo
                  */
 
                 //pro operace se dvěmi čísly
-                if (operation != "Sign" && operation != "Abs" && operation != "Round")
+                if (operation != "Sign" && operation != "Abs" && operation != "Round" && operation != "2") 
                 {
                     // Precteni prvni promenne
                     do
@@ -129,7 +119,7 @@ namespace Calculator
                 }
 
                 //pro operace s jedním číslem
-                else
+                else if (operation == "Sign" || operation == "Abs" || operation == "Round")
                 {
                     // Precteni promenne
                     do
@@ -138,10 +128,31 @@ namespace Calculator
                         firstInputString = Console.ReadLine();
                     } while (!Double.TryParse(firstInputString, out firstInput));
                 }
-
+                // kod pro dvojkovou soustavu
+                else if (operation == "2")
+                {
+                    string resultString = "0";
+                    Console.WriteLine("\nZadej cislo");
+                    string inputString = Console.ReadLine();
+                    Int32.TryParse(inputString, out int input);
+                    
+                    if  (input < 0)
+                    {
+                        Console.WriteLine("Zaporna cisla do dvojkove soustavy prevadet jeste neumim:(");
+                    }
+                    while (input >= 1)
+                    {
+                        int restFromDividing = input % 2;
+                        resultString = Convert.ToString(restFromDividing) + resultString;
+                        input = input / 2;
+                    }
+                    result = Convert.ToInt32(resultString);
+                }
                 //6) - precteni a provedeni chtene operace (funkce definovana nahore v kodu)
-                result = WhatIsTheResult(operation, result, firstInput, secondInput);
-
+                if (operation != "2")
+                {
+                    result = WhatIsTheResult(operation, result, firstInput, secondInput);
+                }
                 //7) - vypsani vysledku do konzole
                 Console.WriteLine("\nVysledek: " + result);
                 Console.WriteLine("Chces pokracovat? Zmackni Enter. Chces skoncit? Napis a\n\n");
