@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +14,8 @@ namespace Calculator
 {
     internal class Program
     {
-        
-        static double WhatIsTheResult(string operation, double result, double firstInput, double secondInput )
+       
+        static double WhatIsTheResult(string operation, double result, double firstInput, double secondInput)
         {
             switch (operation)
             {
@@ -42,14 +43,28 @@ namespace Calculator
                 case "Sign":
                     result = Math.Sign(firstInput);
                     break;
+                case "Round":
+                    result = Math.Round(firstInput);
+                    break;
                 default:
                     Console.WriteLine("Zadal jsi spatnou operaci");
                     break;
             }
             return result;
         }
-    
-        
+        static void OneNumber(string firstInputString, double firstInput)
+        {
+            do
+            {
+                Console.WriteLine("Zadej prvni cislo");
+                firstInputString = Console.ReadLine();
+            } while (!Double.TryParse(firstInputString, out firstInput));
+
+           
+
+        }
+
+
         static void Main(string[] args)
         {
             /*
@@ -75,40 +90,63 @@ namespace Calculator
             
             string operation;
             double result = 0.0;
-            double firstInput, secondInput;
+            double firstInput;
+            double secondInput = 0.0;
+            string stopCalculator = " ";
             string firstInputString, secondInputString;
 
-            
-            
-            //4) - Nacteni operace
-            do
+            //cyklus kalkulačky
+            while (stopCalculator != "a" && stopCalculator != "A")
             {
-                Console.WriteLine("Jakou operaci chces provest? Zadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum ");
-                operation = Console.ReadLine();
+                //4) - Nacteni operace
+                do
+                {
+                    Console.WriteLine("Jakou operaci chces provest? \nZadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum nebo Round pro zaokrouhlení na nejbližší celé číslo ");
+                    operation = Console.ReadLine();
 
-            } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign");
+                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign" && operation != "Round");
 
-            //1),2),3) - Nacteni vstupu
-            /*metoda TryParse z https://learn.microsoft.com/cs-cz/dotnet/api/system.double.tryparse?view=net-8.0#system-double-tryparse(system-string-system-double@) - kontrola jestli je input číslo
-             */
-            do
-            {
-               Console.WriteLine("Zadej prvni cislo");
-               firstInputString = Console.ReadLine();
-            } while (!Double.TryParse(firstInputString, out firstInput));
+                //1),2),3) - Nacteni vstupu
+                /*metoda TryParse z https://learn.microsoft.com/cs-cz/dotnet/api/system.double.tryparse?view=net-8.0#system-double-tryparse(system-string-system-double@) - kontrola jestli je input číslo
+                 */
 
-            do
-            {
-                Console.WriteLine("Zadej druhe cislo");
-                secondInputString = Console.ReadLine();
-            } while (!Double.TryParse(secondInputString, out secondInput));
+                //pro operace se dvěmi čísly
+                if (operation != "Sign" && operation != "Abs" && operation != "Round")
+                {
+                    // Precteni prvni promenne
+                    do
+                    {
+                        Console.WriteLine("\nZadej prvni cislo");
+                        firstInputString = Console.ReadLine();
+                    } while (!Double.TryParse(firstInputString, out firstInput));
+                    // Precteni druhe promenne
 
-            //6) - precteni a provedeni chtene operace
-            result = WhatIsTheResult(operation, result, firstInput, secondInput);
-            
-            //7) - vypsani vysledku do konzole
-            Console.WriteLine("Vysledek: " + result);
+                    do
+                    {
+                        Console.WriteLine("\nZadej druhe cislo");
+                        secondInputString = Console.ReadLine();
+                    } while (!Double.TryParse(secondInputString, out secondInput));
+                }
 
+                //pro operace s jedním číslem
+                else
+                {
+                    // Precteni promenne
+                    do
+                    {
+                        Console.WriteLine("\nZadej cislo");
+                        firstInputString = Console.ReadLine();
+                    } while (!Double.TryParse(firstInputString, out firstInput));
+                }
+
+                //6) - precteni a provedeni chtene operace (funkce definovana nahore v kodu)
+                result = WhatIsTheResult(operation, result, firstInput, secondInput);
+
+                //7) - vypsani vysledku do konzole
+                Console.WriteLine("\nVysledek: " + result);
+                Console.WriteLine("Chces pokracovat? Zmackni Enter. Chces skoncit? Napis a\n\n");
+                stopCalculator = Console.ReadLine();
+            }
             Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
         }
     }
