@@ -14,9 +14,32 @@ namespace Calculator
 {
     internal class Program
     {
-       
+    //nacteni cisla od uzivatele
+       static double LoadInput(string number)
+       {
+            string inputString;
+            double inputDouble;
+            do
+            {
+                Console.WriteLine("\nZadej " + number + " cislo");
+                inputString = Console.ReadLine();
+            } while (!Double.TryParse(inputString, out inputDouble));
+            return inputDouble;
+        }
+        //funkce pro faktorial
+        static int Factorial(int nInt)
+        {
+            int result = 1;
+            if (nInt > 0)
+            {
+            result *=  nInt * Factorial(nInt-1);
+            }
+            return result;
+        }
+        //funkce pro rozpoznani a provedeni operace
         static double WhatIsTheResult(string operation, double result, double firstInput, double secondInput)
         {
+
             switch (operation)
             {
                 case "+":
@@ -45,6 +68,10 @@ namespace Calculator
                     break;
                 case "Round":
                     result = Math.Round(firstInput);
+                    break;
+                case "!":
+                    int firstInputInt = (int)Math.Floor(firstInput);
+                    result = Factorial(firstInputInt); 
                     break;
                 
                 default:
@@ -83,7 +110,6 @@ namespace Calculator
             double firstInput = 0.0;
             double secondInput = 0.0;
             string stopCalculator = " ";
-            string firstInputString, secondInputString;
 
             //cyklus kalkulačky
             while (stopCalculator != "a" && stopCalculator != "A")
@@ -91,55 +117,39 @@ namespace Calculator
                 //4) - Nacteni operace
                 do
                 {
-                    Console.WriteLine("Jakou operaci chces provest? \nZadej +, -, *, /, ^ pro mocnění, ˇ pro odmocňování, Abs pro absolutni hodnotu, Sign pro signum, Round pro zaokrouhlení na nejbližší celé číslo nebo 2 pro převod čísla do dvojkové soustavy ");
+                    Console.WriteLine("Jakou operaci chces provest? \nZadej +, -, *, /, ^ pro mocneni, ˇ pro odmocnování,\nAbs pro absolutni hodnotu, Sign pro signum, Round pro zaokrouhleni na nejblizsí cele cislo,\n2 pro prevod cisla do dvojkove soustavy, nebo ! pro faktorial");
                     operation = Console.ReadLine();
 
-                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign" && operation != "Round" && operation != "2");
+                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "ˇ" && operation != "Abs" && operation != "Sign" && operation != "Round" && operation != "2" && operation!= "!");
 
                 //1),2),3) - Nacteni vstupu
                 /*metoda TryParse z https://learn.microsoft.com/cs-cz/dotnet/api/system.double.tryparse?view=net-8.0#system-double-tryparse(system-string-system-double@) - kontrola jestli je input číslo
                  */
 
                 //pro operace se dvěmi čísly
-                if (operation != "Sign" && operation != "Abs" && operation != "Round" && operation != "2") 
+                if (operation != "Sign" && operation != "Abs" && operation != "Round" && operation != "2" && operation != "!")
                 {
                     // Precteni prvni promenne
-                    do
-                    {
-                        Console.WriteLine("\nZadej prvni cislo");
-                        firstInputString = Console.ReadLine();
-                    } while (!Double.TryParse(firstInputString, out firstInput));
-                    // Precteni druhe promenne
-
-                    do
-                    {
-                        Console.WriteLine("\nZadej druhe cislo");
-                        secondInputString = Console.ReadLine();
-                    } while (!Double.TryParse(secondInputString, out secondInput));
+                    firstInput = LoadInput("prvni");
+                    //Precteni druhe promenne
+                    secondInput = LoadInput("druhe");
                 }
-
                 //pro operace s jedním číslem
-                else if (operation == "Sign" || operation == "Abs" || operation == "Round")
+                else if (operation == "Sign" || operation == "Abs" || operation == "Round" || operation == "!")
                 {
-                    // Precteni promenne
-                    do
-                    {
-                        Console.WriteLine("\nZadej cislo");
-                        firstInputString = Console.ReadLine();
-                    } while (!Double.TryParse(firstInputString, out firstInput));
+                    firstInput = LoadInput("");
                 }
-                // kod pro dvojkovou soustavu
-                else if (operation == "2")
+
+                // kod pro dvojkovou soustavu, slo by urcite i efektivneji, ale takto bylo prepsani kodu jednodussi
+                if (operation == "2")
                 {
                     string resultString = "0";
                     Console.WriteLine("\nZadej cislo");
                     string inputString = Console.ReadLine();
                     Int32.TryParse(inputString, out int input);
+                    // zaporna cisla prevadi na kladna, tedy napr. cislo -2 bude mit stejny vysledek jako cislo 2
+                    input = Math.Abs(input); 
                     
-                    if  (input < 0)
-                    {
-                        Console.WriteLine("Zaporna cisla do dvojkove soustavy prevadet jeste neumim:(");
-                    }
                     while (input >= 1)
                     {
                         int restFromDividing = input % 2;
@@ -149,7 +159,7 @@ namespace Calculator
                     result = Convert.ToInt32(resultString);
                 }
                 //6) - precteni a provedeni chtene operace (funkce definovana nahore v kodu)
-                if (operation != "2")
+                else
                 {
                     result = WhatIsTheResult(operation, result, firstInput, secondInput);
                 }
