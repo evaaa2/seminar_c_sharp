@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using System.Security.Cryptography;
+>>>>>>> 8006ce7ef261e450736973962851eebea1b03b5a
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,8 +55,11 @@ namespace RockPaperScissors
              * 
              * - informuj uzivatele, jake mel skore on/a a pocitac a kdo vyhral.
              */
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8006ce7ef261e450736973962851eebea1b03b5a
             int skorePocitac;
             int skoreHrac;
             int pocetKol;
@@ -98,7 +105,11 @@ namespace RockPaperScissors
                         Console.WriteLine("Zase tam mas ERROR!!!:(");
                     }
                     Console.WriteLine("Skore je " + skoreHrac + " : " + skorePocitac);
+<<<<<<< HEAD
                     Console.WriteLine(pocitac);
+=======
+                   Console.WriteLine(pocitac);
+>>>>>>> 8006ce7ef261e450736973962851eebea1b03b5a
                 }
                 if (skorePocitac == 3)
                 {
@@ -109,10 +120,16 @@ namespace RockPaperScissors
                     Console.WriteLine("Gratuluji, jsi vitez!!!");
                 }
                 Console.WriteLine("Chces hrat znovu? Napis 'a'");
+<<<<<<< HEAD
                 repeat = Console.ReadLine();
             }
             Console.ReadKey(); //Aby se nam to hnedka neukoncilo
 
+=======
+                 repeat = Console.ReadLine();
+            }
+            Console.ReadKey(); //Aby se nam to hnedka neukoncilo
+>>>>>>> 8006ce7ef261e450736973962851eebea1b03b5a
         }
     }
 }
