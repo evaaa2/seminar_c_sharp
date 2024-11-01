@@ -22,16 +22,17 @@ namespace ArrayPlayground
             Random rng = new Random();
             for (int i = 0; i < newArray.Length; i++)
             {
-                newArray[i] = rng.Next(1,10);
+                newArray[i] = rng.Next(0,10);
             }
 
 
             //TODO 2: Vypiš do konzole všechny prvky pole, zkus jak klasický for, kde i využiješ jako index v poli, tak foreach.
+            string write = "";
             for (int i = 0; i < newArray.Length; i++)
             {
-                Console.WriteLine(newArray[i]);
+                write += newArray[i] + " ";
             }
-
+            Console.WriteLine(write);
             //TODO 3: Spočti sumu všech prvků v poli a vypiš ji uživateli.
             int sum = 0;
             foreach (int num in newArray)
@@ -71,6 +72,7 @@ namespace ArrayPlayground
                     Console.WriteLine();
                     foundNumber = true;
                     Console.WriteLine("index cisla " + 5 + " je " + i);
+                    break;
                 } 
 
             }
@@ -78,21 +80,27 @@ namespace ArrayPlayground
             {
                 Console.WriteLine("Cislo v poli neni");
             }
-            
+            Console.ReadKey();
             //TODO 9: Spočítej kolikrát se každé číslo v poli vyskytuje a spočítané četnosti vypiš do konzole.
             int[] counts = new int[10];
-            
+            Console.WriteLine("pocitam cetnosti");
             foreach (int num in newArray)
             {
-                counts[num-1]++;
+                counts[num]++ ;
             }
             for (int i = 0;i < counts.Length;i++) {
                 int a = i + 0;
             Console.WriteLine("Číslo " + a + " je v poli " + counts[i] + " krát");
             }
             //TODO 10: Vytvoř druhé pole, do kterého zkopíruješ prvky z prvního pole v opačném pořadí.
+            int[] reversedArray = new int[10];
 
-
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                reversedArray[i] = newArray[newArray.Length - 1 - i];
+                Console.WriteLine(reversedArray[i] + "i ");
+            }
+            
             //Zkus is dál hrát s polem dle své libosti. Můžeš třeba prohodit dva prvky, ukládat do pole prvky nějaké posloupnosti (a pak si je vyhledávat) nebo cokoliv dalšího tě napadne
 
             Console.ReadKey();
