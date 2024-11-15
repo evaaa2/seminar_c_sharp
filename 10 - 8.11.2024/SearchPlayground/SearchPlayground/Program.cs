@@ -33,23 +33,25 @@ namespace SearchPlayground
             int lower = 0;
             int upper = array.Length - 1;
             int middle;
-            int i = 0;
-            while (lower != upper)
+            int numberOfOperations = 0;
+            while (lower <= upper)
             {
-                i++;
-                middle = array.Length / 2;
-                if (elementToSearch < middle)
+                numberOfOperations++;
+                middle = (lower + upper) / 2;
+                if (array[middle] == elementToSearch)
                 {
-                    upper = middle;
+                    Console.WriteLine(numberOfOperations);
+                    return middle;
                 }
-                else if (elementToSearch > middle)
+                else if (elementToSearch < array[middle])
+                {
+                    upper = middle - 1;
+                }
+                else if (elementToSearch > array[middle])
                 {
                     lower = middle + 1;
                 }
-                else
-                {
-                    return i;
-                }
+                
             }
             /*
              * TODO: naimplementuj binární vyhledávání
@@ -69,6 +71,12 @@ namespace SearchPlayground
 
         static int BinarySearchRecursive(int[] array, int elementToSearch, int lower, int upper)
         {
+            int middle = (lower + upper) / 2;
+            if (array[middle] == elementToSearch) return middle;
+            else if (elementToSearch > array[middle]) return BinarySearchRecursive(array, elementToSearch, middle + 1, upper);
+            else if (elementToSearch < array[middle]) return BinarySearchRecursive(array, elementToSearch, lower, middle-1);
+
+
             //TODO naimplementuj binární vyhledávání rekurzivním způsobem (Zamysli se nad parametry, které tato funkce přijímá vzpomeň si na přístup Rozděl a Panuj.)
             return -1;
         }
@@ -134,7 +142,7 @@ namespace SearchPlayground
             WriteArrayToConsole(smallArray, "Malé pole");
             SearchArray(smallArray, "Malé pole");
 
-            //WriteArrayToConsole(mediumArray, "Střední pole");
+            WriteArrayToConsole(mediumArray, "Střední pole");
             SearchArray(mediumArray, "Střední pole");
 
             //WriteArrayToConsole(largeArray, "Velké pole");
