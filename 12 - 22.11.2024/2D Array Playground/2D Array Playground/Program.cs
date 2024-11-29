@@ -47,6 +47,7 @@ namespace _2D_Array_Playground
             //TODO 2: Vypiš do konzole n-tý řádek pole, kde n určuje proměnná nRow.
             int nRow = 0;
 
+
             //TODO 3: Vypiš do konzole n-tý sloupec pole, kde n určuje proměnná nColumn.
             int nColumn = 0;
 
