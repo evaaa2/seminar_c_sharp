@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace Battleship
 {
+    public class Monster
+    {
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int Health { get; set; }
+    }
+
     internal class Program
     {
         static void PrintArray(string[,] arrayToPrint, string[] letters)
@@ -48,6 +55,8 @@ namespace Battleship
             // definovani promennych
             string[,] playerField = new string[10, 10];
             string[,] computerField = new string[10, 10];
+            Dictionary<string, string> ships = new Dictionary<string, string>();
+
             string[] letters = {"*", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
             // uvod do hry
             Console.WriteLine("Vitej ve hre Battleship!");
@@ -55,9 +64,24 @@ namespace Battleship
             FillArray(playerField);
             PrintArray(playerField, letters);
             //umistovani lode do hraciho pole
+            //pokus pouziti tridy z chatu GPT
+             List<Monster> monsters = new List<Monster>
+        {
+            new Monster { Name = "slime", Level = 2, Health = 15 },
+            new Monster { Name = "fanged beast", Level = 8, Health = 60 },
+            new Monster { Name = "dragon", Level = 20, Health = 300 }
+        };
 
+                // Example: Print the monster list
+                foreach (var monster in monsters)
+                {
+                    Console.WriteLine($"Name: {monster.Name}, Level: {monster.Level}, Health: {monster.Health}");
+                }
             
-            Console.ReadKey();
+        
+
+
+        Console.ReadKey();
         }
     }
 }
