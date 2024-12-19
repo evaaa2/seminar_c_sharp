@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace Battleship
 {
-    /*
-    public class Monster
-    {
-        public string Name { get; set; }
-        public int Level { get; set; }
-        public int Health { get; set; }
-    }
-    */
-
+  
     internal class Program
     {
         static void PrintArray(string[,] arrayToPrint, List<string> letters)
@@ -51,10 +43,8 @@ namespace Battleship
         {
             if (
                 letters.Contains(letterCoordinate) &&
-                0 <= numberCoordinate && numberCoordinate < 10 &&
-                myField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] == "~"
-
-                )
+                numberCoordinate >= 0 && numberCoordinate < 10 &&
+                myField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] == "~")
             {
                 return false;
             }
@@ -81,11 +71,11 @@ namespace Battleship
             //definovani lodi
             Dictionary<string, int> ships = new Dictionary<string, int>() 
             {
-               {"L", 5},
-               {"B", 4},
-               {"K", 3},
-               {"P", 3},
-               {"T", 2},
+               {"Letadlova lod", 5},
+               {"Bitevni lod", 4},
+               {"Kriznik", 3},
+               {"Ponorka", 3},
+               {"Torpedoborec", 2},
             };
             //retezec stringu pro vypsani tabulky
             List<string> letters = new List<string>
@@ -104,44 +94,35 @@ namespace Battleship
             //Letadlova lod
             string letterCoordinate;
             int numberCoordinate = -1;
+            bool repeat;
             foreach(KeyValuePair<string, int> kvp in ships)
             {
-                Console.WriteLine("Dalsi lod");
+                Console.WriteLine("\n" + kvp.Key);
                 do
                 {
-                    Console.WriteLine("pocatecni souradnice");
+                    Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
                     string coordinate = Console.ReadLine();
                     letterCoordinate = Convert.ToString(coordinate[0]);
-                    if (!int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate))
+                    char letter = kvp.Key[0];
+                    repeat = false;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+                    /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
+                     * ma jenom dva znaky
+                     * prvni znak je pismeno A-J
+                     * druhy znak je cislo
+                     * policko jeste neni obsazene jinou lodi
+                     */
+                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || playerField[numberCoordinate, letters.IndexOf(letterCoordinate)] != "~")
                     {
-                        Console.WriteLine("spatny vstup");
+                        Console.WriteLine("spatny vstup 1");
+                        repeat = true;
                     }
-                    
-                    playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = kvp.Key;
-                } while (CheckMyCell(letterCoordinate, numberCoordinate, letters, playerField));
+                   
+                    playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = Convert.ToString(letter);
+                } while (repeat);
                 break;
             }
             PrintArray(playerField, letters);
-
-            
-        /*
-            //pokus pouziti tridy z chatu GPT
-             List<Monster> monsters = new List<Monster>
-        {
-            new Monster { Name = "slime", Level = 2, Health = 15 },
-            new Monster { Name = "fanged beast", Level = 8, Health = 60 },
-            new Monster { Name = "dragon", Level = 20, Health = 300 }
-        };
-
-                // Example: Print the monster list
-                foreach (var monster in monsters)
-                {
-                    Console.WriteLine($"Name: {monster.Name}, Level: {monster.Level}, Health: {monster.Health}");
-                }
-        */
-            
-        
-
 
         Console.ReadKey();
         }
