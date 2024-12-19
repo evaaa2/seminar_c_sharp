@@ -114,12 +114,29 @@ namespace Battleship
                      */
                     if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || playerField[numberCoordinate, letters.IndexOf(letterCoordinate)] != "~")
                     {
-                        Console.WriteLine("spatny vstup 1");
+                        Console.WriteLine("spatne zadana pocatecni souradnice");
                         repeat = true;
                     }
                    
                     playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = Convert.ToString(letter);
                 } while (repeat);
+
+                // koncova souradnice
+                Console.WriteLine("Zadej orientaci lode");
+                Console.WriteLine("V - vodorovne/ S - svisle");
+                string orientation = " ";
+                bool continueTwo;
+                do
+                {
+                   
+                    orientation = Console.ReadLine();
+                    if (orientation == "V" && orientation == "S") continueTwo = false;
+                    else
+                    {
+                        continueTwo = true;
+                        Console.WriteLine("spatne zadany smer orientace lode");
+                    }
+                } while (continueTwo);
                 break;
             }
             PrintArray(playerField, letters);
