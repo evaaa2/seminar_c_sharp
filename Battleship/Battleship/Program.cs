@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Battleship
 {
-  
+
     internal class Program
     {
         static void PrintArray(string[,] arrayToPrint, List<string> letters)
         {
-            
+
             for (int i = 0; i <= arrayToPrint.GetLength(1); i++)
             {
                 Console.Write(letters[i] + " ");
@@ -27,7 +27,7 @@ namespace Battleship
                 Console.WriteLine();
             }
         }
-    
+
         static void FillArray(string[,] arrayToFill)
         {
             Console.WriteLine();
@@ -69,7 +69,7 @@ namespace Battleship
             string[,] playerField = new string[10, 10];
             string[,] computerField = new string[10, 10];
             //definovani lodi
-            Dictionary<string, int> ships = new Dictionary<string, int>() 
+            Dictionary<string, int> ships = new Dictionary<string, int>()
             {
                {"Letadlova lod", 5},
                {"Bitevni lod", 4},
@@ -95,9 +95,9 @@ namespace Battleship
             string letterCoordinate;
             int numberCoordinate = -1;
             bool repeat;
-            foreach(KeyValuePair<string, int> kvp in ships)
+            foreach (KeyValuePair<string, int> kvp in ships)
             {
-                Console.WriteLine("\n" + kvp.Key);
+                Console.WriteLine("\n" + kvp.Key + " o delce " + kvp.Value);
                 do
                 {
                     Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
@@ -117,31 +117,65 @@ namespace Battleship
                         Console.WriteLine("spatne zadana pocatecni souradnice");
                         repeat = true;
                     }
-                   
+
                     playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = Convert.ToString(letter);
                 } while (repeat);
-
+                PrintArray(playerField, letters);
                 // koncova souradnice
-                Console.WriteLine("Zadej orientaci lode");
+                do
+                {
+                    Console.WriteLine("zadej koncovou souradnici lode tak, aby delka lode byla " + kvp.Value);
+                    string coordinate = Console.ReadLine();
+                    letterCoordinate = Convert.ToString(coordinate[0]);
+                    char letter = kvp.Key[0];
+                    repeat = false;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+                    /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
+                     * ma jenom dva znaky
+                     * prvni znak je pismeno A-J
+                     * druhy znak je cislo
+                     * policko jeste neni obsazene jinou lodi
+                     */
+                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || playerField[numberCoordinate, letters.IndexOf(letterCoordinate)] != "~")
+                    {
+                        Console.WriteLine("spatne zadana pocatecni souradnice");
+                        repeat = true;
+                    }
+
+                    playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = Convert.ToString(letter);
+                } while (repeat);
+                /*Console.WriteLine("Zadej orientaci lode");
                 Console.WriteLine("V - vodorovne/ S - svisle");
                 string orientation = " ";
                 bool continueTwo;
                 do
                 {
-                   
+
                     orientation = Console.ReadLine();
-                    if (orientation == "V" && orientation == "S") continueTwo = false;
+                    if (orientation == "V")
+                    {
+                        continueTwo = false;
+                    }
+                    else if (orientation == "S")
+                    {
+                        continueTwo = false;
+                    }
                     else
                     {
                         continueTwo = true;
                         Console.WriteLine("spatne zadany smer orientace lode");
                     }
+                    
+                    
                 } while (continueTwo);
+                */
                 break;
             }
-            PrintArray(playerField, letters);
 
-        Console.ReadKey();
+                PrintArray(playerField, letters);
+
+                Console.ReadKey();
+            
         }
     }
 }
