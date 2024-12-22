@@ -115,7 +115,7 @@ namespace Battleship
                      * druhy znak je cislo
                      * policko jeste neni obsazene jinou lodi
                      */
-                    if (coordinateFirst.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || playerField[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst)] != "~")
+                    if (coordinateFirst.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || playerField[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
                     {
                         Console.WriteLine("spatne zadana pocatecni souradnice");
                         repeat = true;
@@ -137,28 +137,22 @@ namespace Battleship
                     repeat = false;
                     bool lengthIsOkay;
                     bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateSecond);
+
                     //special pro konc. sour.
-                    if (Math.Abs(letters.IndexOf(letterCoordinateFirst) - letters.IndexOf(letterCoordinateSecond)) == kvp.Value - 1 && numberCoordinateFirst == numberCoordinateSecond)
-                    {
-                        Console.WriteLine("je to ok vodorovne");
-                        lengthIsOkay = true;
-                    }
-                    else if(Math.Abs(numberCoordinateFirst - numberCoordinateSecond) == kvp.Value - 1 && letterCoordinateFirst == letterCoordinateSecond)
-                    {
-                        Console.WriteLine("je to ok svisle");
-                        lengthIsOkay = true;
-                    }
-                    else
-                    {
-                        lengthIsOkay= false;
-                    }
+                    //kdyz je lod vodorovne
+                    if (Math.Abs(letters.IndexOf(letterCoordinateFirst) - letters.IndexOf(letterCoordinateSecond)) == kvp.Value - 1 && numberCoordinateFirst == numberCoordinateSecond) lengthIsOkay = true;
+                    //kdyz je lod svisle
+                    else if(Math.Abs(numberCoordinateFirst - numberCoordinateSecond) == kvp.Value - 1 && letterCoordinateFirst == letterCoordinateSecond) lengthIsOkay = true;
+                    //delka lodi neodpovida
+                    else lengthIsOkay = false;
+
                     /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
                      * ma jenom dva znaky
                      * prvni znak je pismeno A-J
                      * druhy znak je cislo
                      * policko jeste neni obsazene jinou lodi
                      */
-                    if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateSecond) || !isTheSecondCharNum || playerField[numberCoordinateSecond, letters.IndexOf(letterCoordinateSecond)] != "~")
+                    if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateSecond) || !isTheSecondCharNum || playerField[numberCoordinateSecond, letters.IndexOf(letterCoordinateSecond) - 1] != "~")
                     {
                         Console.WriteLine("spatne zadana koncova souradnice");
                         repeat = true;
