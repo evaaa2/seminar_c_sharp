@@ -42,7 +42,7 @@ namespace Battleship
             }
         }
         
-        static void AddingShips(string[,]playerField, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)        
+        static void AddingShips(string[,]field, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)        
         {
             //nadefinovani promennych
             string letterCoordinateFirst = " ";
@@ -56,39 +56,8 @@ namespace Battleship
             {
                 Console.WriteLine("\n" + kvp.Key + " o delce " + kvp.Value);
                 //prvni souradnice
-                do
-                {
-                    Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
-
-                    coordinate = Console.ReadLine();
-                    if (coordinate.Length == 2)
-                    {
-
-                        letterCoordinateFirst = Convert.ToString(coordinate[0]);
-                        char letter = kvp.Key[0];
-                        repeat = false;
-                        bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
-                        /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
-                         * ma jenom dva znaky
-                         * prvni znak je pismeno A-J
-                         * druhy znak je cislo
-                         * policko jeste neni obsazene jinou lodi
-                         */
-                        if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || playerField[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
-                        {
-                            Console.WriteLine("spatne zadana pocatecni souradnice");
-                            repeat = true;
-                        }
-                        else
-                        {
-                            playerField[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
-                            repeat = false;
-                        }
-                    }
-                    else repeat = true;
-
-                } while (repeat);
-                PrintArray(playerField, letters);
+                FirstCoordinate(letterCoordinateFirst, numberCoordinateFirst, kvp, letters, field);
+                PrintArray(field, letters);
                 // koncova souradnice
                 string orientation = " ";
                 do
@@ -128,7 +97,7 @@ namespace Battleship
                          * druhy znak je cislo
                          * policko jeste neni obsazene jinou lodi
                          */
-                        if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateLast) || !isTheSecondCharNum || playerField[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                        if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateLast) || !isTheSecondCharNum || field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] != "~")
                         {
                             Console.WriteLine("spatne zadana koncova souradnice");
                             repeat = true;
@@ -136,7 +105,7 @@ namespace Battleship
                         else
                         {
                             repeat = false;
-                            playerField[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                            field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                         }
                         // zaznamenani lode na zbyvajici policka
                         if (orientation == "vodorovne")
@@ -145,14 +114,14 @@ namespace Battleship
                             {
                                 for (int i = 0; i < kvp.Value - 1; i++)
                                 {
-                                    playerField[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
+                                    field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
                                 }
                             }
                             else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
                             {
                                 for (int i = 0; i < kvp.Value - 1; i++)
                                 {
-                                    playerField[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
+                                    field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
                                 }
                             }
                         }
@@ -162,14 +131,14 @@ namespace Battleship
                             {
                                 for (int i = 0; i < kvp.Value - 1; i++)
                                 {
-                                    playerField[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                                 }
                             }
                             else if (numberCoordinateFirst > numberCoordinateLast)
                             {
                                 for (int i = 0; i < kvp.Value - 1; i++)
                                 {
-                                    playerField[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                                 }
                             }
                         }
@@ -179,11 +148,45 @@ namespace Battleship
                         repeat = true;
                     }
                 } while (repeat);
-                PrintArray(playerField, letters);
+                PrintArray(field, letters);
             }
         }
 
-       
+       static void FirstCoordinate(string letterCoordinateFirst, int numberCoordinateFirst, KeyValuePair<string, int> kvp, List<string>letters, string[,]field)
+        {
+            bool repeat = true;
+            do
+            {
+                Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
+                string coordinate = Console.ReadLine();
+                if (coordinate.Length == 2)
+                {
+
+                    letterCoordinateFirst = Convert.ToString(coordinate[0]);
+                    char letter = kvp.Key[0];
+                    repeat = false;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
+                    /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
+                     * ma jenom dva znaky
+                     * prvni znak je pismeno A-J
+                     * druhy znak je cislo
+                     * policko jeste neni obsazene jinou lodi
+                     */
+                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
+                    {
+                        Console.WriteLine("spatne zadana pocatecni souradnice");
+                        repeat = true;
+                    }
+                    else
+                    {
+                        field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
+                        repeat = false;
+                    }
+                }
+                else repeat = true;
+
+            } while (repeat);
+        }
         
         static void Main(string[] args)
         {
@@ -208,15 +211,16 @@ namespace Battleship
             Console.WriteLine("Toto je tve pole, do ktereho umistis sve lode");
             FillArray(playerField);
             PrintArray(playerField, letters);
-            //umistovani lode do hraciho pole
+
+            //pridani lodi hrace
             Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
             Console.ReadKey();
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
-            //pridani lodi hrace
             string player = "player";
             AddingShips(playerField, ships, letters, player);
+
             //pridani lodi pocitace
             string computer = "computer";
             AddingShips(computerField, ships, letters, computer);
