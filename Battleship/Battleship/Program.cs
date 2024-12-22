@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,22 +41,8 @@ namespace Battleship
                 }
             }
         }
-        static bool CheckMyCell(string letterCoordinate, int numberCoordinate, List<string> letters, string[,] myField)
-        {
-            if (
-                letters.Contains(letterCoordinate) &&
-                numberCoordinate >= 0 && numberCoordinate < 10 &&
-                myField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] == "~")
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("spatny vstup");
-                return true;
-            }
-        }
-        static void AddingShips(string[,]playerField, Dictionary<string, int> ships, List<string> letters)        
+        
+        static void AddingShips(string[,]playerField, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)        
         {
             //nadefinovani promennych
             string letterCoordinateFirst = " ";
@@ -195,6 +182,8 @@ namespace Battleship
                 PrintArray(playerField, letters);
             }
         }
+
+       
         
         static void Main(string[] args)
         {
@@ -225,9 +214,12 @@ namespace Battleship
             Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
             Console.ReadKey();
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
-            
-            AddingShips(playerField, ships, letters);
-            
+            //pridani lodi hrace
+            string player = "player";
+            AddingShips(playerField, ships, letters, player);
+            //pridani lodi pocitace
+            string computer = "computer";
+            AddingShips(computerField, ships, letters, computer);
            
                 Console.ReadKey();
             
