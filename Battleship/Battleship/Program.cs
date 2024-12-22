@@ -92,33 +92,39 @@ namespace Battleship
             Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
             //Letadlova lod
-            string letterCoordinate;
-            int numberCoordinate = -1;
+            string letterCoordinateFirst, letterCoordinateSecond, coordinateFirst;
+            int numberCoordinateFirst = -1;
+            int numberCoordinateSecond = -1;
             bool repeat;
+            
             foreach (KeyValuePair<string, int> kvp in ships)
             {
                 Console.WriteLine("\n" + kvp.Key + " o delce " + kvp.Value);
+                //prvni souradnice
                 do
                 {
                     Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
-                    string coordinate = Console.ReadLine();
-                    letterCoordinate = Convert.ToString(coordinate[0]);
+                    coordinateFirst = Console.ReadLine();
+                    letterCoordinateFirst = Convert.ToString(coordinateFirst[0]);
                     char letter = kvp.Key[0];
                     repeat = false;
-                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinateFirst[1]), out numberCoordinateFirst);
                     /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
                      * ma jenom dva znaky
                      * prvni znak je pismeno A-J
                      * druhy znak je cislo
                      * policko jeste neni obsazene jinou lodi
                      */
-                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || playerField[numberCoordinate, letters.IndexOf(letterCoordinate)] != "~")
+                    if (coordinateFirst.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || playerField[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst)] != "~")
                     {
                         Console.WriteLine("spatne zadana pocatecni souradnice");
                         repeat = true;
                     }
-
-                    playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = Convert.ToString(letter);
+                    else
+                    {
+                        playerField[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
+                        repeat = false;
+                    }
                 } while (repeat);
                 PrintArray(playerField, letters);
                 // koncova souradnice
@@ -126,50 +132,44 @@ namespace Battleship
                 {
                     Console.WriteLine("zadej koncovou souradnici lode tak, aby delka lode byla " + kvp.Value);
                     string coordinate = Console.ReadLine();
-                    letterCoordinate = Convert.ToString(coordinate[0]);
+                    letterCoordinateSecond = Convert.ToString(coordinate[0]);
                     char letter = kvp.Key[0];
                     repeat = false;
-                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+                    bool lengthIsOkay;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateSecond);
+                    //special pro konc. sour.
+                    if (Math.Abs(letters.IndexOf(letterCoordinateFirst) - letters.IndexOf(letterCoordinateSecond)) == kvp.Value - 1 && numberCoordinateFirst == numberCoordinateSecond)
+                    {
+                        Console.WriteLine("je to ok vodorovne");
+                        lengthIsOkay = true;
+                    }
+                    else if(Math.Abs(numberCoordinateFirst - numberCoordinateSecond) == kvp.Value - 1 && letterCoordinateFirst == letterCoordinateSecond)
+                    {
+                        Console.WriteLine("je to ok svisle");
+                        lengthIsOkay = true;
+                    }
+                    else
+                    {
+                        lengthIsOkay= false;
+                    }
                     /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
                      * ma jenom dva znaky
                      * prvni znak je pismeno A-J
                      * druhy znak je cislo
                      * policko jeste neni obsazene jinou lodi
                      */
-                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || playerField[numberCoordinate, letters.IndexOf(letterCoordinate)] != "~")
+                    if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateSecond) || !isTheSecondCharNum || playerField[numberCoordinateSecond, letters.IndexOf(letterCoordinateSecond)] != "~")
                     {
-                        Console.WriteLine("spatne zadana pocatecni souradnice");
+                        Console.WriteLine("spatne zadana koncova souradnice");
                         repeat = true;
-                    }
-
-                    playerField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = Convert.ToString(letter);
-                } while (repeat);
-                /*Console.WriteLine("Zadej orientaci lode");
-                Console.WriteLine("V - vodorovne/ S - svisle");
-                string orientation = " ";
-                bool continueTwo;
-                do
-                {
-
-                    orientation = Console.ReadLine();
-                    if (orientation == "V")
-                    {
-                        continueTwo = false;
-                    }
-                    else if (orientation == "S")
-                    {
-                        continueTwo = false;
                     }
                     else
                     {
-                        continueTwo = true;
-                        Console.WriteLine("spatne zadany smer orientace lode");
+                        repeat = false;
+                        playerField[numberCoordinateSecond, letters.IndexOf(letterCoordinateSecond) - 1] = Convert.ToString(letter);
                     }
-                    
-                    
-                } while (continueTwo);
-                */
-                break;
+                } while (repeat);
+                PrintArray(playerField, letters);
             }
 
                 PrintArray(playerField, letters);
