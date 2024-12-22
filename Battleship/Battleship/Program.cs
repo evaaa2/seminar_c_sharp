@@ -55,52 +55,16 @@ namespace Battleship
                 return true;
             }
         }
-        static void NewShip()
+        static void AddingShips(string[,]playerField, Dictionary<string, int> ships, List<string> letters)        
         {
-
-        }
-        static bool CheckTheShip()
-        {
-
-            return true;
-        }
-        static void Main(string[] args)
-        {
-            // definovani promennych
-            string[,] playerField = new string[10, 10];
-            string[,] computerField = new string[10, 10];
-            //definovani lodi
-            Dictionary<string, int> ships = new Dictionary<string, int>()
-            {
-               {"Letadlova lod", 5},
-               {"Bitevni lod", 4},
-               {"Kriznik", 3},
-               {"Ponorka", 3},
-               {"Torpedoborec", 2},
-            };
-            //retezec stringu pro vypsani tabulky
-            List<string> letters = new List<string>
-            {"*", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",};
-
-            // uvod do hry
-            Console.WriteLine("Vitej ve hre Battleship!");
-            Console.WriteLine("Toto je tve pole, do ktereho umistis sve lode");
-            FillArray(playerField);
-            PrintArray(playerField, letters);
-            //umistovani lode do hraciho pole
-            Console.WriteLine();
-            Console.ReadKey();
-            Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
-            Console.ReadKey();
-            Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
-            //Letadlova lod
+            //nadefinovani promennych
             string letterCoordinateFirst = " ";
             string letterCoordinateLast = " ";
             int numberCoordinateFirst = -1;
             int numberCoordinateLast = -1;
             bool repeat;
             string coordinate = "0";
-            
+
             foreach (KeyValuePair<string, int> kvp in ships)
             {
                 Console.WriteLine("\n" + kvp.Key + " o delce " + kvp.Value);
@@ -108,7 +72,7 @@ namespace Battleship
                 do
                 {
                     Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
-                   
+
                     coordinate = Console.ReadLine();
                     if (coordinate.Length == 2)
                     {
@@ -230,6 +194,41 @@ namespace Battleship
                 } while (repeat);
                 PrintArray(playerField, letters);
             }
+        }
+        
+        static void Main(string[] args)
+        {
+            // definovani promennych
+            string[,] playerField = new string[10, 10];
+            string[,] computerField = new string[10, 10];
+            //definovani lodi
+            Dictionary<string, int> ships = new Dictionary<string, int>()
+            {
+               {"Letadlova lod", 5},
+               {"Bitevni lod", 4},
+               {"Kriznik", 3},
+               {"Ponorka", 3},
+               {"Torpedoborec", 2},
+            };
+            //retezec stringu pro vypsani tabulky
+            List<string> letters = new List<string>
+            {"*", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",};
+
+            // uvod do hry
+            Console.WriteLine("Vitej ve hre Battleship!");
+            Console.WriteLine("Toto je tve pole, do ktereho umistis sve lode");
+            FillArray(playerField);
+            PrintArray(playerField, letters);
+            //umistovani lode do hraciho pole
+            Console.WriteLine();
+            Console.ReadKey();
+            Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
+            Console.ReadKey();
+            Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
+            
+            AddingShips(playerField, ships, letters);
+            
+           
                 Console.ReadKey();
             
         }
