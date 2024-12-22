@@ -157,9 +157,68 @@ namespace Battleship
                         else
                         {
                             repeat = false;
+
+                            //FillRestOfTheCells(orientation, letterCoordinateFirst, letterCoordinateLast, letters, kvp, numberCoordinateFirst, numberCoordinateLast, field, Convert.ToString(letter), repeat);
+                            if (orientation == "vodorovne")
+                            {
+                                if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
+                                        {
+                                            repeat = true;
+                                            break;
+                                        }
+                                        //field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
+                                    }
+                                }
+                                else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
+                                        {
+                                            repeat = true;
+                                            break;
+                                        }
+                                        //field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
+                                    }
+                                }
+                            }
+                            else if (orientation == "svisle")
+                            {
+                                if (numberCoordinateFirst < numberCoordinateLast)
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                                        {
+                                            repeat = true;
+                                            break;
+                                        }
+                                        //field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    }
+                                }
+                                else if (numberCoordinateFirst > numberCoordinateLast)
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                                        {
+                                            repeat = true;
+                                            break;
+                                        }
+                                        //field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    }
+                                }
+                            }
+                            //
                             field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                            if (repeat == true) Console.WriteLine("uuu");
                         }
-                        FillRestOfTheCells(orientation, letterCoordinateFirst, letterCoordinateLast, letters, kvp, numberCoordinateFirst, numberCoordinateLast, field, Convert.ToString(letter));
+                        
+                        
                         
                     }
                     //pokud není zadaná žádná souřadnice
@@ -219,7 +278,7 @@ namespace Battleship
             } while (repeat);
         }
             */
-        static void FillRestOfTheCells(string orientation, string letterCoordinateFirst, string letterCoordinateLast, List<string> letters, KeyValuePair<string, int> kvp, int numberCoordinateFirst, int numberCoordinateLast, string[,]field, string letter)
+       /* static void FillRestOfTheCells(string orientation, string letterCoordinateFirst, string letterCoordinateLast, List<string> letters, KeyValuePair<string, int> kvp, int numberCoordinateFirst, int numberCoordinateLast, string[,]field, string letter, bool repeat)
         {
             // zaznamenani lode na zbyvajici policka
             if (orientation == "vodorovne")
@@ -228,6 +287,10 @@ namespace Battleship
                 {
                     for (int i = 0; i < kvp.Value - 1; i++)
                     {
+                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
+                        {
+                            repeat = true;
+                        }
                         field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
                     }
                 }
@@ -235,6 +298,10 @@ namespace Battleship
                 {
                     for (int i = 0; i < kvp.Value - 1; i++)
                     {
+                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
+                        {
+                            repeat = true;
+                        }
                         field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
                     }
                 }
@@ -245,6 +312,10 @@ namespace Battleship
                 {
                     for (int i = 0; i < kvp.Value - 1; i++)
                     {
+                        if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                        {
+                            repeat = true;
+                        }
                         field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                     }
                 }
@@ -252,11 +323,16 @@ namespace Battleship
                 {
                     for (int i = 0; i < kvp.Value - 1; i++)
                     {
+                        if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                        {
+                            repeat = true;
+                        }
                         field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                     }
                 }
             }
         }
+       */
         static string RandomCoordinate(List<string>letters)
         {
             Random rnd = new Random();
@@ -301,9 +377,10 @@ namespace Battleship
             Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
             Console.ReadKey();
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
+            */
             string player = "player";
             AddingShips(playerField, ships, letters, player);
-            */
+            
 
             //pridani lodi pocitace
             string computer = "computer";
