@@ -366,6 +366,62 @@ namespace Battleship
             firstCoordinate.Append(Convert.ToString(rndNumberCoordinate));
             return firstCoordinate.ToString();
         }
+
+        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues )
+        {
+            bool gameIsOver = false;
+            string coordinate = " ";
+            bool repeat;
+            int numberCoordinate;
+            //while (!gameIsOver)
+            //{
+                do
+                {
+                    if (playerOrComputer == "player")
+                    {
+                        Console.WriteLine("zadej souradnici policka na ktere chces vystrelit");
+                        coordinate = Console.ReadLine();
+                    }
+                    else
+                    {
+                        coordinate = RandomCoordinate(letters);
+                    }
+
+                    if (coordinate.Length == 2)
+                    {
+
+                        string letterCoordinate = Convert.ToString(coordinate[0]);
+                        repeat = false;
+                        bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+                        if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
+                        {
+                            if (playerOrComputer == "player") Console.WriteLine("spatne zadana souradnice");
+                            repeat = true;
+                        }
+                        else
+                        {
+                            if (fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
+                            {
+                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
+                                if (playerOrComputer == "player") Console.WriteLine("Zasahl jsi souperovu lod!");
+                            }
+                            else
+                            {
+                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
+                                if (playerOrComputer == "player") Console.WriteLine("Bohuzel ses netrefil:(");
+                            }
+
+                            repeat = false;
+                        }
+
+
+                    }
+                    else repeat = true;
+
+                } while (repeat);
+                if (playerOrComputer == "player") PrintArray(seenableField, letters);
+           // }
+        }
         static void Main(string[] args)
         {
             // definovani promennych
@@ -413,9 +469,21 @@ namespace Battleship
             PrintArray(computerField, letters);
 
             //zacatek hry
-            Console.WriteLine("Toto je pole tvého protivníka:");
+            Console.WriteLine("Toto je pole tveho protivnika:");
             FillArray(computerFieldWithout);
-            PrintArray(computerField, letters);
+            PrintArray(computerFieldWithout, letters);
+            Console.WriteLine("Tvym cilem je sestrelit vsechny protivnikovy lode driv nez on sestreli ty tvoje");
+            Console.ReadKey();
+            Console.WriteLine("Stridate se vzdy po jedne strele");
+            Console.ReadKey();
+            Console.WriteLine("Zacinas!");
+
+            //strileni
+            Shooting(letters, player, computerFieldWithout, computerField);
+            
+
+           
+
             
             Console.ReadKey();
             
