@@ -367,14 +367,16 @@ namespace Battleship
             return firstCoordinate.ToString();
         }
 
-        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues )
+        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out int playerScore, out int computerScore)
         {
             bool gameIsOver = false;
             string coordinate = " ";
             bool repeat;
             int numberCoordinate;
-            //while (!gameIsOver)
-            //{
+            playerScore = 0;
+            computerScore = 0;
+           
+                //jedna strela
                 do
                 {
                     if (playerOrComputer == "player")
@@ -403,7 +405,12 @@ namespace Battleship
                             if (fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
                             {
                                 seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
-                                if (playerOrComputer == "player") Console.WriteLine("Zasahl jsi souperovu lod!");
+                                if (playerOrComputer == "player")
+                                {
+                                    Console.WriteLine("Zasahl jsi souperovu lod!");
+                                    playerScore++;
+                                }
+                                else computerScore++;
                             }
                             else
                             {
@@ -420,7 +427,10 @@ namespace Battleship
 
                 } while (repeat);
                 if (playerOrComputer == "player") PrintArray(seenableField, letters);
-           // }
+                
+            
+            
+            
         }
         static void Main(string[] args)
         {
@@ -428,7 +438,8 @@ namespace Battleship
             string[,] playerField = new string[10, 10];
             string[,] computerField = new string[10, 10];
             string[,] computerFieldWithout = new string[10, 10];
-
+            string playerOrComputer;
+            bool didPlayerWin;
             //retezec stringu pro vypsani tabulky
             List<string> letters = new List<string>
             {"*", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",};
@@ -457,14 +468,25 @@ namespace Battleship
             Console.ReadKey();
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
             */
-            string player = "player";
-            AddingShips(playerField, ships, letters, player);
-            
+            Console.WriteLine("Chces si nechat lode vygenerovat nahodne? Napis true");
+            bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
+            if (doYouWantItRandom)
+            {
+                playerOrComputer = "computer";
+                AddingShips(playerField, ships, letters, playerOrComputer);
+                PrintArray(playerField, letters);
+            }
+            else
+            {
+                playerOrComputer = "player";
+                AddingShips(playerField, ships, letters, playerOrComputer);
+            }
 
             //pridani lodi pocitace
-            string computer = "computer";
+            
             FillArray(computerField);
-            AddingShips(computerField, ships, letters, computer);
+            playerOrComputer = "computer";
+            AddingShips(computerField, ships, letters, playerOrComputer);
             //toto je zatím jen pro kontrolu
             PrintArray(computerField, letters);
 
@@ -479,13 +501,39 @@ namespace Battleship
             Console.WriteLine("Zacinas!");
 
             //strileni
-            Shooting(letters, player, computerFieldWithout, computerField);
-            
+            int playerScore = 0;
+            int computerScore = 1;
+            bool gameIsOver = false;
+            while (!gameIsOver)
+            {
+                //hrac strili
+                playerOrComputer = "player";
+                Shooting(letters, playerOrComputer, computerFieldWithout, computerField, out playerScore, out computerScore);
+                //pocitac strili
+                playerOrComputer = "computer";
+                Shooting(letters, playerOrComputer, playerField, playerField, out playerScore, out computerScore);
+                //
+                if (playerScore > 16 || computerScore > 16) gameIsOver = true;
+            }
+            if (playerScore > computerScore)
+            {
+                Console.WriteLine("Gratuluji, vyhral jsi!");
+            }
+            else
+            {
+                Console.WriteLine("Bohuzel to nevyslo:(");
+            }
+        
 
-           
 
-            
-            Console.ReadKey();
+
+
+
+
+
+
+
+        Console.ReadKey();
             
         }
     }
