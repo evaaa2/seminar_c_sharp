@@ -371,7 +371,7 @@ namespace Battleship
             // definovani promennych
             string[,] playerField = new string[10, 10];
             string[,] computerField = new string[10, 10];
-            string[,] hiddenComputerField = new string[10, 10];
+            string[,] computerFieldWithout = new string[10, 10];
 
             //retezec stringu pro vypsani tabulky
             List<string> letters = new List<string>
@@ -407,13 +407,16 @@ namespace Battleship
 
             //pridani lodi pocitace
             string computer = "computer";
-            while (true)
-            {
-                FillArray(computerField);
-                AddingShips(computerField, ships, letters, computer);
-                PrintArray(computerField, letters);
-                Console.ReadKey();
-            }
+            FillArray(computerField);
+            AddingShips(computerField, ships, letters, computer);
+            //toto je zatím jen pro kontrolu
+            PrintArray(computerField, letters);
+
+            //zacatek hry
+            Console.WriteLine("Toto je pole tvého protivníka:");
+            FillArray(computerFieldWithout);
+            PrintArray(computerField, letters);
+            
             Console.ReadKey();
             
         }
