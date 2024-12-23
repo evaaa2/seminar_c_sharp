@@ -168,9 +168,14 @@ namespace Battleship
                                         if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
                                         {
                                             repeat = true;
-                                            break;
                                         }
-                                        //field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
+                                    }
+                                    if (repeat == false)
+                                    {
+                                        for (int i = 0; i < kvp.Value - 1; i++)
+                                        {
+                                            field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
+                                        }
                                     }
                                 }
                                 else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
@@ -180,9 +185,15 @@ namespace Battleship
                                         if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
                                         {
                                             repeat = true;
-                                            break;
                                         }
-                                        //field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
+
+                                    }
+                                    if (repeat == false)
+                                    {
+                                        for (int i = 0; i < kvp.Value - 1; i++)
+                                        {
+                                            field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
+                                        }
                                     }
                                 }
                             }
@@ -195,9 +206,14 @@ namespace Battleship
                                         if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
                                         {
                                             repeat = true;
-                                            break;
                                         }
-                                        //field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    }
+                                    if (repeat == false)
+                                    {
+                                        for (int i = 0; i < kvp.Value - 1; i++)
+                                        {
+                                            field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                        }
                                     }
                                 }
                                 else if (numberCoordinateFirst > numberCoordinateLast)
@@ -207,15 +223,22 @@ namespace Battleship
                                         if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
                                         {
                                             repeat = true;
-                                            break;
                                         }
-                                        //field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                        
                                     }
+                                    if (repeat == false)
+                                    {
+                                        for (int i = 0; i < kvp.Value - 1; i++)
+                                        {
+                                            field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                        }
+                                    }
+                                    
                                 }
                             }
-                            //
-                            field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                            if (repeat == true) Console.WriteLine("uuu");
+
+                            if (repeat == false) field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                            else Console.WriteLine("Lod se nesmi prekryvat s jinou lodi!");
                         }
                         
                         
