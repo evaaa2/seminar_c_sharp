@@ -379,6 +379,28 @@ namespace Battleship
             }
 
         }
+
+        static void Gadgets()
+        {
+            Console.WriteLine("Jestli chces prejit do obchodu napis true, stisni Enter pokud ne");
+            try
+            {
+                bool goToStore = Convert.ToBoolean(Console.ReadLine());
+                if (goToStore)
+                {
+                    Console.WriteLine("Muzes si koupit:\n1) Sonar - osviti oblast 3*3 okolo tebe daneho policka ");
+
+                }
+                else
+                {
+                    
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
         static void HowWillTheShipsBePlaced(string[,]playerField, List<string> letters, Dictionary<string, int> ships)
         {
             string playerOrComputer;
