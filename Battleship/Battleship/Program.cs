@@ -380,7 +380,7 @@ namespace Battleship
 
         }
 
-        /*static void Gadgets(List<string>letters, )
+        static void Gadgets(List<string>letters, string[,] computerFieldWithout)
         {
             Console.WriteLine("Jestli chces prejit do obchodu napis true");
             try
@@ -388,15 +388,16 @@ namespace Battleship
                 bool goToStore = Convert.ToBoolean(Console.ReadLine());
                 if (goToStore)
                 {
-                    Console.WriteLine("Muzes si koupit:\n1) Sonar - osviti oblast 3*3 okolo tebe daneho policka ");
+                    Console.WriteLine("Muzes si koupit:\n1) Sonar - osviti 4 tebou vybrana policka ");
                     Console.WriteLine("pokud chces pouzit sonar, napis s");
                     string sonar = Console.ReadLine();
                     if (sonar == "s" || sonar == "S")
                     {
                         bool repeat = true;
+                        for (int i = 0; i < 4; i++) {
                         do
                         {
-                            Console.WriteLine("zapis stredovou souradnici sonaru");
+                            Console.WriteLine("zapis souradnici sonaru");
                             string coordinate = Console.ReadLine();
                             
 
@@ -406,15 +407,16 @@ namespace Battleship
                                 string letterCoordinate = Convert.ToString(coordinate[0]);
                                 bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out int numberCoordinate);
                                 
-                                if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || field[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
+                                if (!letters.Contains(letterCoordinate) || !isTheSecondCharNum)
                                 {
                                     Console.WriteLine("\nSpatne zadana souradnice");
                                     repeat = true;
                                 }
                                 else
                                 {
-                                    field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
+                                    string[,] fieldWithSonar = computerFieldWithout;
                                     repeat = false;
+                                    PrintArray(fieldWithSonar, letters);
                                 }
 
 
@@ -422,8 +424,6 @@ namespace Battleship
                             else
                             {
                                 repeat = true;
-                                letterCoordinateFirst = " ";
-                                numberCoordinateFirst = 0;
                             }
 
                         } while (repeat);
@@ -440,7 +440,7 @@ namespace Battleship
                 
             }
         }
-        */
+        
         static void HowWillTheShipsBePlaced(string[,]playerField, List<string> letters, Dictionary<string, int> ships)
         {
             string playerOrComputer;
