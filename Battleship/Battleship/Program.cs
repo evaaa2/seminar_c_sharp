@@ -52,7 +52,6 @@ namespace Battleship
             string letterCoordinateLast = " ";
             int numberCoordinateFirst = -1;
             int numberCoordinateLast = -1;
-            bool repeat;
             string coordinate = "0";
 
             foreach (KeyValuePair<string, int> kvp in ships)
@@ -60,10 +59,7 @@ namespace Battleship
                 if (playerOrComputer == "player") Console.WriteLine("\n" + kvp.Key + " o delce " + kvp.Value);
 
                 //prvni souradnice
-                //FirstCoordinate(letterCoordinateFirst, numberCoordinateFirst, kvp, letters, field, playerOrComputer);
-
                 FirstCoordinate(letters, playerOrComputer, coordinate, kvp, field, out letterCoordinateFirst, out numberCoordinateFirst);
-
 
                 // koncova souradnice
                 ShipOrientationAndTheLastCoordinate(letters, letterCoordinateFirst, numberCoordinateFirst, numberCoordinateLast, kvp, letterCoordinateLast, coordinate, playerOrComputer, field);
@@ -114,7 +110,7 @@ namespace Battleship
                      */
                     if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
                     {
-                        if (playerOrComputer == "player") Console.WriteLine("spatne zadana pocatecni souradnice");
+                        if (playerOrComputer == "player") Console.WriteLine("\nspatne zadana pocatecni souradnice");
                         repeat = true;
                     }
                     else
@@ -345,7 +341,7 @@ namespace Battleship
                             else
                             {
                                 fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "0";
-                                Console.WriteLine("Protivnik zasahl tvoji lod!");
+                                Console.WriteLine("Protivnik zasahl tvoji lod! (Zasah je znacen '0'");
                             }
                             shotWasSuccessful = true;
                         }
@@ -382,17 +378,45 @@ namespace Battleship
                 PrintArray(fieldWithValues, letters);
             }
 
-
-
-
         }
+        static void HowWillTheShipsBePlaced(string[,]playerField, List<string> letters, Dictionary<string, int> ships)
+        {
+            string playerOrComputer;
+            try
+            {
+                bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
+                if (doYouWantItRandom)
+                {
+                    Console.WriteLine("Generuji...");
+                    Console.WriteLine();
+                    playerOrComputer = "computer";
+                    AddingShips(playerField, ships, letters, playerOrComputer);
+                    Console.WriteLine("Toto je tve pole:");
+                    PrintArray(playerField, letters);
+
+                }
+                else
+                {
+                    playerOrComputer = "player";
+                    AddingShips(playerField, ships, letters, playerOrComputer);
+                }
+            }
+            catch (Exception)
+            {
+                playerOrComputer = "player";
+                AddingShips(playerField, ships, letters, playerOrComputer);
+            }
+        }
+
         static void Main(string[] args)
         {
             // definovani promennych
-            string[,] playerField = new string[10, 10];
-            string[,] playerFieldBlank = new string[10, 10];
-            string[,] computerField = new string[10, 10];
-            string[,] computerFieldBlank = new string[10, 10];
+            int fieldWidth = 10;
+            int fieldHeight = 10;
+            string[,] playerField = new string[fieldWidth, fieldHeight];
+            string[,] playerFieldBlank = new string[fieldWidth, fieldHeight];
+            string[,] computerField = new string[fieldWidth, fieldHeight];
+            string[,] computerFieldBlank = new string[fieldWidth, fieldHeight];
             string playerOrComputer;
             //retezec stringu pro vypsani tabulky
             List<string> letters = new List<string>
@@ -424,32 +448,8 @@ namespace Battleship
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
             Console.ReadKey();
             Console.WriteLine("Pokud jsi liny a chces si nechat vygenerovat umisteni lodi nahodne, napis true.");
-            try
-            {
-                bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
-                if (doYouWantItRandom)
-                {
-                    Console.WriteLine("Generuji...");
-                    Console.WriteLine();
-                    playerOrComputer = "computer";
-                    AddingShips(playerField, ships, letters, playerOrComputer);
-                    Console.WriteLine("Toto je tve pole:");
-                    PrintArray(playerField, letters);
-                    
-                }
-                else
-                {
-                    playerOrComputer = "player";
-                    AddingShips(playerField, ships, letters, playerOrComputer);
-                }
-            }
-            catch (Exception)
-            {
-                playerOrComputer = "player";
-                AddingShips(playerField, ships, letters, playerOrComputer);
-            }
             
-            
+            HowWillTheShipsBePlaced(playerField, letters, ships);
 
             //pridani lodi pocitace
 
@@ -496,7 +496,6 @@ namespace Battleship
                 }
                 //
                 if (playerScore > 16 || computerScore > 16) gameIsOver = true;
-                Console.WriteLine("Skore je: " + playerScore + ":" + computerScore);
             }
             if (playerScore > computerScore)
             {
