@@ -238,10 +238,16 @@ namespace Battleship
                             }
 
                             if (repeat == false) field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                            else Console.WriteLine("Lod se nesmi prekryvat s jinou lodi!");
+                            else
+                            {
+                                if (playerOrComputer == "player")
+                                {
+                                    Console.WriteLine("Lod se nesmi prekryvat s jinou lodi!");
+                                }
+
+                            }
+
                         }
-
-
 
                     }
                     //pokud není zadaná žádná souřadnice
@@ -403,29 +409,34 @@ namespace Battleship
                     {
                         if (fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
                         {
-                            seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
+                            
                             if (playerOrComputer == "player")
                             {
+                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
                                 Console.WriteLine("Zasahl jsi souperovu lod!");
                                 playerWasSuccesful = true;
 
                             }
                             else
                             {
+                                fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "0";
                                 Console.WriteLine("Protivnik zasahl tvoji lod!");
                                 computerWasSuccesful = true;
                             }
                         }
                         else
                         {
-                            seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
+                            
                             if (playerOrComputer == "player")
                             {
+                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
+                                Console.WriteLine();
                                 Console.WriteLine("Bohuzel ses netrefil:(");
                             }
                             else
                             {
-                                Console.WriteLine("Souper se netrefil");
+                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
+                                fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
                             }
                         }
 
@@ -490,8 +501,10 @@ namespace Battleship
                 if (doYouWantItRandom)
                 {
                     Console.WriteLine("Generuji...");
+                    Console.WriteLine();
                     playerOrComputer = "computer";
                     AddingShips(playerField, ships, letters, playerOrComputer);
+                    Console.WriteLine("Toto je tve pole:");
                     PrintArray(playerField, letters);
                     
                 }
@@ -523,6 +536,7 @@ namespace Battleship
             PrintArray(computerFieldWithout, letters);
             Console.WriteLine("Tvym cilem je sestrelit vsechny protivnikovy lode driv nez on sestreli ty tvoje");
             Console.ReadKey();
+            Console.WriteLine();
             Console.WriteLine("Stridate se vzdy po jedne strele");
             Console.ReadKey();
             Console.WriteLine("Zacinas!");
@@ -542,6 +556,7 @@ namespace Battleship
                 {
                     playerScore++;
                 }
+                Console.ReadKey();
                 //pocitac strili
                 playerOrComputer = "computer";
                 Shooting(letters, playerOrComputer, playerField, playerField, out playerWasSucessful, out computerWasSucessful);
@@ -551,6 +566,7 @@ namespace Battleship
                 }
                 //
                 if (playerScore > 16 || computerScore > 16) gameIsOver = true;
+                Console.WriteLine(computerScore);
             }
             if (playerScore > computerScore)
             {
