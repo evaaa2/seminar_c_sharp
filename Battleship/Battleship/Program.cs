@@ -380,16 +380,55 @@ namespace Battleship
 
         }
 
-        static void Gadgets()
+        /*static void Gadgets(List<string>letters, )
         {
-            Console.WriteLine("Jestli chces prejit do obchodu napis true, stisni Enter pokud ne");
+            Console.WriteLine("Jestli chces prejit do obchodu napis true");
             try
             {
                 bool goToStore = Convert.ToBoolean(Console.ReadLine());
                 if (goToStore)
                 {
                     Console.WriteLine("Muzes si koupit:\n1) Sonar - osviti oblast 3*3 okolo tebe daneho policka ");
+                    Console.WriteLine("pokud chces pouzit sonar, napis s");
+                    string sonar = Console.ReadLine();
+                    if (sonar == "s" || sonar == "S")
+                    {
+                        bool repeat = true;
+                        do
+                        {
+                            Console.WriteLine("zapis stredovou souradnici sonaru");
+                            string coordinate = Console.ReadLine();
+                            
 
+                            if (coordinate.Length == 2)
+                            {
+                                repeat = false;
+                                string letterCoordinate = Convert.ToString(coordinate[0]);
+                                bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out int numberCoordinate);
+                                
+                                if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || field[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
+                                {
+                                    Console.WriteLine("\nSpatne zadana souradnice");
+                                    repeat = true;
+                                }
+                                else
+                                {
+                                    field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
+                                    repeat = false;
+                                }
+
+
+                            }
+                            else
+                            {
+                                repeat = true;
+                                letterCoordinateFirst = " ";
+                                numberCoordinateFirst = 0;
+                            }
+
+                        } while (repeat);
+                    }
+                    
                 }
                 else
                 {
@@ -401,6 +440,7 @@ namespace Battleship
                 
             }
         }
+        */
         static void HowWillTheShipsBePlaced(string[,]playerField, List<string> letters, Dictionary<string, int> ships)
         {
             string playerOrComputer;
