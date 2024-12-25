@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace Battleship
             {
                 Console.Write(i + " ");
                 for (int j = 0; j < arrayToPrint.GetLength(1); j++)
+
                 {
                     Console.Write(arrayToPrint[i, j] + " ");
                 }
@@ -41,7 +43,7 @@ namespace Battleship
                 }
             }
         }
-
+        
         static void AddingShips(string[,] field, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)
         {
 
@@ -59,309 +61,17 @@ namespace Battleship
 
                 //prvni souradnice
                 //FirstCoordinate(letterCoordinateFirst, numberCoordinateFirst, kvp, letters, field, playerOrComputer);
-                do
-                {
 
-                    if (playerOrComputer == "player")
-                    {
-                        Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
-                        coordinate = Console.ReadLine();
-                    }
-                    else
-                    {
-                        coordinate = RandomCoordinate(letters);
-                    }
+                FirstCoordinate(letters, playerOrComputer, coordinate, kvp, field, out letterCoordinateFirst, out numberCoordinateFirst);
 
-                    if (coordinate.Length == 2)
-                    {
-
-                        letterCoordinateFirst = Convert.ToString(coordinate[0]);
-                        char letter = kvp.Key[0];
-                        repeat = false;
-                        bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
-                        /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
-                         * ma jenom dva znaky
-                         * prvni znak je pismeno A-J
-                         * druhy znak je cislo
-                         * policko jeste neni obsazene jinou lodi
-                         */
-                        if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
-                        {
-                            if (playerOrComputer == "player") Console.WriteLine("spatne zadana pocatecni souradnice");
-                            repeat = true;
-                        }
-                        else
-                        {
-                            field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
-                            repeat = false;
-                        }
-
-
-                    }
-                    else repeat = true;
-
-                } while (repeat);
-                if (playerOrComputer == "player") PrintArray(field, letters);
 
                 // koncova souradnice
-                string orientation = " ";
-                do
-                {
-                    if (playerOrComputer == "player")
-                    {
-                        Console.WriteLine("zadej koncovou souradnici lode tak, aby delka lode byla " + kvp.Value);
-                        coordinate = Console.ReadLine();
-                    }
-                    else
-                    {
-                        coordinate = RandomCoordinate(letters);
-                    }
-
-                    if (coordinate.Length == 2)
-                    {
-                        letterCoordinateLast = Convert.ToString(coordinate[0]);
-                        char letter = kvp.Key[0];
-                        repeat = false;
-                        bool lengthIsOkay;
-                        bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateLast);
-
-                        //special pro konc. sour.
-                        //kdyz je lod vodorovne
-
-                        if (Math.Abs(letters.IndexOf(letterCoordinateFirst) - letters.IndexOf(letterCoordinateLast)) == kvp.Value - 1 && numberCoordinateFirst == numberCoordinateLast)
-                        {
-                            lengthIsOkay = true;
-                            orientation = "vodorovne";
-                        }
-                        //kdyz je lod svisle
-
-                        else if (Math.Abs(numberCoordinateFirst - numberCoordinateLast) == kvp.Value - 1 && letterCoordinateFirst == letterCoordinateLast)
-                        {
-                            lengthIsOkay = true;
-                            orientation = "svisle";
-                        }
-                        //delka lodi neodpovida
-                        else lengthIsOkay = false;
-
-                        /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
-                         * ma jenom dva znaky
-                         * prvni znak je pismeno A-J
-                         * druhy znak je cislo
-                         * policko jeste neni obsazene jinou lodi
-                         */
-                        if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateLast) || !isTheSecondCharNum || field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                        {
-                            if (playerOrComputer == "player") Console.WriteLine("spatne zadana koncova souradnice");
-                            repeat = true;
-                        }
-                        else
-                        {
-                            repeat = false;
-
-                            //FillRestOfTheCells(orientation, letterCoordinateFirst, letterCoordinateLast, letters, kvp, numberCoordinateFirst, numberCoordinateLast, field, Convert.ToString(letter), repeat);
-                            if (orientation == "vodorovne")
-                            {
-                                if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
-                                {
-                                    for (int i = 0; i < kvp.Value - 1; i++)
-                                    {
-                                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
-                                        {
-                                            repeat = true;
-                                        }
-                                    }
-                                    if (repeat == false)
-                                    {
-                                        for (int i = 0; i < kvp.Value - 1; i++)
-                                        {
-                                            field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
-                                        }
-                                    }
-                                }
-                                else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
-                                {
-                                    for (int i = 0; i < kvp.Value - 1; i++)
-                                    {
-                                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
-                                        {
-                                            repeat = true;
-                                        }
-
-                                    }
-                                    if (repeat == false)
-                                    {
-                                        for (int i = 0; i < kvp.Value - 1; i++)
-                                        {
-                                            field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
-                                        }
-                                    }
-                                }
-                            }
-                            else if (orientation == "svisle")
-                            {
-                                if (numberCoordinateFirst < numberCoordinateLast)
-                                {
-                                    for (int i = 0; i < kvp.Value - 1; i++)
-                                    {
-                                        if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                                        {
-                                            repeat = true;
-                                        }
-                                    }
-                                    if (repeat == false)
-                                    {
-                                        for (int i = 0; i < kvp.Value - 1; i++)
-                                        {
-                                            field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                                        }
-                                    }
-                                }
-                                else if (numberCoordinateFirst > numberCoordinateLast)
-                                {
-                                    for (int i = 0; i < kvp.Value - 1; i++)
-                                    {
-                                        if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                                        {
-                                            repeat = true;
-                                        }
-
-                                    }
-                                    if (repeat == false)
-                                    {
-                                        for (int i = 0; i < kvp.Value - 1; i++)
-                                        {
-                                            field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                                        }
-                                    }
-
-                                }
-                            }
-
-                            if (repeat == false) field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                            else
-                            {
-                                if (playerOrComputer == "player")
-                                {
-                                    Console.WriteLine("Lod se nesmi prekryvat s jinou lodi!");
-                                }
-
-                            }
-
-                        }
-
-                    }
-                    //pokud není zadaná žádná souřadnice
-                    else
-                    {
-                        repeat = true;
-                    }
-                } while (repeat);
+                ShipOrientationAndTheLastCoordinate(letters, letterCoordinateFirst, numberCoordinateFirst, numberCoordinateLast, kvp, letterCoordinateLast, coordinate, playerOrComputer, field);
+               
                 if (playerOrComputer == "player") PrintArray(field, letters);
             }
         }
 
-        /*static void FirstCoordinate(string letterCoordinateFirst, int numberCoordinateFirst, KeyValuePair<string, int> kvp, List<string>letters, string[,]field, string playerOrComputer)
-         {
-             bool repeat = true;
-             do
-             {
-                 string coordinate = " ";
-                 if (playerOrComputer == "player")
-                 {
-                     Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
-                     coordinate = Console.ReadLine();
-                 }
-                 else
-                 {
-                     coordinate = RandomCoordinate(letters);
-                 }
-
-                 if (coordinate.Length == 2)
-                 {
-
-                     letterCoordinateFirst = Convert.ToString(coordinate[0]);
-                     char letter = kvp.Key[0];
-                     repeat = false;
-                     bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
-                     /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
-                      * ma jenom dva znaky
-                      * prvni znak je pismeno A-J
-                      * druhy znak je cislo
-                      * policko jeste neni obsazene jinou lodi
-                      *
-                     if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
-                     {
-                         if (playerOrComputer == "player") Console.WriteLine("spatne zadana pocatecni souradnice");
-                         repeat = true;
-                     }
-                     else
-                     {
-                         field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
-                         repeat = false;
-                     }
-
-
-                 }
-                 else repeat = true;
-
-             } while (repeat);
-         }
-             */
-        /* static void FillRestOfTheCells(string orientation, string letterCoordinateFirst, string letterCoordinateLast, List<string> letters, KeyValuePair<string, int> kvp, int numberCoordinateFirst, int numberCoordinateLast, string[,]field, string letter, bool repeat)
-         {
-             // zaznamenani lode na zbyvajici policka
-             if (orientation == "vodorovne")
-             {
-                 if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
-                 {
-                     for (int i = 0; i < kvp.Value - 1; i++)
-                     {
-                         if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
-                         {
-                             repeat = true;
-                         }
-                         field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
-                     }
-                 }
-                 else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
-                 {
-                     for (int i = 0; i < kvp.Value - 1; i++)
-                     {
-                         if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
-                         {
-                             repeat = true;
-                         }
-                         field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
-                     }
-                 }
-             }
-             else if (orientation == "svisle")
-             {
-                 if (numberCoordinateFirst < numberCoordinateLast)
-                 {
-                     for (int i = 0; i < kvp.Value - 1; i++)
-                     {
-                         if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                         {
-                             repeat = true;
-                         }
-                         field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                     }
-                 }
-                 else if (numberCoordinateFirst > numberCoordinateLast)
-                 {
-                     for (int i = 0; i < kvp.Value - 1; i++)
-                     {
-                         if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                         {
-                             repeat = true;
-                         }
-                         field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                     }
-                 }
-             }
-         }
-        */
         static string RandomCoordinate(List<string> letters)
         {
             Random rnd = new Random();
@@ -373,13 +83,227 @@ namespace Battleship
             return firstCoordinate.ToString();
         }
 
-        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out bool playerWasSuccesful, out bool computerWasSuccesful)
+        static void FirstCoordinate(List<string> letters, string playerOrComputer, string coordinate, KeyValuePair<string, int> kvp, string[,]field, out string letterCoordinateFirst, out int numberCoordinateFirst)
+        {
+            bool repeat = true;
+            do
+            {
+
+                if (playerOrComputer == "player")
+                {
+                    Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
+                    coordinate = Console.ReadLine();
+                }
+                else
+                {
+                    coordinate = RandomCoordinate(letters);
+                }
+
+                if (coordinate.Length == 2)
+                {
+
+                    letterCoordinateFirst = Convert.ToString(coordinate[0]);
+                    char letter = kvp.Key[0];
+                    repeat = false;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
+                    /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
+                     * ma jenom dva znaky
+                     * prvni znak je pismeno A-J
+                     * druhy znak je cislo
+                     * policko jeste neni obsazene jinou lodi
+                     */
+                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
+                    {
+                        if (playerOrComputer == "player") Console.WriteLine("spatne zadana pocatecni souradnice");
+                        repeat = true;
+                    }
+                    else
+                    {
+                        field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
+                        repeat = false;
+                    }
+
+
+                }
+                else
+                {
+                    repeat = true;
+                    letterCoordinateFirst = " ";
+                    numberCoordinateFirst = 0;
+                }
+
+            } while (repeat);
+            if (playerOrComputer == "player") PrintArray(field, letters);
+
+        }
+
+        static void ShipOrientationAndTheLastCoordinate(List<string> letters, string letterCoordinateFirst, int numberCoordinateFirst, int numberCoordinateLast, KeyValuePair<string, int> kvp, string letterCoordinateLast, string coordinate, string playerOrComputer, string[,]field)
+        {
+            bool repeat = true;
+            string orientation = "";
+            do
+            {
+                if (playerOrComputer == "player")
+                {
+                    Console.WriteLine("zadej koncovou souradnici lode tak, aby delka lode byla " + kvp.Value);
+                    coordinate = Console.ReadLine();
+                }
+                else
+                {
+                    coordinate = RandomCoordinate(letters);
+                }
+
+                // pokud se zadana souradnice sklada z prave dvou znaku
+                if (coordinate.Length == 2)
+                {
+                    //
+                    letterCoordinateLast = Convert.ToString(coordinate[0]);
+                    char letter = kvp.Key[0];
+                    repeat = false;
+                    bool lengthIsOkay;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateLast);
+
+                    //special pro konc. sour.
+                    //kdyz je lod vodorovne
+
+                    if (Math.Abs(letters.IndexOf(letterCoordinateFirst) - letters.IndexOf(letterCoordinateLast)) == kvp.Value - 1 && numberCoordinateFirst == numberCoordinateLast)
+                    {
+                        lengthIsOkay = true;
+                        orientation = "vodorovne";
+                    }
+                    //kdyz je lod svisle
+
+                    else if (Math.Abs(numberCoordinateFirst - numberCoordinateLast) == kvp.Value - 1 && letterCoordinateFirst == letterCoordinateLast)
+                    {
+                        lengthIsOkay = true;
+                        orientation = "svisle";
+                    }
+                    //delka lodi neodpovida
+                    else lengthIsOkay = false;
+
+                    /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
+                     * ma jenom dva znaky
+                     * prvni znak je pismeno A-J
+                     * druhy znak je cislo
+                     * policko jeste neni obsazene jinou lodi
+                     */
+                    if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateLast) || !isTheSecondCharNum || field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                    {
+                        if (playerOrComputer == "player") Console.WriteLine("spatne zadana koncova souradnice");
+                        repeat = true;
+                    }
+                    else
+                    {
+                        repeat = false;
+                        if (orientation == "vodorovne")
+                        {
+                            if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
+                            {
+                                for (int i = 0; i < kvp.Value - 1; i++)
+                                {
+                                    if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
+                                    {
+                                        repeat = true;
+                                    }
+                                }
+                                if (repeat == false)
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
+                                    }
+                                }
+                            }
+                            else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
+                            {
+                                for (int i = 0; i < kvp.Value - 1; i++)
+                                {
+                                    if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
+                                    {
+                                        repeat = true;
+                                    }
+
+                                }
+                                if (repeat == false)
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
+                                    }
+                                }
+                            }
+                        }
+                        else if (orientation == "svisle")
+                        {
+                            if (numberCoordinateFirst < numberCoordinateLast)
+                            {
+                                for (int i = 0; i < kvp.Value - 1; i++)
+                                {
+                                    if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                                    {
+                                        repeat = true;
+                                    }
+                                }
+                                if (repeat == false)
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    }
+                                }
+                            }
+                            else if (numberCoordinateFirst > numberCoordinateLast)
+                            {
+                                for (int i = 0; i < kvp.Value - 1; i++)
+                                {
+                                    if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                                    {
+                                        repeat = true;
+                                    }
+
+                                }
+                                if (repeat == false)
+                                {
+                                    for (int i = 0; i < kvp.Value - 1; i++)
+                                    {
+                                        field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                                    }
+                                }
+
+                            }
+                        }
+
+                        if (repeat == false) field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                        else
+                        {
+                            if (playerOrComputer == "player")
+                            {
+                                Console.WriteLine("Lod se nesmi prekryvat s jinou lodi!");
+                            }
+
+                        }
+
+                    }
+                }
+
+                //pokud není zadaná žádná souřadnice
+                else
+                {
+                    repeat = true;
+                }
+            } while (repeat);
+            //
+           
+
+        }
+        
+
+        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out bool shotWasSuccessful)
         {
             string coordinate;
             bool repeat;
             int numberCoordinate;
-            playerWasSuccesful = false;
-            computerWasSuccesful = false;
+            shotWasSuccessful = false;
 
             //jedna strela
             do
@@ -416,15 +340,14 @@ namespace Battleship
                             if (playerOrComputer == "player")
                             {
                                 Console.WriteLine("Zasahl jsi souperovu lod!");
-                                playerWasSuccesful = true;
 
                             }
                             else
                             {
                                 fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "0";
                                 Console.WriteLine("Protivnik zasahl tvoji lod!");
-                                computerWasSuccesful = true;
                             }
+                            shotWasSuccessful = true;
                         }
 
                         //pokud je policko prazdne
@@ -500,7 +423,7 @@ namespace Battleship
             Console.ReadKey();
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
             Console.ReadKey();
-            Console.WriteLine("Nebo jsi liny a chces si nechat lode vygenerovat nahodne? Napis true");
+            Console.WriteLine("Pokud jsi liny a chces si nechat vygenerovat umisteni lodi nahodne, napis true.");
             try
             {
                 bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
@@ -551,29 +474,29 @@ namespace Battleship
             //strileni
             int playerScore = 0;
             int computerScore = 0;
-            bool playerWasSucessful;
-            bool computerWasSucessful;
+            bool shotWasSuccessful;
             bool gameIsOver = false;
             while (!gameIsOver)
             {
                 //hrac strili
                 playerOrComputer = "player";
-                Shooting(letters, playerOrComputer, computerFieldBlank, computerField, out playerWasSucessful, out computerWasSucessful);
-                if (playerWasSucessful)
+                Shooting(letters, playerOrComputer, computerFieldBlank, computerField, out shotWasSuccessful);
+                if (shotWasSuccessful)
                 {
                     playerScore++;
                 }
                 Console.ReadKey();
                 //pocitac strili
+                shotWasSuccessful = false;
                 playerOrComputer = "computer";
-                Shooting(letters, playerOrComputer, playerFieldBlank, playerField, out playerWasSucessful, out computerWasSucessful);
-                if (computerWasSucessful)
+                Shooting(letters, playerOrComputer, playerFieldBlank, playerField, out shotWasSuccessful);
+                if (shotWasSuccessful)
                 {
                     computerScore++;
                 }
                 //
                 if (playerScore > 16 || computerScore > 16) gameIsOver = true;
-                Console.WriteLine(computerScore);
+                Console.WriteLine("Skore je: " + playerScore + ":" + computerScore);
             }
             if (playerScore > computerScore)
             {
