@@ -41,10 +41,10 @@ namespace Battleship
                 }
             }
         }
-        
-        static void AddingShips(string[,]field, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)        
+
+        static void AddingShips(string[,] field, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)
         {
-            
+
             //nadefinovani promennych
             string letterCoordinateFirst = " ";
             string letterCoordinateLast = " ";
@@ -61,7 +61,7 @@ namespace Battleship
                 //FirstCoordinate(letterCoordinateFirst, numberCoordinateFirst, kvp, letters, field, playerOrComputer);
                 do
                 {
-                    
+
                     if (playerOrComputer == "player")
                     {
                         Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
@@ -116,7 +116,7 @@ namespace Battleship
                     {
                         coordinate = RandomCoordinate(letters);
                     }
-                    
+
                     if (coordinate.Length == 2)
                     {
                         letterCoordinateLast = Convert.ToString(coordinate[0]);
@@ -151,7 +151,7 @@ namespace Battleship
                          */
                         if (!lengthIsOkay || coordinate.Length != 2 || !letters.Contains(letterCoordinateLast) || !isTheSecondCharNum || field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] != "~")
                         {
-                            if (playerOrComputer == "player")Console.WriteLine("spatne zadana koncova souradnice");
+                            if (playerOrComputer == "player") Console.WriteLine("spatne zadana koncova souradnice");
                             repeat = true;
                         }
                         else
@@ -224,7 +224,7 @@ namespace Battleship
                                         {
                                             repeat = true;
                                         }
-                                        
+
                                     }
                                     if (repeat == false)
                                     {
@@ -233,16 +233,16 @@ namespace Battleship
                                             field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                                         }
                                     }
-                                    
+
                                 }
                             }
 
                             if (repeat == false) field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
                             else Console.WriteLine("Lod se nesmi prekryvat s jinou lodi!");
                         }
-                        
-                        
-                        
+
+
+
                     }
                     //pokud není zadaná žádná souřadnice
                     else
@@ -254,109 +254,109 @@ namespace Battleship
             }
         }
 
-       /*static void FirstCoordinate(string letterCoordinateFirst, int numberCoordinateFirst, KeyValuePair<string, int> kvp, List<string>letters, string[,]field, string playerOrComputer)
-        {
-            bool repeat = true;
-            do
-            {
-                string coordinate = " ";
-                if (playerOrComputer == "player")
-                {
-                    Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
-                    coordinate = Console.ReadLine();
-                }
-                else
-                {
-                    coordinate = RandomCoordinate(letters);
-                }
-                
-                if (coordinate.Length == 2)
-                {
+        /*static void FirstCoordinate(string letterCoordinateFirst, int numberCoordinateFirst, KeyValuePair<string, int> kvp, List<string>letters, string[,]field, string playerOrComputer)
+         {
+             bool repeat = true;
+             do
+             {
+                 string coordinate = " ";
+                 if (playerOrComputer == "player")
+                 {
+                     Console.WriteLine("zadej pocatecni souradnici (napriklad: A3)");
+                     coordinate = Console.ReadLine();
+                 }
+                 else
+                 {
+                     coordinate = RandomCoordinate(letters);
+                 }
 
-                    letterCoordinateFirst = Convert.ToString(coordinate[0]);
-                    char letter = kvp.Key[0];
-                    repeat = false;
-                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
-                    /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
-                     * ma jenom dva znaky
-                     * prvni znak je pismeno A-J
-                     * druhy znak je cislo
-                     * policko jeste neni obsazene jinou lodi
-                     *
-                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
-                    {
-                        if (playerOrComputer == "player") Console.WriteLine("spatne zadana pocatecni souradnice");
-                        repeat = true;
-                    }
-                    else
-                    {
-                        field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
-                        repeat = false;
-                    }
+                 if (coordinate.Length == 2)
+                 {
 
-                    
-                }
-                else repeat = true;
-                
-            } while (repeat);
-        }
-            */
-       /* static void FillRestOfTheCells(string orientation, string letterCoordinateFirst, string letterCoordinateLast, List<string> letters, KeyValuePair<string, int> kvp, int numberCoordinateFirst, int numberCoordinateLast, string[,]field, string letter, bool repeat)
-        {
-            // zaznamenani lode na zbyvajici policka
-            if (orientation == "vodorovne")
-            {
-                if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
-                {
-                    for (int i = 0; i < kvp.Value - 1; i++)
-                    {
-                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
-                        {
-                            repeat = true;
-                        }
-                        field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
-                    }
-                }
-                else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
-                {
-                    for (int i = 0; i < kvp.Value - 1; i++)
-                    {
-                        if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
-                        {
-                            repeat = true;
-                        }
-                        field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
-                    }
-                }
-            }
-            else if (orientation == "svisle")
-            {
-                if (numberCoordinateFirst < numberCoordinateLast)
-                {
-                    for (int i = 0; i < kvp.Value - 1; i++)
-                    {
-                        if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                        {
-                            repeat = true;
-                        }
-                        field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                    }
-                }
-                else if (numberCoordinateFirst > numberCoordinateLast)
-                {
-                    for (int i = 0; i < kvp.Value - 1; i++)
-                    {
-                        if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
-                        {
-                            repeat = true;
-                        }
-                        field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
-                    }
-                }
-            }
-        }
-       */
-        static string RandomCoordinate(List<string>letters)
+                     letterCoordinateFirst = Convert.ToString(coordinate[0]);
+                     char letter = kvp.Key[0];
+                     repeat = false;
+                     bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinateFirst);
+                     /* vrati repeat = true, pokud pro input neplati jedno z nasledovnych:
+                      * ma jenom dva znaky
+                      * prvni znak je pismeno A-J
+                      * druhy znak je cislo
+                      * policko jeste neni obsazene jinou lodi
+                      *
+                     if (coordinate.Length != 2 || !letters.Contains(letterCoordinateFirst) || !isTheSecondCharNum || field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] != "~")
+                     {
+                         if (playerOrComputer == "player") Console.WriteLine("spatne zadana pocatecni souradnice");
+                         repeat = true;
+                     }
+                     else
+                     {
+                         field[numberCoordinateFirst, letters.IndexOf(letterCoordinateFirst) - 1] = Convert.ToString(letter);
+                         repeat = false;
+                     }
+
+
+                 }
+                 else repeat = true;
+
+             } while (repeat);
+         }
+             */
+        /* static void FillRestOfTheCells(string orientation, string letterCoordinateFirst, string letterCoordinateLast, List<string> letters, KeyValuePair<string, int> kvp, int numberCoordinateFirst, int numberCoordinateLast, string[,]field, string letter, bool repeat)
+         {
+             // zaznamenani lode na zbyvajici policka
+             if (orientation == "vodorovne")
+             {
+                 if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
+                 {
+                     for (int i = 0; i < kvp.Value - 1; i++)
+                     {
+                         if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] != "~")
+                         {
+                             repeat = true;
+                         }
+                         field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 - i] = Convert.ToString(letter);
+                     }
+                 }
+                 else if (letters.IndexOf(letterCoordinateFirst) > letters.IndexOf(letterCoordinateLast))
+                 {
+                     for (int i = 0; i < kvp.Value - 1; i++)
+                     {
+                         if (field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] != "~")
+                         {
+                             repeat = true;
+                         }
+                         field[numberCoordinateLast, letters.IndexOf(letterCoordinateLast) - 1 + i] = Convert.ToString(letter);
+                     }
+                 }
+             }
+             else if (orientation == "svisle")
+             {
+                 if (numberCoordinateFirst < numberCoordinateLast)
+                 {
+                     for (int i = 0; i < kvp.Value - 1; i++)
+                     {
+                         if (field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                         {
+                             repeat = true;
+                         }
+                         field[numberCoordinateLast - i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                     }
+                 }
+                 else if (numberCoordinateFirst > numberCoordinateLast)
+                 {
+                     for (int i = 0; i < kvp.Value - 1; i++)
+                     {
+                         if (field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] != "~")
+                         {
+                             repeat = true;
+                         }
+                         field[numberCoordinateLast + i, letters.IndexOf(letterCoordinateLast) - 1] = Convert.ToString(letter);
+                     }
+                 }
+             }
+         }
+        */
+        static string RandomCoordinate(List<string> letters)
         {
             Random rnd = new Random();
             StringBuilder firstCoordinate = new StringBuilder();
@@ -367,74 +367,86 @@ namespace Battleship
             return firstCoordinate.ToString();
         }
 
-        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out int playerScoreOut, out int computerScoreOut, int playerScore, int computerScore)
+        static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out bool playerWasSuccesful, out bool computerWasSuccesful)
         {
             string coordinate = " ";
             bool repeat;
             int numberCoordinate;
-           
-                //jedna strela
-                do
+            playerWasSuccesful = false;
+            computerWasSuccesful = false;
+
+            //jedna strela
+            do
+            {
+                if (playerOrComputer == "player")
                 {
-                    if (playerOrComputer == "player")
+                    Console.WriteLine("zadej souradnici policka na ktere chces vystrelit");
+                    coordinate = Console.ReadLine();
+                }
+                else
+                {
+                    coordinate = RandomCoordinate(letters);
+                }
+
+                if (coordinate.Length == 2)
+                {
+
+                    string letterCoordinate = Convert.ToString(coordinate[0]);
+                    repeat = false;
+                    bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+                    if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
                     {
-                        Console.WriteLine("zadej souradnici policka na ktere chces vystrelit");
-                        coordinate = Console.ReadLine();
+                        if (playerOrComputer == "player") Console.WriteLine("spatne zadana souradnice");
+                        repeat = true;
                     }
                     else
                     {
-                        coordinate = RandomCoordinate(letters);
-                    }
-
-                    if (coordinate.Length == 2)
-                    {
-
-                        string letterCoordinate = Convert.ToString(coordinate[0]);
-                        repeat = false;
-                        bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
-                        if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
+                        if (fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
                         {
-                            if (playerOrComputer == "player") Console.WriteLine("spatne zadana souradnice");
-                            repeat = true;
-                        }
-                        else
-                        {
-                            if (fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
+                            seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
+                            if (playerOrComputer == "player")
                             {
-                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
-                                if (playerOrComputer == "player")
-                                {
-                                    Console.WriteLine("Zasahl jsi souperovu lod!");
-                                    playerScoreOut = playerScore + 1;
-                                }
-                                else computerScoreOut = computerScore + 1;
+                                Console.WriteLine("Zasahl jsi souperovu lod!");
+                                playerWasSuccesful = true;
+
                             }
                             else
                             {
-                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
-                                if (playerOrComputer == "player") Console.WriteLine("Bohuzel ses netrefil:(");
-                                playerScoreOut = computerScore;
-                                computerScoreOut = computerScore;
+                                Console.WriteLine("Protivnik zasahl tvoji lod!");
+                                computerWasSuccesful = true;
                             }
-
-                            repeat = false;
+                        }
+                        else
+                        {
+                            seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
+                            if (playerOrComputer == "player")
+                            {
+                                Console.WriteLine("Bohuzel ses netrefil:(");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Souper se netrefil");
+                            }
                         }
 
-
+                        repeat = false;
                     }
-                    else repeat = true;
 
-                } while (repeat);
-                if (playerOrComputer == "player") PrintArray(seenableField, letters);
-                else
+
+                }
+                else repeat = true;
+
+            } while (repeat);
+            if (playerOrComputer == "player") PrintArray(seenableField, letters);
+            else
             {
                 Console.WriteLine("takto vystrelil tvuj souper:");
                 PrintArray(seenableField, letters);
             }
-                
-            
-            
-            
+
+
+
+
         }
         static void Main(string[] args)
         {
@@ -456,7 +468,7 @@ namespace Battleship
                {"Ponorka", 3},
                {"Torpedoborec", 2},
             };
-            
+
 
             // uvod do hry
             Console.WriteLine("Vitej ve hre Battleship!");
@@ -465,33 +477,45 @@ namespace Battleship
             PrintArray(playerField, letters);
 
             //pridani lodi hrace
-            /*Console.WriteLine();
+            Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("K dispozici mas tyto lode:\n1x Letadlova lod (1 x 5)\n1x Bitevni lod (1 x 4)\n1x Kriznik (1 x 3)\n1x Ponorka (1 x 3)\n1x Torpedoborec (1 x 2)\n");
             Console.ReadKey();
             Console.WriteLine("Vzdy zadej pocatecni a koncovou souradnici lode. Pozor at ma pozadovanou delku, je v poli a neprekryva se s zadnou jinou z lodi!");
-            */
-            Console.WriteLine("Chces si nechat lode vygenerovat nahodne? Napis true");
-            bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
-            if (doYouWantItRandom)
+            Console.ReadKey();
+            Console.WriteLine("Nebo jsi liny a chces si nechat lode vygenerovat nahodne? Napis true");
+            try
             {
-                playerOrComputer = "computer";
-                AddingShips(playerField, ships, letters, playerOrComputer);
-                PrintArray(playerField, letters);
+                bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
+                if (doYouWantItRandom)
+                {
+                    Console.WriteLine("Generuji...");
+                    playerOrComputer = "computer";
+                    AddingShips(playerField, ships, letters, playerOrComputer);
+                    PrintArray(playerField, letters);
+                    
+                }
+                else
+                {
+                    playerOrComputer = "player";
+                    AddingShips(playerField, ships, letters, playerOrComputer);
+                }
             }
-            else
+            catch (Exception)
             {
                 playerOrComputer = "player";
                 AddingShips(playerField, ships, letters, playerOrComputer);
             }
+            
+            
 
             //pridani lodi pocitace
-            
+
             FillArray(computerField);
             playerOrComputer = "computer";
             AddingShips(computerField, ships, letters, playerOrComputer);
-            //toto je zatím jen pro kontrolu
-            PrintArray(computerField, letters);
+            //toto je pro kontrolu rozmisteni lodi pocitace ci pro podvadeni
+            //PrintArray(computerField, letters);
 
             //zacatek hry
             Console.WriteLine("Toto je pole tveho protivnika:");
@@ -506,38 +530,43 @@ namespace Battleship
             //strileni
             int playerScore = 0;
             int computerScore = 0;
+            bool playerWasSucessful;
+            bool computerWasSucessful;
             bool gameIsOver = false;
             while (!gameIsOver)
             {
                 //hrac strili
                 playerOrComputer = "player";
-                Shooting(letters, playerOrComputer, computerFieldWithout, computerField, out playerScore, out computerScore, playerScore, computerScore);
+                Shooting(letters, playerOrComputer, computerFieldWithout, computerField, out playerWasSucessful, out computerWasSucessful);
+                if (playerWasSucessful)
+                {
+                    playerScore++;
+                }
                 //pocitac strili
                 playerOrComputer = "computer";
-                Shooting(letters, playerOrComputer, playerField, playerField, out playerScore, out computerScore, playerScore, computerScore);
+                Shooting(letters, playerOrComputer, playerField, playerField, out playerWasSucessful, out computerWasSucessful);
+                if (computerWasSucessful)
+                {
+                    computerScore++;
+                }
                 //
                 if (playerScore > 16 || computerScore > 16) gameIsOver = true;
             }
             if (playerScore > computerScore)
             {
-                Console.WriteLine("Gratuluji, vyhral jsi!");
+                Console.WriteLine("Gratuluji, vyhral jsi! Potopil jsi vsechny lode soupere");
             }
             else
             {
-                Console.WriteLine("Bohuzel to nevyslo:(");
+                Console.WriteLine("Bohuzel to nevyslo:(, vsechny tve lode byly potopeny");
             }
-        
 
 
 
 
 
+            Console.ReadKey();
 
-
-
-
-        Console.ReadKey();
-            
         }
     }
 }
