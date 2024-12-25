@@ -375,7 +375,7 @@ namespace Battleship
 
         static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out bool playerWasSuccesful, out bool computerWasSuccesful)
         {
-            string coordinate = " ";
+            string coordinate;
             bool repeat;
             int numberCoordinate;
             playerWasSuccesful = false;
@@ -400,6 +400,8 @@ namespace Battleship
                     string letterCoordinate = Convert.ToString(coordinate[0]);
                     repeat = false;
                     bool isTheSecondCharNum = int.TryParse(Convert.ToString(coordinate[1]), out numberCoordinate);
+
+                    //kontrola jestli je souradnice ve spravnem formatu
                     if (coordinate.Length != 2 || !letters.Contains(letterCoordinate) || !isTheSecondCharNum || seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
                     {
                         if (playerOrComputer == "player") Console.WriteLine("spatne zadana souradnice");
@@ -407,12 +409,12 @@ namespace Battleship
                     }
                     else
                     {
+                        //pokud je na danem policku lod
                         if (fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] != "~")
                         {
-                            
+                            seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
                             if (playerOrComputer == "player")
                             {
-                                seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1];
                                 Console.WriteLine("Zasahl jsi souperovu lod!");
                                 playerWasSuccesful = true;
 
@@ -424,6 +426,8 @@ namespace Battleship
                                 computerWasSuccesful = true;
                             }
                         }
+
+                        //pokud je policko prazdne
                         else
                         {
                             
@@ -433,7 +437,7 @@ namespace Battleship
                                 Console.WriteLine();
                                 Console.WriteLine("Bohuzel ses netrefil:(");
                             }
-                            else
+                            else 
                             {
                                 seenableField[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
                                 fieldWithValues[numberCoordinate, letters.IndexOf(letterCoordinate) - 1] = "X";
@@ -451,8 +455,8 @@ namespace Battleship
             if (playerOrComputer == "player") PrintArray(seenableField, letters);
             else
             {
-                Console.WriteLine("takto vystrelil tvuj souper:");
-                PrintArray(seenableField, letters);
+                Console.WriteLine("Tvoje pole:");
+                PrintArray(fieldWithValues, letters);
             }
 
 
@@ -463,8 +467,9 @@ namespace Battleship
         {
             // definovani promennych
             string[,] playerField = new string[10, 10];
+            string[,] playerFieldBlank = new string[10, 10];
             string[,] computerField = new string[10, 10];
-            string[,] computerFieldWithout = new string[10, 10];
+            string[,] computerFieldBlank = new string[10, 10];
             string playerOrComputer;
             //retezec stringu pro vypsani tabulky
             List<string> letters = new List<string>
@@ -485,6 +490,7 @@ namespace Battleship
             Console.WriteLine("Vitej ve hre Battleship!");
             Console.WriteLine("Toto je tve pole, do ktereho umistis sve lode");
             FillArray(playerField);
+            FillArray(playerFieldBlank);
             PrintArray(playerField, letters);
 
             //pridani lodi hrace
@@ -532,13 +538,14 @@ namespace Battleship
 
             //zacatek hry
             Console.WriteLine("Toto je pole tveho protivnika:");
-            FillArray(computerFieldWithout);
-            PrintArray(computerFieldWithout, letters);
+            FillArray(computerFieldBlank);
+            PrintArray(computerFieldBlank, letters);
             Console.WriteLine("Tvym cilem je sestrelit vsechny protivnikovy lode driv nez on sestreli ty tvoje");
             Console.ReadKey();
             Console.WriteLine();
             Console.WriteLine("Stridate se vzdy po jedne strele");
             Console.ReadKey();
+            Console.WriteLine();
             Console.WriteLine("Zacinas!");
 
             //strileni
@@ -551,7 +558,7 @@ namespace Battleship
             {
                 //hrac strili
                 playerOrComputer = "player";
-                Shooting(letters, playerOrComputer, computerFieldWithout, computerField, out playerWasSucessful, out computerWasSucessful);
+                Shooting(letters, playerOrComputer, computerFieldBlank, computerField, out playerWasSucessful, out computerWasSucessful);
                 if (playerWasSucessful)
                 {
                     playerScore++;
@@ -559,7 +566,7 @@ namespace Battleship
                 Console.ReadKey();
                 //pocitac strili
                 playerOrComputer = "computer";
-                Shooting(letters, playerOrComputer, playerField, playerField, out playerWasSucessful, out computerWasSucessful);
+                Shooting(letters, playerOrComputer, playerFieldBlank, playerField, out playerWasSucessful, out computerWasSucessful);
                 if (computerWasSucessful)
                 {
                     computerScore++;
