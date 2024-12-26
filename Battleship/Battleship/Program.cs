@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -11,6 +11,7 @@ namespace Battleship
 
     internal class Program
     {
+		//funkce pro vytisteni pole
         static void PrintArray(string[,] arrayToPrint, List<string> letters)
         {
             Console.WriteLine();
@@ -32,6 +33,7 @@ namespace Battleship
             Console.WriteLine();
         }
 
+		//funkcek pro vyplneni pole vlnkami
         static void FillArray(string[,] arrayToFill)
         {
             Console.WriteLine();
@@ -44,6 +46,7 @@ namespace Battleship
             }
         }
         
+		//funkce pro vepsani lodi hrace nebo pocitace do pole
         static void AddingShips(string[,] field, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)
         {
 
@@ -67,7 +70,7 @@ namespace Battleship
                 if (playerOrComputer == "player") PrintArray(field, letters);
             }
         }
-
+		//funkce pro vygenerovani jedne nahodne souradnice
         static string RandomCoordinate(List<string> letters)
         {
             Random rnd = new Random();
@@ -78,7 +81,7 @@ namespace Battleship
             firstCoordinate.Append(Convert.ToString(rndNumberCoordinate));
             return firstCoordinate.ToString();
         }
-
+		//funkce pro urceni a zapsani pocatecni souradnice lode
         static void FirstCoordinate(List<string> letters, string playerOrComputer, string coordinate, KeyValuePair<string, int> kvp, string[,]field, out string letterCoordinateFirst, out int numberCoordinateFirst)
         {
             bool repeat = true;
@@ -127,12 +130,13 @@ namespace Battleship
                     letterCoordinateFirst = " ";
                     numberCoordinateFirst = 0;
                 }
-
+			//cyklus se opakuje dokud neni urcena platna souradnice
             } while (repeat);
             if (playerOrComputer == "player") PrintArray(field, letters);
 
         }
-
+		
+		//funkce pro urceni natoceni lode a jeji koncove souradnice
         static void ShipOrientationAndTheLastCoordinate(List<string> letters, string letterCoordinateFirst, int numberCoordinateFirst, int numberCoordinateLast, KeyValuePair<string, int> kvp, string letterCoordinateLast, string coordinate, string playerOrComputer, string[,]field)
         {
             bool repeat = true;
@@ -191,6 +195,7 @@ namespace Battleship
                     else
                     {
                         repeat = false;
+						//zjisteni jestli by se lod neprekryvala s jinou
                         if (orientation == "vodorovne")
                         {
                             if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
@@ -380,7 +385,7 @@ namespace Battleship
             }
 
         }
-
+		//funkce pro vylepseni hry(sonar)
         static void Gadgets(List<string>letters, string[,] computerFieldWithout, string[,] computerField)
         {
             Console.WriteLine("Jestli chces prejit do obchodu napis true");
@@ -448,9 +453,11 @@ namespace Battleship
             }
         }
         
+		//funkce pro zjisteni jestli chce hrac zadat souradnice sam nebo jestli si je necha nahodne vygenerovat
         static void HowWillTheShipsBePlaced(string[,]playerField, List<string> letters, Dictionary<string, int> ships)
         {
             string playerOrComputer;
+
             try
             {
                 bool doYouWantItRandom = Convert.ToBoolean(Console.ReadLine());
