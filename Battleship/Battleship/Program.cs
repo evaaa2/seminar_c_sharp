@@ -298,7 +298,7 @@ namespace Battleship
 
         }
         
-
+		//funkce pro jedno vystreleni
         static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out bool shotWasSuccessful)
         {
             string coordinate;
@@ -385,6 +385,7 @@ namespace Battleship
             }
 
         }
+
 		//funkce pro vylepseni hry(sonar)
         static void Gadgets(List<string>letters, string[,] computerFieldWithout, string[,] computerField)
         {
@@ -399,8 +400,10 @@ namespace Battleship
                     Console.WriteLine("\nVse muzes pouzit pouze jednou");
                     Console.WriteLine("\npokud chces pouzit sonar, napis s");
                     string sonar = Console.ReadLine();
+					//pokud chce hrac pouzit sonar
                     if (sonar == "s" || sonar == "S")
                     {
+						//kontrola jestli nebyl sonar jiz drive pouzit
                         if (wasSonarUsed) Console.WriteLine("Sonar byl jiz pouzit");
                         else
                         {
@@ -494,6 +497,7 @@ namespace Battleship
             string[,] computerField = new string[fieldWidth, fieldHeight];
             string[,] computerFieldBlank = new string[fieldWidth, fieldHeight];
             string playerOrComputer;
+
             //retezec stringu pro vypsani tabulky
             List<string> letters = new List<string>
             {"*", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",};
@@ -581,10 +585,6 @@ namespace Battleship
             {
                 Console.WriteLine("Bohuzel to nevyslo:(, vsechny tve lode byly potopeny");
             }
-
-
-
-
 
             Console.ReadKey();
 
