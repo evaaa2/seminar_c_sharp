@@ -46,7 +46,7 @@ namespace Battleship
             }
         }
         
-		//funkce pro vepsani lodi hrace nebo pocitace do pole
+	//funkce pro vepsani lodi hrace nebo pocitace do pole
         static void AddingShips(string[,] field, Dictionary<string, int> ships, List<string> letters, string playerOrComputer)
         {
 
@@ -70,7 +70,7 @@ namespace Battleship
                 if (playerOrComputer == "player") PrintArray(field, letters);
             }
         }
-		//funkce pro vygenerovani jedne nahodne souradnice
+	//funkce pro vygenerovani jedne nahodne souradnice
         static string RandomCoordinate(List<string> letters)
         {
             Random rnd = new Random();
@@ -81,7 +81,7 @@ namespace Battleship
             firstCoordinate.Append(Convert.ToString(rndNumberCoordinate));
             return firstCoordinate.ToString();
         }
-		//funkce pro urceni a zapsani pocatecni souradnice lode
+	//funkce pro urceni a zapsani pocatecni souradnice lode
         static void FirstCoordinate(List<string> letters, string playerOrComputer, string coordinate, KeyValuePair<string, int> kvp, string[,]field, out string letterCoordinateFirst, out int numberCoordinateFirst)
         {
             bool repeat = true;
@@ -130,13 +130,13 @@ namespace Battleship
                     letterCoordinateFirst = " ";
                     numberCoordinateFirst = 0;
                 }
-			//cyklus se opakuje dokud neni urcena platna souradnice
+		//cyklus se opakuje dokud neni urcena platna souradnice
             } while (repeat);
             if (playerOrComputer == "player") PrintArray(field, letters);
 
         }
 		
-		//funkce pro urceni natoceni lode a jeji koncove souradnice
+	//funkce pro urceni natoceni lode a jeji koncove souradnice
         static void ShipOrientationAndTheLastCoordinate(List<string> letters, string letterCoordinateFirst, int numberCoordinateFirst, int numberCoordinateLast, KeyValuePair<string, int> kvp, string letterCoordinateLast, string coordinate, string playerOrComputer, string[,]field)
         {
             bool repeat = true;
@@ -195,7 +195,7 @@ namespace Battleship
                     else
                     {
                         repeat = false;
-						//zjisteni jestli by se lod neprekryvala s jinou
+			//zjisteni jestli by se lod neprekryvala s jinou
                         if (orientation == "vodorovne")
                         {
                             if (letters.IndexOf(letterCoordinateFirst) < letters.IndexOf(letterCoordinateLast))
@@ -298,7 +298,7 @@ namespace Battleship
 
         }
         
-		//funkce pro jedno vystreleni
+	//funkce pro jedno vystreleni
         static void Shooting(List<string> letters, string playerOrComputer, string[,] seenableField, string[,] fieldWithValues, out bool shotWasSuccessful)
         {
             string coordinate;
@@ -386,7 +386,7 @@ namespace Battleship
 
         }
 
-		//funkce pro vylepseni hry(sonar)
+	//funkce pro vylepseni hry(sonar)
         static void Gadgets(List<string>letters, string[,] computerFieldWithout, string[,] computerField)
         {
             Console.WriteLine("Jestli chces prejit do obchodu napis true");
@@ -400,10 +400,10 @@ namespace Battleship
                     Console.WriteLine("\nVse muzes pouzit pouze jednou");
                     Console.WriteLine("\npokud chces pouzit sonar, napis s");
                     string sonar = Console.ReadLine();
-					//pokud chce hrac pouzit sonar
+		//pokud chce hrac pouzit sonar
                     if (sonar == "s" || sonar == "S")
                     {
-						//kontrola jestli nebyl sonar jiz drive pouzit
+		//kontrola jestli nebyl sonar jiz drive pouzit
                         if (wasSonarUsed) Console.WriteLine("Sonar byl jiz pouzit");
                         else
                         {
@@ -456,7 +456,7 @@ namespace Battleship
             }
         }
         
-		//funkce pro zjisteni jestli chce hrac zadat souradnice sam nebo jestli si je necha nahodne vygenerovat
+	//funkce pro zjisteni jestli chce hrac zadat souradnice sam nebo jestli si je necha nahodne vygenerovat
         static void HowWillTheShipsBePlaced(string[,]playerField, List<string> letters, Dictionary<string, int> ships)
         {
             string playerOrComputer;
@@ -574,18 +574,24 @@ namespace Battleship
                 {
                     computerScore++;
                 }
-                //
                 if (playerScore > 16 || computerScore > 16) gameIsOver = true;
             }
+	// vyhra
             if (playerScore > computerScore)
             {
                 Console.WriteLine("Gratuluji, vyhral jsi! Potopil jsi vsechny lode soupere");
             }
-            else
+	// prohra
+            else if (playerScore < computerScore)
             {
                 Console.WriteLine("Bohuzel to nevyslo:(, vsechny tve lode byly potopeny");
-            }
+	    }
 
+	// remiza
+	    else 
+	    {
+		 Console.WriteLine("Remiza - navzajem jste si naraz sestrelili posledni lod!");
+		    }
             Console.ReadKey();
 
         }
