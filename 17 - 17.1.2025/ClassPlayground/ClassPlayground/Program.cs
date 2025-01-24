@@ -68,26 +68,56 @@ namespace ClassPlayground
 {
     internal class Program
     {
+        static int SetTheCoordinate()
+        {
+            int output = 0;
+            bool repeat = true;
+            while (repeat)
+            {
+                string input = Console.ReadLine();
+                try
+                {
+                    output = Convert.ToInt32(input);
+                    repeat = false;
+                }
+                catch (Exception)
+                {
+                    output = 0;
+                    Console.WriteLine("Wrong input");
+                    repeat = true;
+                    
+                }
+            }
+            return output;
+        }
         static void RectangleMain()
         {
             Console.WriteLine("The first rectangle");
-            Rectangle rectangle1 = new Rectangle(5, 10);
+            Console.ReadKey();
+            Console.WriteLine("Width:");
+            float width = SetTheCoordinate();
+            Console.WriteLine("Height:");
+            float height = SetTheCoordinate();
+            Rectangle rectangle1 = new Rectangle(width, height);
+
             Console.WriteLine("Area: " + rectangle1.CalculateArea());
             Console.WriteLine("Aspect ratio: " +  rectangle1.CalculateAspectRatio());
 
             Console.WriteLine("Does the rectangle contain this point?");
             Console.WriteLine("Write the x coordinate");
-            int x = Convert.ToInt32(Console.ReadLine());
+            float x = SetTheCoordinate();
             Console.WriteLine("Write the y coordinate");
-            int y = Convert.ToInt32(Console.ReadLine());
+            float y = SetTheCoordinate();
             Console.WriteLine(rectangle1.ContainsPoint(x, y));
 
         }
         static void Main(string[] args)
         {
-        // funkcni ale bez pojisteni vstupu
+        
             RectangleMain();
             Console.ReadKey();
+
+
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassPlayground
 {
-    internal class Rectangle
+    internal class Rectangle : Shape2D
     {
         private float width;
         private float height;
@@ -16,21 +16,26 @@ namespace ClassPlayground
 
         public Rectangle(float widthInput, float heightInput)
         {
-            
-            width = widthInput;
-            height = heightInput;
+            if (widthInput == 0) width = 1;
+            else if (width < 0) width = -widthInput;
+            else width = widthInput;
+
+            if (heightInput == 0) height = 1;
+            else if (height < 0) height = -heightInput;
+            else height = heightInput;
+
         }
-        public float CalculateArea()
+        public override float CalculateArea()
         {
             area = width * height;
             return area;
         }
-        public float CalculateAspectRatio()
+        public override float CalculateAspectRatio()
         {
             aspectRatio = width / height;
             return aspectRatio;
         }
-        public bool ContainsPoint(float x, float y)
+        public override bool ContainsPoint(float x, float y)
         {
             if (x <=0 || y <=0 || x >=width || y >=height) return false;
             else return true;
