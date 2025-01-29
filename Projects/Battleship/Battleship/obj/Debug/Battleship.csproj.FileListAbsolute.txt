@@ -1,0 +1,7 @@
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\bin\Debug\Battleship.exe.config
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\bin\Debug\Battleship.exe
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\bin\Debug\Battleship.pdb
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\obj\Debug\Battleship.csproj.AssemblyReference.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\obj\Debug\Battleship.csproj.CoreCompileInputs.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\obj\Debug\Battleship.exe
+C:\Eva\Škola\C#\seminar_c_sharp\Battleship\Battleship\obj\Debug\Battleship.pdb

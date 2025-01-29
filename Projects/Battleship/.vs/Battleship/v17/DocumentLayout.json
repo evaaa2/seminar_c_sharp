@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Battleship\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{981F1AD8-2378-4736-8B57-EBC58A79A0BB}|Battleship\\Battleship.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\battleship\\battleship\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{981F1AD8-2378-4736-8B57-EBC58A79A0BB}|Battleship\\Battleship.csproj|solutionrelative:battleship\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Battleship\\Battleship\\Program.cs",
+              "RelativeDocumentMoniker": "Battleship\\Program.cs",
+              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Battleship\\Battleship\\Program.cs",
+              "RelativeToolTip": "Battleship\\Program.cs",
+              "ViewState": "AgIAAHsBAAAAAAAAAAAqwIoBAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T20:03:32.697Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

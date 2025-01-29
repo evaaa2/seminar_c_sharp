@@ -1,0 +1,7 @@
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\bin\Debug\Calculator.exe
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\bin\Debug\Calculator.pdb
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.exe
+C:\Eva\Škola\C#\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.pdb
