@@ -1,0 +1,7 @@
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\bin\Debug\2D Array Playground.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\bin\Debug\2D Array Playground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\bin\Debug\2D Array Playground.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\12 - 22.11.2024\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.pdb

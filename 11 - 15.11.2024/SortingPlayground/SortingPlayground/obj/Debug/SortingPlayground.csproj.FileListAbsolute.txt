@@ -1,0 +1,7 @@
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\bin\Debug\SortingPlayground.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\bin\Debug\SortingPlayground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\bin\Debug\SortingPlayground.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\11 - 15.11.2024\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.pdb

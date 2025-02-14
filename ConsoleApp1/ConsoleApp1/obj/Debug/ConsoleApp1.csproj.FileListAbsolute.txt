@@ -1,0 +1,14 @@
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+H:\EA\Dekastello\Seminář\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

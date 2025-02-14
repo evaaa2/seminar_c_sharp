@@ -1,0 +1,14 @@
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.exe.config
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.pdb
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.AssemblyReference.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\8. - 25.10.2024\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.pdb

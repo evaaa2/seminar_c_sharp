@@ -1,0 +1,7 @@
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\bin\Debug\Calculator.exe.config
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\bin\Debug\Calculator.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\bin\Debug\Calculator.pdb
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\4. - 27.9.2024\Calculator\Calculator\obj\Debug\Calculator.pdb

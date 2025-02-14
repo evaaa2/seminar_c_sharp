@@ -1,0 +1,7 @@
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\bin\Debug\GameConsole.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\bin\Debug\GameConsole.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\bin\Debug\GameConsole.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\obj\Debug\GameConsole.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\obj\Debug\GameConsole.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\obj\Debug\GameConsole.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\GameConsole\GameConsole\obj\Debug\GameConsole.pdb

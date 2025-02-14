@@ -1,0 +1,7 @@
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\bin\Debug\RecursionPlayground.exe.config
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\bin\Debug\RecursionPlayground.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\bin\Debug\RecursionPlayground.pdb
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.csproj.AssemblyReference.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\6 - 11.10.2024\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.pdb

@@ -1,0 +1,7 @@
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\bin\Debug\RockPaperScissors.exe.config
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\bin\Debug\RockPaperScissors.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\bin\Debug\RockPaperScissors.pdb
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.AssemblyReference.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\obj\Debug\RockPaperScissors.exe
+H:\EA\Dekastello\Seminář\seminar_c_sharp\RockPaperScissors - kopie\RockPaperScissors\obj\Debug\RockPaperScissors.pdb

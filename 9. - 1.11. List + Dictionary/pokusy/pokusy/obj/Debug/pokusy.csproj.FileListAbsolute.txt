@@ -1,0 +1,7 @@
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\bin\Debug\pokusy.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\bin\Debug\pokusy.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\bin\Debug\pokusy.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\obj\Debug\pokusy.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\obj\Debug\pokusy.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\obj\Debug\pokusy.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\9. - 1.11. List + Dictionary\pokusy\pokusy\obj\Debug\pokusy.pdb

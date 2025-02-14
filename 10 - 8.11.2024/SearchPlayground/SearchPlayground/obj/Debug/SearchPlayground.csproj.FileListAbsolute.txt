@@ -1,0 +1,7 @@
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\bin\Debug\SearchPlayground.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\bin\Debug\SearchPlayground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\bin\Debug\SearchPlayground.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\10 - 8.11.2024\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.pdb

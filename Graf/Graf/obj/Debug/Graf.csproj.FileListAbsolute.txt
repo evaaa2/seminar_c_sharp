@@ -1,0 +1,7 @@
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\bin\Debug\Graf.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\bin\Debug\Graf.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\bin\Debug\Graf.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\obj\Debug\Graf.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\obj\Debug\Graf.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\obj\Debug\Graf.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Graf\Graf\obj\Debug\Graf.pdb
