@@ -1,0 +1,7 @@
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\bin\Debug\Kniffel.exe.config
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\bin\Debug\Kniffel.exe
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\bin\Debug\Kniffel.pdb
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.AssemblyReference.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.CoreCompileInputs.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.exe
+C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.pdb
