@@ -44,13 +44,25 @@ namespace Kniffel
 
         static void Dice()
         {
+            Dice classic1 = new Dice(3, 2);
+            Dice classic2 = new Dice(10, 2);
+            Dice classic3 = new Dice(17, 2);
+            Dice classic4 = new Dice(24, 2);
+            Dice classic5 = new Dice(31, 2);
             Console.WriteLine("Your dice:");
-            Console.WriteLine("  +++");
-            Console.WriteLine("  +?+");
-            Console.WriteLine("  +++");
+            for (int i = 0; i < 5; i++) Console.Write("  ***  ");
+            Console.WriteLine();
+            for (int i = 0; i < 5; i++) Console.Write("  *?*  ");
+            Console.WriteLine();
+            for (int i = 0; i < 5; i++) Console.Write("  ***  ");
 
-            Console.WriteLine("To throw the dice, press any key.");
+            Console.WriteLine("\nTo throw the dice, press any key.");
             Console.ReadKey();
+            classic1.Throw();
+            classic2.Throw();
+            classic3.Throw();
+            classic4.Throw();
+            classic5.Throw();
 
 
 
@@ -61,10 +73,8 @@ namespace Kniffel
 
         static void Main(string[] args)
         {
-            Dice classic = new Dice();
-
-            Intro();
-            Console.ReadKey();
+            //Intro();
+            //Console.ReadKey();
 
             Console.Clear();
             Dice();
