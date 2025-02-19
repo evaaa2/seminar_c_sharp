@@ -14,6 +14,12 @@ namespace Kniffel
         static Dice classic3 = new Dice(17, 2);
         static Dice classic4 = new Dice(24, 2);
         static Dice classic5 = new Dice(31, 2);
+
+        static int number1;
+        static int number2;
+        static int number3;
+        static int number4;
+        static int number5;
         static void Intro()
         {
             Console.WriteLine("WELCOME TO KNIFFEL!");
@@ -62,6 +68,11 @@ namespace Kniffel
         
         static void ThrowDice()
         {
+            bool classic1Active = true;
+            bool classic2Active = true;
+            bool classic3Active = true;
+            bool classic4Active = true;
+            bool classic5Active = true;
             for (int i = 0; i < 3; i++)
             {
                 Console.SetCursorPosition(0, 7);
@@ -69,15 +80,24 @@ namespace Kniffel
                 Console.ReadKey();
                 for (int j = 0; j < 8; j++)
                 {
-                    classic1.Throw();
-                    classic2.Throw();
-                    classic3.Throw();
-                    classic4.Throw();
-                    classic5.Throw();
+                    if(classic1Active)classic1.Throw();
+                    if(classic2Active) classic2.Throw();
+                    if(classic3Active) classic3.Throw();
+                    if (classic4Active) classic4.Throw();
+                    if (classic5Active) classic5.Throw();
                     Console.Beep(300 + j * 20, 100);
                     Thread.Sleep(j * j * 4);
                 }
             }
+        }
+
+        static void GetNumbers()
+        {
+            number1 = classic1.ThrownNumber();
+            number2 = classic2.ThrownNumber();
+            number3 = classic3.ThrownNumber();
+            number4 = classic4.ThrownNumber();
+            number5 = classic5.ThrownNumber();
         }
 
         static void Main(string[] args)
