@@ -10,6 +10,7 @@ namespace Kniffel
 {
     internal class Dice
     {
+        private static Random rnd = new Random();
         int positionLeft;
         int positionTop;
         int currentNumber;
@@ -21,16 +22,11 @@ namespace Kniffel
         
         }
 
-        private int RandomNumber()
-        {
-            Random rnd = new Random();
-            return rnd.Next(1, 6);
-        }
         
         public void Throw()
         {
                 Console.SetCursorPosition(positionLeft, positionTop);
-                Console.Write(RandomNumber());
+                Console.Write(rnd.Next(1, 7));
                 //Console.Beep(440, 100);
                 //Thread.Sleep(i * i * 4);
         }
