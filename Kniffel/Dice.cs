@@ -13,7 +13,7 @@ namespace Kniffel
         int positionLeft;
         int positionTop;
         int currentNumber;
-        Random rnd = new Random();
+        
         public Dice(int positionLeft, int positionTop) 
         { 
             this.positionLeft = positionLeft;
@@ -21,18 +21,20 @@ namespace Kniffel
         
         }
 
+        private int RandomNumber()
+        {
+            Random rnd = new Random();
+            return rnd.Next(1, 6);
+        }
         
         public void Throw()
         {
-            for (int i = 0; i < 12; i++)
-            {
-                currentNumber = rnd.Next(1, 6);
                 Console.SetCursorPosition(positionLeft, positionTop);
-                Console.Write(currentNumber);
+                Console.Write(RandomNumber());
                 //Console.Beep(440, 100);
-                Thread.Sleep(i * i * 4);
-            }
+                //Thread.Sleep(i * i * 4);
         }
+
 
         public int ThrownNumber()
         {

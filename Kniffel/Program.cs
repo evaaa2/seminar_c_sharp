@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kniffel
@@ -44,6 +45,7 @@ namespace Kniffel
 
         static void Dice()
         {
+            Random rnd = new Random();
             Dice classic1 = new Dice(3, 2);
             Dice classic2 = new Dice(10, 2);
             Dice classic3 = new Dice(17, 2);
@@ -58,18 +60,20 @@ namespace Kniffel
 
             Console.WriteLine("\nTo throw the dice, press any key.");
             Console.ReadKey();
+
             classic1.Throw();
             classic2.Throw();
-            classic3.Throw();
-            classic4.Throw();
-            classic5.Throw();
-
 
 
 
         }
 
-        
+
+
+
+    
+
+
 
         static void Main(string[] args)
         {
