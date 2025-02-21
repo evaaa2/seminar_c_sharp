@@ -76,11 +76,13 @@ namespace Kniffel
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
                 while (keyInfo.Key != ConsoleKey.Spacebar)
                 {
+                    Console.BackgroundColor = ConsoleColor.Green;
                     Console.WriteLine("To throw, press Spacebar.");
+                    Console.BackgroundColor = ConsoleColor.Black;
                     keyInfo = Console.ReadKey(true);
                 }
                 
-                //for (int j = 0; j < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     if(classic1.isActive) classic1.Throw();
                     if(classic2.isActive) classic2.Throw();
@@ -88,7 +90,7 @@ namespace Kniffel
                     if(classic4.isActive) classic4.Throw();
                     if(classic5.isActive) classic5.Throw();
                     //Console.Beep(300 + j * 20, 100);
-                    //Thread.Sleep(j * j * 4);
+                    Thread.Sleep(j * j * 4);
                 }
                 SelectDice();
             }
@@ -130,6 +132,11 @@ namespace Kniffel
                         ChangeCursorPosition(0, -1);
                         Console.Write(" ");
                         ChangeCursorPosition(-1, 1);
+                        if (thisDice == 1) classic1.isActive = true;
+                        if (thisDice == 2) classic2.isActive = true;
+                        if (thisDice == 3) classic3.isActive = true;
+                        if (thisDice == 4) classic4.isActive = true;
+                        if (thisDice == 5) classic5.isActive = true;
                         break;
                     case ConsoleKey.LeftArrow:
                         if (thisDice > 1)
@@ -162,14 +169,17 @@ namespace Kniffel
         }
         static void Main(string[] args)
         {
-            //Intro();
-            //Console.ReadKey();
+            Intro();
+            Console.ReadKey();
            
 
 
             Console.Clear();
             DisplayDice();
             ThrowDice();
+
+            Console.ReadKey();
+            Console.WriteLine("Done!!");
             
             
 
