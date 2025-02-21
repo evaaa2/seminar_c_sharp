@@ -11,8 +11,8 @@ namespace Kniffel
     internal class Dice
     {
         private static Random rnd = new Random();
-        int positionLeft;
-        int positionTop;
+        public int positionLeft;
+        public int positionTop;
         int currentNumber;
         
         public Dice(int positionLeft, int positionTop) 

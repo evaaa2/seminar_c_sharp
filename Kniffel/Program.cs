@@ -15,11 +15,19 @@ namespace Kniffel
         static Dice classic4 = new Dice(24, 2);
         static Dice classic5 = new Dice(31, 2);
 
+        static bool classic1Active = true;
+        static bool classic2Active = true;
+        static bool classic3Active = true;
+        static bool classic4Active = true;
+        static bool classic5Active = true;
+
         static int number1;
         static int number2;
         static int number3;
         static int number4;
         static int number5;
+
+        static int thisDice;
         static void Intro()
         {
             Console.WriteLine("WELCOME TO KNIFFEL!");
@@ -68,26 +76,27 @@ namespace Kniffel
         
         static void ThrowDice()
         {
-            bool classic1Active = true;
-            bool classic2Active = true;
-            bool classic3Active = true;
-            bool classic4Active = true;
-            bool classic5Active = true;
             for (int i = 0; i < 3; i++)
             {
                 Console.SetCursorPosition(0, 7);
-                Console.WriteLine("\nTo throw the dice, press any key.");
-                Console.ReadKey();
-                for (int j = 0; j < 8; j++)
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
+                while (keyInfo.Key != ConsoleKey.Spacebar)
+                {
+                    Console.WriteLine("To throw, press Spacebar.");
+                    keyInfo = Console.ReadKey(true);
+                }
+                
+                //for (int j = 0; j < 8; j++)
                 {
                     if(classic1Active)classic1.Throw();
                     if(classic2Active) classic2.Throw();
                     if(classic3Active) classic3.Throw();
                     if (classic4Active) classic4.Throw();
                     if (classic5Active) classic5.Throw();
-                    Console.Beep(300 + j * 20, 100);
-                    Thread.Sleep(j * j * 4);
+                    //Console.Beep(300 + j * 20, 100);
+                    //Thread.Sleep(j * j * 4);
                 }
+                SelectDice();
             }
         }
 
@@ -100,15 +109,70 @@ namespace Kniffel
             number5 = classic5.ThrownNumber();
         }
 
+        static void SelectDice()
+        {
+            Console.SetCursorPosition(0, 9);
+            Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up.");
+            thisDice = 1;
+            Console.SetCursorPosition(classic1.positionLeft, classic1.positionTop + 3);
+            while (true)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        ChangeCursorPosition(0, -1);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("↑");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        ChangeCursorPosition(-1, 1);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        ChangeCursorPosition(0, -1);
+                        Console.Write(" ");
+                        ChangeCursorPosition(-1, 1);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (thisDice > 1)
+                        {
+                            ChangeCursorPosition(-7, 0);
+                            thisDice--;
+                        }
+                        break;
+                    case ConsoleKey.RightArrow:
+                        if (thisDice < 5)
+                        {
+                            ChangeCursorPosition(7, 0);
+                            thisDice++;
+                        }
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.WriteLine("Exiting...");
+                        return; 
+                }
+            }
+        }
+
+        static void ChangeCursorPosition(int addToLeft, int addToTop)
+        {
+            if (addToLeft < 0) Console.CursorLeft -= Math.Abs(addToLeft);
+            else Console.CursorLeft += addToLeft;
+
+            if (addToTop < 0) Console.CursorTop -= Math.Abs(addToTop);
+            else Console.CursorTop += addToTop;
+
+        }
         static void Main(string[] args)
         {
-            Intro();
-            Console.ReadKey();
+            //Intro();
+            //Console.ReadKey();
+           
+
 
             Console.Clear();
             DisplayDice();
             ThrowDice();
-
+            
             
 
             Console.ReadKey();
