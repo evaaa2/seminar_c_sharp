@@ -15,12 +15,6 @@ namespace Kniffel
         static Dice classic4 = new Dice(24, 2);
         static Dice classic5 = new Dice(31, 2);
 
-        static bool classic1Active = true;
-        static bool classic2Active = true;
-        static bool classic3Active = true;
-        static bool classic4Active = true;
-        static bool classic5Active = true;
-
         static int number1;
         static int number2;
         static int number3;
@@ -88,11 +82,11 @@ namespace Kniffel
                 
                 //for (int j = 0; j < 8; j++)
                 {
-                    if(classic1Active)classic1.Throw();
-                    if(classic2Active) classic2.Throw();
-                    if(classic3Active) classic3.Throw();
-                    if (classic4Active) classic4.Throw();
-                    if (classic5Active) classic5.Throw();
+                    if(classic1.isActive) classic1.Throw();
+                    if(classic2.isActive) classic2.Throw();
+                    if(classic3.isActive) classic3.Throw();
+                    if(classic4.isActive) classic4.Throw();
+                    if(classic5.isActive) classic5.Throw();
                     //Console.Beep(300 + j * 20, 100);
                     //Thread.Sleep(j * j * 4);
                 }
@@ -112,7 +106,7 @@ namespace Kniffel
         static void SelectDice()
         {
             Console.SetCursorPosition(0, 9);
-            Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up.");
+            Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up. Exit by pressing Enter.");
             thisDice = 1;
             Console.SetCursorPosition(classic1.positionLeft, classic1.positionTop + 3);
             while (true)
@@ -126,6 +120,11 @@ namespace Kniffel
                         Console.Write("↑");
                         Console.ForegroundColor = ConsoleColor.White;
                         ChangeCursorPosition(-1, 1);
+                        if (thisDice == 1) classic1.isActive = false;
+                        if (thisDice == 2) classic2.isActive = false;
+                        if (thisDice == 3) classic3.isActive = false;
+                        if (thisDice == 4) classic4.isActive = false;
+                        if (thisDice == 5) classic5.isActive = false;
                         break;
                     case ConsoleKey.DownArrow:
                         ChangeCursorPosition(0, -1);
@@ -146,8 +145,7 @@ namespace Kniffel
                             thisDice++;
                         }
                         break;
-                    case ConsoleKey.Escape:
-                        Console.WriteLine("Exiting...");
+                    case ConsoleKey.Enter:
                         return; 
                 }
             }

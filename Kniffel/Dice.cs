@@ -14,6 +14,7 @@ namespace Kniffel
         public int positionLeft;
         public int positionTop;
         int currentNumber;
+        public bool isActive = true;
         
         public Dice(int positionLeft, int positionTop) 
         { 
@@ -37,5 +38,7 @@ namespace Kniffel
         {
             return currentNumber;
         }
+
+       
     }
 }
