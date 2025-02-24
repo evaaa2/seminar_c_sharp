@@ -8,8 +8,11 @@ namespace Kniffel
 {
     internal abstract class Combinations
     {
-        public Combinations() { }
+        public int positionLeft;
+        public int positionTop;
+        public Combinations() {}
 
-        public abstract int Points(List<int> list, int number);
+        public abstract int Points(List<int> thrownNumbers);
+        public abstract void Write(int positionLeft, int positionTop, List<int> thrownNumbers);
     }
 }

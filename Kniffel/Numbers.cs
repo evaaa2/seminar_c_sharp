@@ -8,18 +8,37 @@ namespace Kniffel
 {
     internal class Numbers : Combinations
     {
-        public override int Points(List<int> list, int number)
+        public int positionLeft;
+        public int positionTop;
+
+        public int points;
+        public int number;
+
+        public Numbers(int positionLeft, int positionTop, int number)
+        {
+            this.positionLeft = positionLeft;
+            this.positionTop = positionTop;
+            this.number = number;
+        }
+        public override int Points(List<int> thrownNumbers)
         {
             int numberOfNumbers = 0;
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < thrownNumbers.Count; i++)
             {
-                if (list[i] == number) 
+                if (thrownNumbers[i] == number) 
                 {
                     numberOfNumbers++;
                 }
             }
-            return numberOfNumbers * number;
+            points = numberOfNumbers * number;
+            return points;
 
+        }
+
+        public override void Write(int positionLeft, int positionTop, List<int> thrownNumbers)
+        {
+            Console.SetCursorPosition(positionLeft, positionTop);
+            Console.Write(Points(thrownNumbers));
         }
     }
 }

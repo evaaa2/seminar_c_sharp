@@ -10,19 +10,29 @@ namespace Kniffel
 {
     internal class Program
     {
-        static Dice classic1 = new Dice(3, 2);
-        static Dice classic2 = new Dice(10, 2);
-        static Dice classic3 = new Dice(17, 2);
-        static Dice classic4 = new Dice(24, 2);
-        static Dice classic5 = new Dice(31, 2);
+        static int diceFromTop = 15;
+        static Dice classic1 = new Dice(3, diceFromTop);
+        static Dice classic2 = new Dice(10, diceFromTop);
+        static Dice classic3 = new Dice(17, diceFromTop);
+        static Dice classic4 = new Dice(24, diceFromTop);
+        static Dice classic5 = new Dice(31, diceFromTop);
 
-        static int number1;
-        static int number2;
-        static int number3;
-        static int number4;
-        static int number5;
+
+        static int combinationsFromTop = 1;
+        static int combinationsFromLeft = 9;
+        static Numbers ones = new Numbers(combinationsFromLeft, combinationsFromTop + 1, 1);
+        static Numbers twos = new Numbers(combinationsFromLeft, combinationsFromTop + 2, 2);
+        static Numbers threes = new Numbers(combinationsFromLeft, combinationsFromTop + 3, 3);
+        static Numbers fours = new Numbers(combinationsFromLeft, combinationsFromTop + 4, 4);
+        static Numbers fives = new Numbers(combinationsFromLeft, combinationsFromTop + 5, 5);
+        static Numbers sixs = new Numbers(combinationsFromLeft, combinationsFromTop + 6, 6);
+
+        static List<int> thrownNumbers = new List<int>();
+
 
         static int thisDice;
+
+        static int numberOfCombinations = 6;
         static void Intro()
         {
             Console.WriteLine("WELCOME TO KNIFFEL!");
@@ -60,7 +70,7 @@ namespace Kniffel
 
         static void DisplayDice()
         {
-            
+            Console.SetCursorPosition(0, diceFromTop - 2);
             Console.WriteLine("Your dice:");
             for (int i = 0; i < 5; i++) Console.Write("  ***  ");
             Console.WriteLine();
@@ -73,24 +83,22 @@ namespace Kniffel
         {
             for (int i = 0; i < 3; i++)
             {
-                Console.SetCursorPosition(0, 7);
-                for (int a = 0; a < Console.WindowWidth * (Console.WindowHeight - 8); a++) Console.Write(" ");
-
-                Console.SetCursorPosition(0, 7);
+                ClearSomeLines(2, diceFromTop + 7);
+                Console.SetCursorPosition(0, diceFromTop + 7);
                 Console.WriteLine("To throw, press Spacebar.");
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
                 while (keyInfo.Key != ConsoleKey.Spacebar)
                 {
-                    Console.SetCursorPosition(0, 7);
+                    Console.SetCursorPosition(0, diceFromTop + 7);
+                    for (int j = 0; j < 2 * Console.WindowWidth; j++) Console.Write(" ");
+                    Console.SetCursorPosition(0, diceFromTop + 7);
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.WriteLine("To throw, press Spacebar.");
                     Console.BackgroundColor = ConsoleColor.Black;
                     keyInfo = Console.ReadKey(true);
                 }
 
-                Console.SetCursorPosition(0, 7);
-                for (int a = 0; a < Console.WindowWidth; a++) Console.Write(" ");
 
                 for (int j = 0; j < 8; j++)
                 {
@@ -103,21 +111,12 @@ namespace Kniffel
                     Thread.Sleep(j * j * 4);
                 }
                 if (i == 0 || i == 1) SelectDice();
+                ClearSomeLines(2, diceFromTop + 7);
             }
         }
-
-        static void GetNumbers()
-        {
-            number1 = classic1.ThrownNumber();
-            number2 = classic2.ThrownNumber();
-            number3 = classic3.ThrownNumber();
-            number4 = classic4.ThrownNumber();
-            number5 = classic5.ThrownNumber();
-        }
-
         static void SelectDice()
         {
-            Console.SetCursorPosition(0, 7);
+            Console.SetCursorPosition(0, diceFromTop + 7);
             Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up. Exit by pressing Enter.");
             thisDice = 1;
             Console.SetCursorPosition(classic1.positionLeft, classic1.positionTop + 3);
@@ -190,29 +189,104 @@ namespace Kniffel
             combinations.Add("5's......");
             combinations.Add("6's......");
 
-            Console.SetCursorPosition(0, 7);
-            for (int i = 0; i < 5; i++)
-            {
-                for (int a = 0; a < Console.WindowWidth; a++) Console.Write(" ");
-            }
-
-            Console.SetCursorPosition(0, 7);
+            Console.SetCursorPosition(0, 1);
             foreach (string combination in combinations) {  Console.WriteLine(combination); }
 
 
+        }
+
+        static void ClearSomeLines(int numberOfLines, int distanceFromTop)
+        {
+            Console.SetCursorPosition(0, distanceFromTop);
+            for (int j = 0; j < numberOfLines * Console.WindowWidth; j++) Console.Write(" ");
+        }
+        
+        static void CreateListOfThrownNumbers()
+        {
+            
+            thrownNumbers.Add(classic1.ThrownNumber());
+            thrownNumbers.Add(classic2.ThrownNumber());
+            thrownNumbers.Add(classic3.ThrownNumber());
+            thrownNumbers.Add(classic4.ThrownNumber());
+            thrownNumbers.Add(classic5.ThrownNumber());
+
+        }
+
+        static void SelectCombination()
+        {
+            Console.SetCursorPosition(0, diceFromTop + 7);
+            Console.WriteLine("Select by arrow keys that combination, in which you want to write this throw. Confirm by pressing Enter.");
+
+            int thisCombination = 1;
+            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write("←");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            while (true)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if (thisCombination > 1)
+                        {
+                            // Clear previous arrow
+                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.Write(" ");
+
+                            thisCombination--; // Move up
+
+                            // Draw new arrow
+                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            Console.Write("←");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (thisCombination < numberOfCombinations)
+                        {
+                            // Clear previous arrow
+                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.Write(" ");
+
+                            thisCombination++; // Move down
+
+                            // Draw new arrow
+                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            Console.Write("←");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        break;
+                    case ConsoleKey.Enter:
+                        return;
+                }
+            }
         }
         static void Main(string[] args)
         {
             //Intro();
             //Console.ReadKey();
-           
 
 
-            Console.Clear();
-            DisplayDice();
-            ThrowDice();
+            for (int i = 0; i < numberOfCombinations; i++)
+            {
+                Console.Clear();
+                DisplayCombinations();
+                DisplayDice();
+                //ThrowDice();
+                CreateListOfThrownNumbers();
+                SelectCombination();
 
-            DisplayCombinations();
+                
+            }
+
+
+            Console.WriteLine("aaa");
+
+            
 
             
             
