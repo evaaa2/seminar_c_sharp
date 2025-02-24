@@ -10,9 +10,6 @@ namespace Kniffel
     {
         public Combinations() { }
 
-        public void CalculateScore()
-        {
-
-        }
+        public abstract int Points(List<int> list, int number);
     }
 }

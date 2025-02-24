@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Kniffel
 {
@@ -73,15 +74,24 @@ namespace Kniffel
             for (int i = 0; i < 3; i++)
             {
                 Console.SetCursorPosition(0, 7);
+                for (int a = 0; a < Console.WindowWidth * (Console.WindowHeight - 8); a++) Console.Write(" ");
+
+                Console.SetCursorPosition(0, 7);
+                Console.WriteLine("To throw, press Spacebar.");
+
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
                 while (keyInfo.Key != ConsoleKey.Spacebar)
                 {
+                    Console.SetCursorPosition(0, 7);
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.WriteLine("To throw, press Spacebar.");
                     Console.BackgroundColor = ConsoleColor.Black;
                     keyInfo = Console.ReadKey(true);
                 }
-                
+
+                Console.SetCursorPosition(0, 7);
+                for (int a = 0; a < Console.WindowWidth; a++) Console.Write(" ");
+
                 for (int j = 0; j < 8; j++)
                 {
                     if(classic1.isActive) classic1.Throw();
@@ -92,7 +102,7 @@ namespace Kniffel
                     //Console.Beep(300 + j * 20, 100);
                     Thread.Sleep(j * j * 4);
                 }
-                SelectDice();
+                if (i == 0 || i == 1) SelectDice();
             }
         }
 
@@ -107,7 +117,7 @@ namespace Kniffel
 
         static void SelectDice()
         {
-            Console.SetCursorPosition(0, 9);
+            Console.SetCursorPosition(0, 7);
             Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up. Exit by pressing Enter.");
             thisDice = 1;
             Console.SetCursorPosition(classic1.positionLeft, classic1.positionTop + 3);
@@ -167,10 +177,34 @@ namespace Kniffel
             else Console.CursorTop += addToTop;
 
         }
+
+        static void DisplayCombinations()
+        {
+            
+            List<string> combinations = new List<string>();
+            combinations.Add("Numbers(sum of all according numbers)");
+            combinations.Add("1's......");
+            combinations.Add("2's......");
+            combinations.Add("3's......");
+            combinations.Add("4's......");
+            combinations.Add("5's......");
+            combinations.Add("6's......");
+
+            Console.SetCursorPosition(0, 7);
+            for (int i = 0; i < 5; i++)
+            {
+                for (int a = 0; a < Console.WindowWidth; a++) Console.Write(" ");
+            }
+
+            Console.SetCursorPosition(0, 7);
+            foreach (string combination in combinations) {  Console.WriteLine(combination); }
+
+
+        }
         static void Main(string[] args)
         {
-            Intro();
-            Console.ReadKey();
+            //Intro();
+            //Console.ReadKey();
            
 
 
@@ -178,8 +212,8 @@ namespace Kniffel
             DisplayDice();
             ThrowDice();
 
-            Console.ReadKey();
-            Console.WriteLine("Done!!");
+            DisplayCombinations();
+
             
             
 
