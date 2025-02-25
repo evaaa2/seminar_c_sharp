@@ -35,7 +35,7 @@ namespace Kniffel
 
         }
 
-        public override void Write(int positionLeft, int positionTop, List<int> thrownNumbers)
+        public override void Write(List<int> thrownNumbers)
         {
             Console.SetCursorPosition(positionLeft, positionTop);
             Console.Write(Points(thrownNumbers));

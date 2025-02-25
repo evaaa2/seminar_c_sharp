@@ -20,17 +20,17 @@ namespace Kniffel
 
         static int combinationsFromTop = 1;
         static int combinationsFromLeft = 9;
-        static Numbers ones = new Numbers(combinationsFromLeft, combinationsFromTop + 1, 1);
-        static Numbers twos = new Numbers(combinationsFromLeft, combinationsFromTop + 2, 2);
-        static Numbers threes = new Numbers(combinationsFromLeft, combinationsFromTop + 3, 3);
-        static Numbers fours = new Numbers(combinationsFromLeft, combinationsFromTop + 4, 4);
-        static Numbers fives = new Numbers(combinationsFromLeft, combinationsFromTop + 5, 5);
-        static Numbers sixs = new Numbers(combinationsFromLeft, combinationsFromTop + 6, 6);
+        static Numbers ones = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 1, 1);
+        static Numbers twos = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 2, 2);
+        static Numbers threes = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 3, 3);
+        static Numbers fours = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 4, 4);
+        static Numbers fives = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 5, 5);
+        static Numbers sixs = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 6, 6);
 
         static List<int> thrownNumbers = new List<int>();
 
-
         static int thisDice;
+        static int thisCombination;
 
         static int numberOfCombinations = 6;
         static void Intro()
@@ -81,6 +81,20 @@ namespace Kniffel
         
         static void ThrowDice()
         {
+            classic1.isActive = true;
+            classic2.isActive = true;
+            classic3.isActive = true;
+            classic4.isActive = true;
+            classic5.isActive = true;
+
+            ClearSomeLines(1, classic1.positionTop + 2);
+
+            for (int i = 0; i < 6; i++)
+            {
+                Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + i + 1);
+                Console.Write(" ");
+            }
+
             for (int i = 0; i < 3; i++)
             {
                 ClearSomeLines(2, diceFromTop + 7);
@@ -214,11 +228,11 @@ namespace Kniffel
 
         static void SelectCombination()
         {
-            Console.SetCursorPosition(0, diceFromTop + 7);
+            Console.SetCursorPosition(0, combinationsFromTop);
             Console.WriteLine("Select by arrow keys that combination, in which you want to write this throw. Confirm by pressing Enter.");
 
-            int thisCombination = 1;
-            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+            thisCombination = 1;
+            Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + thisCombination);
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("←");
             Console.ForegroundColor = ConsoleColor.White;
@@ -232,13 +246,13 @@ namespace Kniffel
                         if (thisCombination > 1)
                         {
                             // Clear previous arrow
-                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + thisCombination);
                             Console.Write(" ");
 
-                            thisCombination--; // Move up
+                            thisCombination--; 
 
                             // Draw new arrow
-                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + thisCombination);
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             Console.Write("←");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -248,13 +262,13 @@ namespace Kniffel
                         if (thisCombination < numberOfCombinations)
                         {
                             // Clear previous arrow
-                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + thisCombination);
                             Console.Write(" ");
-
-                            thisCombination++; // Move down
+   
+                            thisCombination++;
 
                             // Draw new arrow
-                            Console.SetCursorPosition(combinationsFromLeft, combinationsFromTop + thisCombination);
+                            Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + thisCombination);
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             Console.Write("←");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -265,20 +279,32 @@ namespace Kniffel
                 }
             }
         }
+
+        static void AddPointsToCombination()
+        {
+            if (thisCombination == 1) ones.Write(thrownNumbers);
+            if (thisCombination == 2) twos.Write(thrownNumbers);
+            if (thisCombination == 3) threes.Write(thrownNumbers);
+            if (thisCombination == 4) fours.Write(thrownNumbers);
+            if (thisCombination == 5) fives.Write(thrownNumbers);
+            if (thisCombination == 6) sixs.Write(thrownNumbers);
+
+        }
         static void Main(string[] args)
         {
             //Intro();
             //Console.ReadKey();
 
+            Console.Clear();
+            DisplayCombinations();
+            DisplayDice();
 
             for (int i = 0; i < numberOfCombinations; i++)
             {
-                Console.Clear();
-                DisplayCombinations();
-                DisplayDice();
-                //ThrowDice();
+                ThrowDice();
                 CreateListOfThrownNumbers();
                 SelectCombination();
+                AddPointsToCombination();
 
                 
             }

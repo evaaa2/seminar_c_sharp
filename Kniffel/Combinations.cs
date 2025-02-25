@@ -13,6 +13,6 @@ namespace Kniffel
         public Combinations() {}
 
         public abstract int Points(List<int> thrownNumbers);
-        public abstract void Write(int positionLeft, int positionTop, List<int> thrownNumbers);
+        public abstract void Write(List<int> thrownNumbers);
     }
 }
