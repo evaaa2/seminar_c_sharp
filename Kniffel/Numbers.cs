@@ -20,6 +20,7 @@ namespace Kniffel
             this.positionLeft = positionLeft;
             this.positionTop = positionTop;
             this.number = number;
+
         }
         public override int Points(List<int> thrownNumbers)
         {

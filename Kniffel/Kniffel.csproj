@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Combinations.cs" />
     <Compile Include="Dice.cs" />
+    <Compile Include="Multi.cs" />
     <Compile Include="Numbers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

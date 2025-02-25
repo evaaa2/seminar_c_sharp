@@ -34,6 +34,8 @@ namespace Kniffel
         static bool pointsWereAssigned;
 
         static int numberOfCombinations = 6;
+
+        static int finalScore = 0;
         static void Intro()
         {
             Console.WriteLine("WELCOME TO KNIFFEL!");
@@ -131,6 +133,12 @@ namespace Kniffel
         }
         static void SelectDice()
         {
+            for (int i = 0; i < 6; i++)
+            {
+                Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + i + 1);
+                Console.Write(" ");
+            } 
+
             Console.SetCursorPosition(0, diceFromTop + 7);
             Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up. Exit by pressing Enter.");
             thisDice = 1;
@@ -218,7 +226,7 @@ namespace Kniffel
         
         static void CreateListOfThrownNumbers()
         {
-            
+            thrownNumbers.Clear();
             thrownNumbers.Add(classic1.ThrownNumber());
             thrownNumbers.Add(classic2.ThrownNumber());
             thrownNumbers.Add(classic3.ThrownNumber());
@@ -293,6 +301,14 @@ namespace Kniffel
             else pointsWereAssigned = false;
 
         }
+
+        static void Ending()
+        {
+            finalScore = 0;
+            finalScore += ones.points + twos.points + threes.points + fours.points + fives.points + sixs.points;
+            Console.Clear();
+            Console.WriteLine("Well played!! Your final score is: " + finalScore + " points!");
+        }
         static void Main(string[] args)
         {
             //Intro();
@@ -307,7 +323,6 @@ namespace Kniffel
                 ThrowDice();
                 CreateListOfThrownNumbers();
 
-
                 do
                 {
                     SelectCombination();
@@ -316,8 +331,10 @@ namespace Kniffel
 
 
 
+
             }
 
+            Ending();
 
             Console.WriteLine("aaa");
 

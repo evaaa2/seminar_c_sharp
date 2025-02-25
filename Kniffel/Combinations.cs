@@ -11,6 +11,7 @@ namespace Kniffel
         public int positionLeft;
         public int positionTop;
         public bool isActive;
+        public int points;
         public Combinations() {}
 
         public abstract int Points(List<int> thrownNumbers);

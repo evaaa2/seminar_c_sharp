@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\numbers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|solutionrelative:numbers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\kniffel\\multi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|solutionrelative:multi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\kniffel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|solutionrelative:combinations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|solutionrelative:dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\kniffel\\numbers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFAEC7DC-0C00-45C8-9FB8-DC14E2A3D17F}|Kniffel.csproj|solutionrelative:numbers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,28 +31,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Dice.cs",
-              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Dice.cs",
-              "RelativeDocumentMoniker": "Dice.cs",
-              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Dice.cs",
-              "RelativeToolTip": "Dice.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACQAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-16T18:32:56.473Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Numbers.cs",
               "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Numbers.cs",
               "RelativeDocumentMoniker": "Numbers.cs",
               "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Numbers.cs",
               "RelativeToolTip": "Numbers.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAACcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-22T19:13:57.324Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Multi.cs",
+              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Multi.cs",
+              "RelativeDocumentMoniker": "Multi.cs",
+              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Multi.cs",
+              "RelativeToolTip": "Multi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T20:59:44.044Z",
               "EditorCaption": ""
             },
             {
@@ -63,7 +63,7 @@
               "RelativeDocumentMoniker": "Combinations.cs",
               "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Combinations.cs",
               "RelativeToolTip": "Combinations.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-24T19:39:04.961Z",
               "EditorCaption": ""
@@ -76,7 +76,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Kniffel\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAC4BAAAAAAAAAAAswDEBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAqwIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-16T18:08:24.771Z",
               "EditorCaption": ""
