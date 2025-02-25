@@ -10,6 +10,7 @@ namespace Kniffel
     {
         public int positionLeft;
         public int positionTop;
+        public bool isActive = true;
 
         public int points;
         public int number;
@@ -37,8 +38,9 @@ namespace Kniffel
 
         public override void Write(List<int> thrownNumbers)
         {
-            Console.SetCursorPosition(positionLeft, positionTop);
+            Console.SetCursorPosition(this.positionLeft, this.positionTop);
             Console.Write(Points(thrownNumbers));
+            isActive = false;
         }
     }
 }

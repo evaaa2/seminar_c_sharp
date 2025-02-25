@@ -31,6 +31,7 @@ namespace Kniffel
 
         static int thisDice;
         static int thisCombination;
+        static bool pointsWereAssigned;
 
         static int numberOfCombinations = 6;
         static void Intro()
@@ -282,12 +283,14 @@ namespace Kniffel
 
         static void AddPointsToCombination()
         {
-            if (thisCombination == 1) ones.Write(thrownNumbers);
-            if (thisCombination == 2) twos.Write(thrownNumbers);
-            if (thisCombination == 3) threes.Write(thrownNumbers);
-            if (thisCombination == 4) fours.Write(thrownNumbers);
-            if (thisCombination == 5) fives.Write(thrownNumbers);
-            if (thisCombination == 6) sixs.Write(thrownNumbers);
+            pointsWereAssigned = true;
+            if (thisCombination == 1 && ones.isActive) ones.Write(thrownNumbers);
+            else if (thisCombination == 2 && twos.isActive) twos.Write(thrownNumbers);
+            else if (thisCombination == 3 && threes.isActive) threes.Write(thrownNumbers);
+            else if (thisCombination == 4 && fours.isActive) fours.Write(thrownNumbers);
+            else if (thisCombination == 5 && fives.isActive) fives.Write(thrownNumbers);
+            else if (thisCombination == 6 && sixs.isActive) sixs.Write(thrownNumbers);
+            else pointsWereAssigned = false;
 
         }
         static void Main(string[] args)
@@ -303,10 +306,16 @@ namespace Kniffel
             {
                 ThrowDice();
                 CreateListOfThrownNumbers();
-                SelectCombination();
-                AddPointsToCombination();
 
-                
+
+                do
+                {
+                    SelectCombination();
+                    AddPointsToCombination();
+                } while (!pointsWereAssigned);
+
+
+
             }
 
 
