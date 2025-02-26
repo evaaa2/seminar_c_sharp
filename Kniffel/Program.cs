@@ -27,13 +27,17 @@ namespace Kniffel
         static Numbers fives = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 5, 5);
         static Numbers sixs = new Numbers(combinationsFromLeft - 1, combinationsFromTop + 6, 6);
 
+        static Multi triplet = new Multi(combinationsFromLeft - 1, combinationsFromTop + 7, 3);
+        static Multi quadruplet = new Multi(combinationsFromLeft - 1, combinationsFromTop + 8, 4);
+        static Multi kniffel = new Multi(combinationsFromLeft - 1, combinationsFromTop + 9, 5);
+
         static List<int> thrownNumbers = new List<int>();
 
         static int thisDice;
         static int thisCombination;
         static bool pointsWereAssigned;
 
-        static int numberOfCombinations = 6;
+        static int numberOfCombinations = 9;
 
         static int finalScore = 0;
         static void Intro()
@@ -204,13 +208,16 @@ namespace Kniffel
         {
             
             List<string> combinations = new List<string>();
-            combinations.Add("Numbers(sum of all according numbers)");
+            combinations.Add("aaaaa");
             combinations.Add("1's......");
             combinations.Add("2's......");
             combinations.Add("3's......");
             combinations.Add("4's......");
             combinations.Add("5's......");
             combinations.Add("6's......");
+            combinations.Add("3-same...");
+            combinations.Add("4-same...");
+            combinations.Add("kniffel..");
 
             Console.SetCursorPosition(0, 1);
             foreach (string combination in combinations) {  Console.WriteLine(combination); }
@@ -298,6 +305,9 @@ namespace Kniffel
             else if (thisCombination == 4 && fours.isActive) fours.Write(thrownNumbers);
             else if (thisCombination == 5 && fives.isActive) fives.Write(thrownNumbers);
             else if (thisCombination == 6 && sixs.isActive) sixs.Write(thrownNumbers);
+            else if (thisCombination == 7 && triplet.isActive) triplet.Write(thrownNumbers);
+            else if (thisCombination == 8 && quadruplet.isActive) quadruplet.Write(thrownNumbers);
+            else if (thisCombination == 9 && kniffel.isActive) kniffel.Write(thrownNumbers);
             else pointsWereAssigned = false;
 
         }
