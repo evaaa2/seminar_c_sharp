@@ -30,6 +30,7 @@ namespace Kniffel
         static Multi triplet = new Multi(combinationsFromLeft - 1, combinationsFromTop + 7, 3);
         static Multi quadruplet = new Multi(combinationsFromLeft - 1, combinationsFromTop + 8, 4);
         static Multi kniffel = new Multi(combinationsFromLeft - 1, combinationsFromTop + 9, 5);
+        static Multi chance = new Multi(combinationsFromLeft - 1, combinationsFromTop + 10, 1);
 
         static List<int> thrownNumbers = new List<int>();
 
@@ -37,7 +38,7 @@ namespace Kniffel
         static int thisCombination;
         static bool pointsWereAssigned;
 
-        static int numberOfCombinations = 9;
+        static int numberOfCombinations = 10;
 
         static int finalScore = 0;
         static void Intro()
@@ -137,7 +138,7 @@ namespace Kniffel
         }
         static void SelectDice()
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < numberOfCombinations; i++)
             {
                 Console.SetCursorPosition(combinationsFromLeft + 2, combinationsFromTop + i + 1);
                 Console.Write(" ");
@@ -208,7 +209,7 @@ namespace Kniffel
         {
             
             List<string> combinations = new List<string>();
-            combinations.Add("aaaaa");
+            combinations.Add("Combinations:");
             combinations.Add("1's......");
             combinations.Add("2's......");
             combinations.Add("3's......");
@@ -218,6 +219,7 @@ namespace Kniffel
             combinations.Add("3-same...");
             combinations.Add("4-same...");
             combinations.Add("kniffel..");
+            combinations.Add("chance...");
 
             Console.SetCursorPosition(0, 1);
             foreach (string combination in combinations) {  Console.WriteLine(combination); }
@@ -308,6 +310,7 @@ namespace Kniffel
             else if (thisCombination == 7 && triplet.isActive) triplet.Write(thrownNumbers);
             else if (thisCombination == 8 && quadruplet.isActive) quadruplet.Write(thrownNumbers);
             else if (thisCombination == 9 && kniffel.isActive) kniffel.Write(thrownNumbers);
+            else if (thisCombination == 10 && chance.isActive) chance.Write(thrownNumbers);
             else pointsWereAssigned = false;
 
         }

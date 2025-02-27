@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 namespace Kniffel
 {
     internal class Multi : Combinations
+        // class for triple, quadruple, Yatzy and chance
     {
         public int positionLeft;
         public int positionTop;
@@ -23,15 +25,16 @@ namespace Kniffel
 
         public override int Points(List<int> thrownNumbers)
         {
+            points = 0;
+            int one = 0;
+            int two = 0;
+            int three = 0;
+            int four = 0;
+            int five = 0;
+            int six = 0;
             foreach (int nmb in thrownNumbers)
             {
-                points = 0;
-                int one = 0;
-                int two = 0;
-                int three = 0;
-                int four = 0;
-                int five = 0;
-                int six = 0;
+                
 
                 if (nmb == 1) one++;
                 else if (nmb == 2) two++; 
@@ -41,20 +44,21 @@ namespace Kniffel
                 else if (nmb == 6) six++;
 
                 points += nmb;
-
-
-                if (one < this.number && two < this.number && three < this.number && four < this.number && five < this.number && six < this.number)
-                {
-                    points = 0;
-                }
-               
+            }
+            if(this.number == 5 && (one == 5 || two == 5 || three == 5 || three == 5 || four == 5 || five == 5 ))
+            {
+                points = 50;
+            }
+            else if (one < this.number && two < this.number && three < this.number && four < this.number && five < this.number && six < this.number)
+            {
+                points = 0;
             }
             return points;
         }
 
         public override void Write(List<int> thrownNumbers)
         {
-            Console.SetCursorPosition(this.positionLeft, this.positionTop);
+            Console.SetCursorPosition(this.positionLeft + 1, this.positionTop);
             Console.Write(Points(thrownNumbers));
             isActive = false;
         }

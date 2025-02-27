@@ -39,7 +39,7 @@ namespace Kniffel
 
         public override void Write(List<int> thrownNumbers)
         {
-            Console.SetCursorPosition(this.positionLeft, this.positionTop);
+            Console.SetCursorPosition(this.positionLeft + 1, this.positionTop);
             Console.Write(Points(thrownNumbers));
             isActive = false;
         }
