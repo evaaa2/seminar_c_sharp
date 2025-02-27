@@ -45,10 +45,21 @@ namespace Kniffel
 
                 points += nmb;
             }
+
+            //for kniffel
             if(this.number == 5 && (one == 5 || two == 5 || three == 5 || three == 5 || four == 5 || five == 5 ))
             {
                 points = 50;
             }
+
+            //for fullhouse
+            // a quintuple is not considered a fullhouse
+            else if (this.number == 6 && (one == 2 || two == 2 || three == 2 || four == 2 || five == 2 || six == 2) && (one == 3 || two == 3 || three == 3 || four == 3 || five == 3 || six == 3))
+            {
+                points = 25;
+            }
+
+            //in case of not fulfilling the criteria for a combination
             else if (one < this.number && two < this.number && three < this.number && four < this.number && five < this.number && six < this.number)
             {
                 points = 0;
@@ -58,7 +69,7 @@ namespace Kniffel
 
         public override void Write(List<int> thrownNumbers)
         {
-            Console.SetCursorPosition(this.positionLeft + 1, this.positionTop);
+            Console.SetCursorPosition(this.positionLeft, this.positionTop);
             Console.Write(Points(thrownNumbers));
             isActive = false;
         }
