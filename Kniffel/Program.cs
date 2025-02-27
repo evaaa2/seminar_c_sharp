@@ -330,7 +330,7 @@ namespace Kniffel
         static void Ending()
         {
             finalScore = 0;
-            finalScore += ones.points + twos.points + threes.points + fours.points + fives.points + sixs.points;
+            finalScore += ones.points + twos.points + threes.points + fours.points + fives.points + sixs.points + triplet.points+ quadruplet.points + kniffel.points + chance.points + fullHouse.points + smallStraight.points + largeStraight.points; 
             Console.Clear();
             Console.WriteLine("Well played!! Your final score is: " + finalScore + " points!");
         }
