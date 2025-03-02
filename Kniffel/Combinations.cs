@@ -14,7 +14,10 @@ namespace Kniffel
         public int points;
         public Combinations() {}
 
+        //count points
         public abstract int Points(List<int> thrownNumbers);
+
+        //write points in console
         public abstract void Write(List<int> thrownNumbers);
     }
 }

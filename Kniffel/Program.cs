@@ -64,7 +64,7 @@ namespace Kniffel
             bool wrongInput = true;
             while (wrongInput)
             {
-                Console.WriteLine("Do you know the rules of this game? (Write yes or no)");
+                Console.WriteLine("\nDo you know the rules of this game? (Write yes or no)");
                 string answer = Console.ReadLine();
                 if (answer == "yes" || answer == "Yes" || answer == "YES")
                 {

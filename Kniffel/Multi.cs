@@ -23,6 +23,7 @@ namespace Kniffel
             this.number = number;
         }
 
+        //count points
         public override int Points(List<int> thrownNumbers)
         {
             points = 0;
@@ -32,10 +33,10 @@ namespace Kniffel
             int four = 0;
             int five = 0;
             int six = 0;
+
+            //counting how many times was each number thrown
             foreach (int nmb in thrownNumbers)
             {
-                
-
                 if (nmb == 1) one++;
                 else if (nmb == 2) two++; 
                 else if (nmb == 3) three++;
@@ -43,7 +44,7 @@ namespace Kniffel
                 else if (nmb == 5) five++;
                 else if (nmb == 6) six++;
 
-                points += nmb;
+                points += nmb;//for tree and four of a kind
             }
 
             //for kniffel
@@ -66,7 +67,7 @@ namespace Kniffel
             }
             return points;
         }
-
+        //write points in console
         public override void Write(List<int> thrownNumbers)
         {
             Console.SetCursorPosition(this.positionLeft, this.positionTop);

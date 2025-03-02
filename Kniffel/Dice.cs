@@ -27,7 +27,7 @@ namespace Kniffel
         public void Throw()
         {
             currentNumber = rnd.Next(1, 7);
-            Console.SetCursorPosition(positionLeft, positionTop);
+            Console.SetCursorPosition(this.positionLeft, this.positionTop);
             Console.Write(currentNumber);
         }
 

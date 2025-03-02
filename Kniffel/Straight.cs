@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kniffel 
 {
+    //class for small and large straight
     internal class Straight : Combinations
     {
         public int positionLeft;
@@ -22,6 +23,7 @@ namespace Kniffel
             this.number = number;
 
         }
+        //count points
         public override int Points(List<int> thrownNumbers)
         {
             List<int> smallStraight = new List<int>(){1, 2, 3, 4};
@@ -34,7 +36,7 @@ namespace Kniffel
             //small straight
             if (this.number == 1)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++) //for all possible small straights
                 {
                     foreach (int a in smallStraight)
                     {
@@ -58,10 +60,9 @@ namespace Kniffel
                 
             }
             //large straight
-
             if (this.number == 2)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)// for all possible large straights
                 {
                     foreach (int a in largeStraight)
                     {
@@ -86,7 +87,7 @@ namespace Kniffel
             return points;
 
         }
-
+        //write points in console
         public override void Write(List<int> thrownNumbers)
         {
             Console.SetCursorPosition(this.positionLeft, this.positionTop);
