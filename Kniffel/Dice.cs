@@ -29,8 +29,6 @@ namespace Kniffel
             currentNumber = rnd.Next(1, 7);
             Console.SetCursorPosition(positionLeft, positionTop);
             Console.Write(currentNumber);
-                //Console.Beep(440, 100);
-                //Thread.Sleep(i * i * 4);
         }
 
 

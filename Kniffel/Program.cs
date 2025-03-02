@@ -10,18 +10,22 @@ namespace Kniffel
 {
     internal class Program
     {
-        
-        static int diceFromTop = 18;
+        //defining placement in console
+        static int diceFromTop = 21;
+
+        //defining all dice
         static Dice classic1 = new Dice(3, diceFromTop);
         static Dice classic2 = new Dice(10, diceFromTop);
         static Dice classic3 = new Dice(17, diceFromTop);
         static Dice classic4 = new Dice(24, diceFromTop);
         static Dice classic5 = new Dice(31, diceFromTop);
         
-
+        //defining placement in console
         static int combinationsFromTop = 1;
-        static int combinationsFromLeft = 14;
-        static int combArrowFromLeft = combinationsFromLeft + 5;
+        static int combinationsFromLeft = 20;
+        static int combArrowFromLeft = combinationsFromLeft + 4;
+
+        //defining all combinations
         static Numbers ones = new Numbers(combinationsFromLeft, combinationsFromTop + 1, 1);
         static Numbers twos = new Numbers(combinationsFromLeft, combinationsFromTop + 2, 2);
         static Numbers threes = new Numbers(combinationsFromLeft, combinationsFromTop + 3, 3);
@@ -47,11 +51,15 @@ namespace Kniffel
         static int numberOfCombinations = 13;
 
         static int finalScore = 0;
+
+        //function for intro to the game, detecting if the user knows the rules
         static void Intro()
         {
             Console.WriteLine("WELCOME TO KNIFFEL!");
             Console.WriteLine("(Also known as Yatzy)");
             Console.WriteLine();
+            Thread.Sleep(1000);
+            Console.WriteLine("(press any key to continue)");
             Console.ReadKey();
             bool wrongInput = true;
             while (wrongInput)
@@ -60,7 +68,7 @@ namespace Kniffel
                 string answer = Console.ReadLine();
                 if (answer == "yes" || answer == "Yes" || answer == "YES")
                 {
-                    Console.WriteLine("Alright then, let's start the game!");
+                    Console.WriteLine("\nAlright then, let's start the game!");
                     wrongInput = false;
                 }
 
@@ -75,13 +83,13 @@ namespace Kniffel
             }
         }
 
+        //minimalistic solution, may be done later on
         static void ExplainTheRules()
         {
-            //will be done later on
-            Console.WriteLine("Well, then look them up on the internet!");
+            Console.WriteLine("\nWell, then look them up on the internet!");
         }
 
-
+        //function to write the "dice" in the console
         static void DisplayDice()
         {
             Console.SetCursorPosition(0, diceFromTop - 2);
@@ -95,6 +103,7 @@ namespace Kniffel
         
         static void ThrowDice()
         {
+            //to ensure that no dice is put on side
             classic1.isActive = true;
             classic2.isActive = true;
             classic3.isActive = true;
@@ -108,7 +117,7 @@ namespace Kniffel
                 Console.SetCursorPosition(combArrowFromLeft, combinationsFromTop + i + 1);
                 Console.Write(" ");
             }
-
+            //for the three rounds of possible throwing
             for (int i = 0; i < 3; i++)
             {
                 ClearSomeLines(2, diceFromTop + 7);
@@ -116,7 +125,8 @@ namespace Kniffel
                 Console.WriteLine("To throw, press Spacebar.");
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
-                while (keyInfo.Key != ConsoleKey.Spacebar)
+
+                while (keyInfo.Key != ConsoleKey.Spacebar) // if the user presses something else - will highlight the instrucions
                 {
                     Console.SetCursorPosition(0, diceFromTop + 7);
                     for (int j = 0; j < 2 * Console.WindowWidth; j++) Console.Write(" ");
@@ -127,7 +137,7 @@ namespace Kniffel
                     keyInfo = Console.ReadKey(true);
                 }
 
-
+                //the throwing itself - 8 times to simulate the rolling dice
                 for (int j = 0; j < 8; j++)
                 {
                     if(classic1.isActive) classic1.Throw();
@@ -135,30 +145,38 @@ namespace Kniffel
                     if(classic3.isActive) classic3.Throw();
                     if(classic4.isActive) classic4.Throw();
                     if(classic5.isActive) classic5.Throw();
-                    //Console.Beep(300 + j * 20, 100);
+                    Console.Beep(300 + j * 20, 100);
                     Thread.Sleep(j * j * 4);
                 }
                 if (i == 0 || i == 1) SelectDice();
                 ClearSomeLines(2, diceFromTop + 7);
             }
         }
+
+        //function to let the user select, which dice will be put on side(not thrown with further on)
         static void SelectDice()
         {
+            //deleting possible arrows written before
             for (int i = 0; i < numberOfCombinations; i++)
             {
                 Console.SetCursorPosition(combArrowFromLeft, combinationsFromTop + i + 1);
                 Console.Write(" ");
             } 
-
+            //instruction
             Console.SetCursorPosition(0, diceFromTop + 7);
             Console.WriteLine("Select by arrows those dice, that you want to put on side. To confirm putting a certain dice on side, press Arrow up. Exit by pressing Enter.");
+            
             thisDice = 1;
+
             Console.SetCursorPosition(classic1.positionLeft, classic1.positionTop + 3);
+
+            //the selecting itself (ends by pressing Enter)
             while (true)
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
                 switch (keyInfo.Key)
                 {
+                    //arrow up pressed -> will deactivate the current dice + write an arrow up under it
                     case ConsoleKey.UpArrow:
                         ChangeCursorPosition(0, -1);
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -171,6 +189,7 @@ namespace Kniffel
                         if (thisDice == 4) classic4.isActive = false;
                         if (thisDice == 5) classic5.isActive = false;
                         break;
+                    //arrow down pressed -> will make the current dice active again
                     case ConsoleKey.DownArrow:
                         ChangeCursorPosition(0, -1);
                         Console.Write(" ");
@@ -181,6 +200,7 @@ namespace Kniffel
                         if (thisDice == 4) classic4.isActive = true;
                         if (thisDice == 5) classic5.isActive = true;
                         break;
+                    //arrow left -> changes the current dice
                     case ConsoleKey.LeftArrow:
                         if (thisDice > 1)
                         {
@@ -188,6 +208,7 @@ namespace Kniffel
                             thisDice--;
                         }
                         break;
+                    //arrow right -> changes the current dice
                     case ConsoleKey.RightArrow:
                         if (thisDice < 5)
                         {
@@ -195,12 +216,14 @@ namespace Kniffel
                             thisDice++;
                         }
                         break;
+                    // selecting/putting on side ends when Enter is pressed
                     case ConsoleKey.Enter:
                         return; 
                 }
             }
         }
 
+        //function that changes the cursor position by adding the parameters
         static void ChangeCursorPosition(int addToLeft, int addToTop)
         {
             if (addToLeft < 0) Console.CursorLeft -= Math.Abs(addToLeft);
@@ -213,35 +236,40 @@ namespace Kniffel
 
         static void DisplayCombinations()
         {
-            
-            List<string> combinations = new List<string>();
-            combinations.Add("Combinations:");
-            combinations.Add("1's..........");
-            combinations.Add("2's..........");
-            combinations.Add("3's..........");
-            combinations.Add("4's..........");
-            combinations.Add("5's..........");
-            combinations.Add("6's..........");
-            combinations.Add("3-same.......");
-            combinations.Add("4-same.......");
-            combinations.Add("kniffel......");
-            combinations.Add("chance.......");
-            combinations.Add("full-house...");
-            combinations.Add("small straight");
-            combinations.Add("large straight");
+
+            List<string> combinations = new List<string>()
+            {
+                "------------------",
+                "1's................",
+                "2's................",
+                "3's................",
+                "4's................",
+                "5's................",
+                "6's................",
+                "3 of a kind........",
+                "4 of a kind........",
+                "Kniffel (50).......",
+                "Chance.............",
+                "Full House (25)....",
+                "Small Straight (30)",
+                "Large Straight (40)",
+                "-------------------",
+            };
+
 
             Console.SetCursorPosition(0, 1);
             foreach (string combination in combinations) {  Console.WriteLine(combination); }
 
 
         }
-
+        //function to clear given amount of lines
         static void ClearSomeLines(int numberOfLines, int distanceFromTop)
         {
             Console.SetCursorPosition(0, distanceFromTop);
             for (int j = 0; j < numberOfLines * Console.WindowWidth; j++) Console.Write(" ");
         }
         
+        //add all thrown number to a list
         static void CreateListOfThrownNumbers()
         {
             thrownNumbers.Clear();
@@ -253,12 +281,14 @@ namespace Kniffel
 
         }
 
+        //function to let user choose in which combination will be added points
         static void SelectCombination()
         {
             Console.SetCursorPosition(0, combinationsFromTop);
             Console.WriteLine("Select by arrow keys that combination, in which you want to write this throw. Confirm by pressing Enter.");
 
             thisCombination = 1;
+            //the staring arrow
             Console.SetCursorPosition(combArrowFromLeft, combinationsFromTop + thisCombination);
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("←");
@@ -269,6 +299,7 @@ namespace Kniffel
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true to not show key press
                 switch (keyInfo.Key)
                 {
+                    //arrow up -> one combination up
                     case ConsoleKey.UpArrow:
                         if (thisCombination > 1)
                         {
@@ -285,6 +316,7 @@ namespace Kniffel
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         break;
+                    //arrow down -> one combination down
                     case ConsoleKey.DownArrow:
                         if (thisCombination < numberOfCombinations)
                         {
@@ -301,15 +333,18 @@ namespace Kniffel
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         break;
+                    //ends with Enter
                     case ConsoleKey.Enter:
                         return;
                 }
             }
         }
 
+        //writing points next to the selected combination
         static void AddPointsToCombination()
         {
             pointsWereAssigned = true;
+            Console.ForegroundColor= ConsoleColor.DarkYellow;
             if (thisCombination == 1 && ones.isActive) ones.Write(thrownNumbers);
             else if (thisCombination == 2 && twos.isActive) twos.Write(thrownNumbers);
             else if (thisCombination == 3 && threes.isActive) threes.Write(thrownNumbers);
@@ -324,9 +359,10 @@ namespace Kniffel
             else if (thisCombination == 12 && smallStraight.isActive) smallStraight.Write(thrownNumbers);
             else if (thisCombination == 13 && largeStraight.isActive) largeStraight.Write(thrownNumbers);
             else pointsWereAssigned = false;
-
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
+        //the ending screen, shows total score
         static void Ending()
         {
             finalScore = 0;
@@ -353,20 +389,9 @@ namespace Kniffel
                     SelectCombination();
                     AddPointsToCombination();
                 } while (!pointsWereAssigned);
-
-
-
-
             }
 
             Ending();
-
-            Console.WriteLine("aaa");
-
-            
-
-            
-            
 
             Console.ReadKey();
         }

@@ -12,7 +12,6 @@ namespace Kniffel
         public int positionTop;
         public bool isActive = true;
 
-        public int points;
         public int number;
 
         public Numbers(int positionLeft, int positionTop, int number)
