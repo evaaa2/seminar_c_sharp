@@ -321,8 +321,8 @@ namespace Kniffel
         }
         static void Main(string[] args)
         {
-            Intro();
-            Console.ReadKey();
+            //Intro();
+            //Console.ReadKey();
 
             Console.Clear();
             DisplayCombinations();

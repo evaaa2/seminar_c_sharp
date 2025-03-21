@@ -5,11 +5,3 @@ C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.AssemblyRefere
 C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.CoreCompileInputs.cache
 C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.exe
 C:\Eva\Škola\C#\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.pdb
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\bin\Debug\Kniffel.exe.config
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\bin\Debug\Kniffel.exe
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\bin\Debug\Kniffel.pdb
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.AssemblyReference.cache
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.SuggestedBindingRedirects.cache
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.csproj.CoreCompileInputs.cache
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.exe
-H:\EA\Dekastello\C# seminar\seminar_c_sharp\Kniffel\obj\Debug\Kniffel.pdb
