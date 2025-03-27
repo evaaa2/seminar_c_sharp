@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Painting
 {
@@ -16,10 +17,12 @@ namespace Painting
         Point lastPosition;
         Pen basicPen = new Pen(Color.Black, 1);
         Graphics g;
+        
         public Form1()
         {
             InitializeComponent();
             g = panel1.CreateGraphics();
+            changeWidth.Value = (decimal)basicPen.Width;
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -36,15 +39,26 @@ namespace Painting
         {
             if (drawingActive)
             {
-                g.DrawLine(Pens.Black, e.Location, lastPosition);
+               
+                g.DrawLine(basicPen, e.Location, lastPosition);
+           
             }
 
             lastPosition = e.Location;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void refreshButton_Click(object sender, EventArgs e)
         {
             panel1.Refresh();
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            basicPen.Width = (float)changeWidth.Value;
+            
+        }
+
+        
     }
-}
+    }
+
