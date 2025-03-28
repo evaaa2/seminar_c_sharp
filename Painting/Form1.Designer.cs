@@ -47,6 +47,7 @@
             this.paperSquared = new System.Windows.Forms.Button();
             this.paperCtvrtka = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.PictureBox();
+            this.ellipse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
@@ -54,9 +55,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(12, 89);
+            this.panel1.Location = new System.Drawing.Point(12, 130);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(681, 349);
+            this.panel1.Size = new System.Drawing.Size(755, 586);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -156,7 +157,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(459, 10);
+            this.label1.Location = new System.Drawing.Point(592, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 13;
@@ -174,7 +175,7 @@
             // paperLime
             // 
             this.paperLime.BackColor = System.Drawing.Color.Lime;
-            this.paperLime.Location = new System.Drawing.Point(560, 10);
+            this.paperLime.Location = new System.Drawing.Point(693, 13);
             this.paperLime.Name = "paperLime";
             this.paperLime.Size = new System.Drawing.Size(30, 30);
             this.paperLime.TabIndex = 20;
@@ -184,7 +185,7 @@
             // paperBlack
             // 
             this.paperBlack.BackColor = System.Drawing.Color.Black;
-            this.paperBlack.Location = new System.Drawing.Point(530, 10);
+            this.paperBlack.Location = new System.Drawing.Point(663, 13);
             this.paperBlack.Name = "paperBlack";
             this.paperBlack.Size = new System.Drawing.Size(30, 30);
             this.paperBlack.TabIndex = 18;
@@ -194,7 +195,7 @@
             // paperWhite
             // 
             this.paperWhite.BackColor = System.Drawing.Color.White;
-            this.paperWhite.Location = new System.Drawing.Point(500, 10);
+            this.paperWhite.Location = new System.Drawing.Point(633, 13);
             this.paperWhite.Name = "paperWhite";
             this.paperWhite.Size = new System.Drawing.Size(30, 30);
             this.paperWhite.TabIndex = 16;
@@ -205,7 +206,7 @@
             // 
             this.paperCtvrka1.BackColor = System.Drawing.Color.DeepPink;
             this.paperCtvrka1.BackgroundImage = global::Painting.Properties.Resources.ctvrtka1;
-            this.paperCtvrka1.Location = new System.Drawing.Point(560, 40);
+            this.paperCtvrka1.Location = new System.Drawing.Point(693, 43);
             this.paperCtvrka1.Name = "paperCtvrka1";
             this.paperCtvrka1.Size = new System.Drawing.Size(30, 30);
             this.paperCtvrka1.TabIndex = 21;
@@ -217,7 +218,7 @@
             this.paperSquared.BackColor = System.Drawing.Color.LightBlue;
             this.paperSquared.BackgroundImage = global::Painting.Properties.Resources.squaredPaper;
             this.paperSquared.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.paperSquared.Location = new System.Drawing.Point(530, 40);
+            this.paperSquared.Location = new System.Drawing.Point(663, 43);
             this.paperSquared.Name = "paperSquared";
             this.paperSquared.Size = new System.Drawing.Size(30, 30);
             this.paperSquared.TabIndex = 19;
@@ -228,7 +229,7 @@
             // 
             this.paperCtvrtka.BackColor = System.Drawing.Color.Orange;
             this.paperCtvrtka.BackgroundImage = global::Painting.Properties.Resources.ctvrtka;
-            this.paperCtvrtka.Location = new System.Drawing.Point(500, 40);
+            this.paperCtvrtka.Location = new System.Drawing.Point(633, 43);
             this.paperCtvrtka.Name = "paperCtvrtka";
             this.paperCtvrtka.Size = new System.Drawing.Size(30, 30);
             this.paperCtvrtka.TabIndex = 17;
@@ -248,12 +249,23 @@
             this.refreshButton.TabStop = false;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
+            // ellipse
+            // 
+            this.ellipse.Location = new System.Drawing.Point(328, 37);
+            this.ellipse.Name = "ellipse";
+            this.ellipse.Size = new System.Drawing.Size(74, 32);
+            this.ellipse.TabIndex = 22;
+            this.ellipse.Text = "ellipse";
+            this.ellipse.UseVisualStyleBackColor = true;
+            this.ellipse.Click += new System.EventHandler(this.ellipse_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.ellipse);
             this.Controls.Add(this.paperCtvrka1);
             this.Controls.Add(this.paperLime);
             this.Controls.Add(this.paperSquared);
@@ -303,6 +315,7 @@
         private System.Windows.Forms.Button paperBlack;
         private System.Windows.Forms.Button paperCtvrtka;
         private System.Windows.Forms.Button paperWhite;
+        private System.Windows.Forms.Button ellipse;
     }
 }
 

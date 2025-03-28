@@ -26,6 +26,7 @@ namespace Painting
             changeWidth.Value = (decimal)basicPen.Width;
         }
 
+        //painting
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             drawingActive = true;
@@ -48,17 +49,20 @@ namespace Painting
             lastPosition = e.Location;
         }
 
+        //refresh button
         private void refreshButton_Click(object sender, EventArgs e)
         {
             panel1.Refresh();
         }
 
+        //changing pen width
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             basicPen.Width = (float)changeWidth.Value;
             
         }
 
+        //pen color
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Black;
@@ -99,21 +103,20 @@ namespace Painting
             basicPen.Color = Color.DeepPink;
         }
 
+        //paper color
         private void button6_Click(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.White;
-            panel1.BackgroundImage = Properties.Resources.none;
+            panel1.BackgroundImage = Properties.Resources.whitePaper;
         }
 
         private void paperBlack_Click(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.Black;
-            panel1.BackgroundImage = Properties.Resources.none;
+            panel1.BackgroundImage = Properties.Resources.blackPaper;
         }
 
         private void paperLime_Click(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.LimeGreen;
+            panel1.BackgroundImage = Properties.Resources.limePaper;
         }
 
         private void paperCtvrtka_Click(object sender, EventArgs e)
@@ -129,6 +132,20 @@ namespace Painting
         private void paperCtvrka1_Click(object sender, EventArgs e)
         {
             panel1.BackgroundImage = Properties.Resources.ctvrtka1;
+        }
+
+        //shapes
+        private void ellipse_Click(object sender, EventArgs e)
+        {
+            while (!drawingActive)
+            {
+                Point start = lastPosition;
+            }
+            while (drawingActive) 
+            { 
+                Point end = lastPosition;
+            }
+            
         }
     }
     }

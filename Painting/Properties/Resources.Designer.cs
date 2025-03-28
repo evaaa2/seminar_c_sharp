@@ -103,6 +103,16 @@ namespace Painting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eraser {
+            get {
+                object obj = ResourceManager.GetObject("eraser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_reload_alt_filled_240 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-reload-alt-filled-240", resourceCulture);
@@ -113,9 +123,29 @@ namespace Painting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap limePaper {
+            get {
+                object obj = ResourceManager.GetObject("limePaper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap none {
             get {
                 object obj = ResourceManager.GetObject("none", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rubber {
+            get {
+                object obj = ResourceManager.GetObject("rubber", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

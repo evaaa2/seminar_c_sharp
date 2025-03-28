@@ -104,5 +104,14 @@
   <ItemGroup>
     <None Include="Resources\blackPaper.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rubber.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eraser.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

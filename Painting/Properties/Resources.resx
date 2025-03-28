@@ -130,11 +130,20 @@
   <data name="ctvrtka2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dottedPaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eraser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eraser.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconmonstr-reload-alt-filled-240" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconmonstr-reload-alt-filled-2401.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="limePaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="none" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\none.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rubber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rubber.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="squaredPaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\squaredPaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
