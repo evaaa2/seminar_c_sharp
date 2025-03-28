@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Kniffel
 {
+    //class for number combinations
     internal class Numbers : Combinations
     {
         public int positionLeft;
         public int positionTop;
         public bool isActive = true;
 
-        public int points;
         public int number;
 
         public Numbers(int positionLeft, int positionTop, int number)
@@ -22,6 +23,7 @@ namespace Kniffel
             this.number = number;
 
         }
+        //count points
         public override int Points(List<int> thrownNumbers)
         {
             int numberOfNumbers = 0;
@@ -36,7 +38,7 @@ namespace Kniffel
             return points;
 
         }
-
+        //write points in console
         public override void Write(List<int> thrownNumbers)
         {
             Console.SetCursorPosition(this.positionLeft, this.positionTop);

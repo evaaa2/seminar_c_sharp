@@ -1,0 +1,10 @@
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\bin\Debug\Painting.exe.config
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\bin\Debug\Painting.exe
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\bin\Debug\Painting.pdb
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.AssemblyReference.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.Form1.resources
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.Properties.Resources.resources
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.GenerateResource.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.CoreCompileInputs.cache
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.exe
+C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.pdb
