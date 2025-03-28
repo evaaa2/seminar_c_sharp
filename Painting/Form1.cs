@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,7 +59,77 @@ namespace Painting
             
         }
 
-        
+        private void buttonBlack_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.Black;
+        }
+
+        private void buttonRed_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.Red;
+        }
+
+        private void buttonBlue_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.Blue;
+        }
+
+        private void buttonGreen_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.Green;
+        }
+
+        private void buttonYellow_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.Yellow;
+        }
+
+        private void buttonOrange_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.Orange;
+        }
+
+        private void buttonLightBlue_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.LightBlue;
+        }
+
+        private void buttonPink_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = Color.DeepPink;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            panel1.BackColor = Color.White;
+            panel1.BackgroundImage = Properties.Resources.none;
+        }
+
+        private void paperBlack_Click(object sender, EventArgs e)
+        {
+            panel1.BackColor = Color.Black;
+            panel1.BackgroundImage = Properties.Resources.none;
+        }
+
+        private void paperLime_Click(object sender, EventArgs e)
+        {
+            panel1.BackColor = Color.LimeGreen;
+        }
+
+        private void paperCtvrtka_Click(object sender, EventArgs e)
+        {
+            panel1.BackgroundImage = Properties.Resources.ctvrtka;
+        }
+
+        private void paperSquared_Click(object sender, EventArgs e)
+        {
+            panel1.BackgroundImage = Properties.Resources.squaredPaper;
+        }
+
+        private void paperCtvrka1_Click(object sender, EventArgs e)
+        {
+            panel1.BackgroundImage = Properties.Resources.ctvrtka1;
+        }
     }
     }
 

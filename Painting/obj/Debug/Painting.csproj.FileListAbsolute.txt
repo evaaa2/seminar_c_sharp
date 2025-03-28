@@ -8,3 +8,13 @@ C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.GenerateReso
 C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.CoreCompileInputs.cache
 C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.exe
 C:\Eva\Škola\C#\seminar_c_sharp\Painting\obj\Debug\Painting.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\bin\Debug\Painting.exe.config
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\bin\Debug\Painting.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\bin\Debug\Painting.pdb
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.AssemblyReference.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.Form1.resources
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.Properties.Resources.resources
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.GenerateResource.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.csproj.CoreCompileInputs.cache
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.exe
+H:\EA\Dekastello\C# seminar\seminar_c_sharp\Painting\obj\Debug\Painting.pdb

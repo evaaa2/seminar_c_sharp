@@ -83,5 +83,26 @@
   <ItemGroup>
     <None Include="Resources\iconmonstr-reload-alt-filled-2401.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ctvrtka.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\squaredPaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dottedPaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ctvrtka1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\none.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whitePaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blackPaper.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
