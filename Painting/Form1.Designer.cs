@@ -43,11 +43,9 @@
             this.paperLime = new System.Windows.Forms.Button();
             this.paperBlack = new System.Windows.Forms.Button();
             this.paperWhite = new System.Windows.Forms.Button();
-            this.paperCtvrka1 = new System.Windows.Forms.Button();
-            this.paperSquared = new System.Windows.Forms.Button();
-            this.paperCtvrtka = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.PictureBox();
             this.ellipse = new System.Windows.Forms.Button();
+            this.Eraser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
@@ -202,40 +200,6 @@
             this.paperWhite.UseVisualStyleBackColor = false;
             this.paperWhite.Click += new System.EventHandler(this.button6_Click);
             // 
-            // paperCtvrka1
-            // 
-            this.paperCtvrka1.BackColor = System.Drawing.Color.DeepPink;
-            this.paperCtvrka1.BackgroundImage = global::Painting.Properties.Resources.ctvrtka1;
-            this.paperCtvrka1.Location = new System.Drawing.Point(693, 43);
-            this.paperCtvrka1.Name = "paperCtvrka1";
-            this.paperCtvrka1.Size = new System.Drawing.Size(30, 30);
-            this.paperCtvrka1.TabIndex = 21;
-            this.paperCtvrka1.UseVisualStyleBackColor = false;
-            this.paperCtvrka1.Click += new System.EventHandler(this.paperCtvrka1_Click);
-            // 
-            // paperSquared
-            // 
-            this.paperSquared.BackColor = System.Drawing.Color.LightBlue;
-            this.paperSquared.BackgroundImage = global::Painting.Properties.Resources.squaredPaper;
-            this.paperSquared.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.paperSquared.Location = new System.Drawing.Point(663, 43);
-            this.paperSquared.Name = "paperSquared";
-            this.paperSquared.Size = new System.Drawing.Size(30, 30);
-            this.paperSquared.TabIndex = 19;
-            this.paperSquared.UseVisualStyleBackColor = false;
-            this.paperSquared.Click += new System.EventHandler(this.paperSquared_Click);
-            // 
-            // paperCtvrtka
-            // 
-            this.paperCtvrtka.BackColor = System.Drawing.Color.Orange;
-            this.paperCtvrtka.BackgroundImage = global::Painting.Properties.Resources.ctvrtka;
-            this.paperCtvrtka.Location = new System.Drawing.Point(633, 43);
-            this.paperCtvrtka.Name = "paperCtvrtka";
-            this.paperCtvrtka.Size = new System.Drawing.Size(30, 30);
-            this.paperCtvrtka.TabIndex = 17;
-            this.paperCtvrtka.UseVisualStyleBackColor = false;
-            this.paperCtvrtka.Click += new System.EventHandler(this.paperCtvrtka_Click);
-            // 
             // refreshButton
             // 
             this.refreshButton.BackgroundImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
@@ -259,18 +223,27 @@
             this.ellipse.UseVisualStyleBackColor = true;
             this.ellipse.Click += new System.EventHandler(this.ellipse_Click);
             // 
+            // Eraser
+            // 
+            this.Eraser.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
+            this.Eraser.Location = new System.Drawing.Point(120, 87);
+            this.Eraser.Name = "Eraser";
+            this.Eraser.Size = new System.Drawing.Size(75, 23);
+            this.Eraser.TabIndex = 23;
+            this.Eraser.Text = "Guma";
+            this.Eraser.UseVisualStyleBackColor = true;
+            this.Eraser.Click += new System.EventHandler(this.Eraser_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.Eraser);
             this.Controls.Add(this.ellipse);
-            this.Controls.Add(this.paperCtvrka1);
             this.Controls.Add(this.paperLime);
-            this.Controls.Add(this.paperSquared);
             this.Controls.Add(this.paperBlack);
-            this.Controls.Add(this.paperCtvrtka);
             this.Controls.Add(this.paperWhite);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -309,13 +282,11 @@
         private System.Windows.Forms.Button buttonPink;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button paperCtvrka1;
         private System.Windows.Forms.Button paperLime;
-        private System.Windows.Forms.Button paperSquared;
         private System.Windows.Forms.Button paperBlack;
-        private System.Windows.Forms.Button paperCtvrtka;
         private System.Windows.Forms.Button paperWhite;
         private System.Windows.Forms.Button ellipse;
+        private System.Windows.Forms.Button Eraser;
     }
 }
 

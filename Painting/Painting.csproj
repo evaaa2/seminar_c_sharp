@@ -113,5 +113,8 @@
   <ItemGroup>
     <None Include="Resources\eraser.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="eraser_cursor.cur" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

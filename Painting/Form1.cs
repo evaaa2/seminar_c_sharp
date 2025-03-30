@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -16,7 +17,12 @@ namespace Painting
     {
         bool drawingActive = false;
         Point lastPosition;
-        Pen basicPen = new Pen(Color.Black, 1);
+        Pen basicPen = new Pen(Color.Black, 1)
+        {
+            LineJoin = LineJoin.Round,
+            StartCap = LineCap.Round,
+            EndCap = LineCap.Round
+        };
         Graphics g;
         
         public Form1()
@@ -106,33 +112,20 @@ namespace Painting
         //paper color
         private void button6_Click(object sender, EventArgs e)
         {
-            panel1.BackgroundImage = Properties.Resources.whitePaper;
+            panel1.BackColor = Color.White;
         }
 
         private void paperBlack_Click(object sender, EventArgs e)
         {
-            panel1.BackgroundImage = Properties.Resources.blackPaper;
+            panel1.BackColor = Color.Black;
         }
 
         private void paperLime_Click(object sender, EventArgs e)
         {
-            panel1.BackgroundImage = Properties.Resources.limePaper;
+            panel1.BackColor = Color.Lime;
         }
 
-        private void paperCtvrtka_Click(object sender, EventArgs e)
-        {
-            panel1.BackgroundImage = Properties.Resources.ctvrtka;
-        }
-
-        private void paperSquared_Click(object sender, EventArgs e)
-        {
-            panel1.BackgroundImage = Properties.Resources.squaredPaper;
-        }
-
-        private void paperCtvrka1_Click(object sender, EventArgs e)
-        {
-            panel1.BackgroundImage = Properties.Resources.ctvrtka1;
-        }
+        
 
         //shapes
         private void ellipse_Click(object sender, EventArgs e)
@@ -146,6 +139,18 @@ namespace Painting
                 Point end = lastPosition;
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Eraser_Click(object sender, EventArgs e)
+        {
+            basicPen.Color = panel1.BackColor;
+            basicPen.Width = 10;
+
         }
     }
     }
