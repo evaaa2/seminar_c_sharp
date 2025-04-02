@@ -23,8 +23,11 @@ namespace Painting
             StartCap = LineCap.Round,
             EndCap = LineCap.Round
         };
-        Graphics g;
         
+        Pen objectsPen = new Pen(Color.Black, 1);
+        Graphics g;
+        int penActive = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -43,13 +46,34 @@ namespace Painting
             drawingActive = false;
         }
 
+    /*Legenda pro penActive:
+     * 0 ... basicPen
+     * 1 ... ellipse
+     * 2 ... rectangle
+     * 3 ... 
+     * 
+     * 
+     * 
+     * 
+     */
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (drawingActive)
             {
-               
-                g.DrawLine(basicPen, e.Location, lastPosition);
-           
+                if  (penActive == 0)
+                {
+                    g.DrawLine(basicPen, e.Location, lastPosition);
+                }
+                else if (penActive == 2)
+                {
+                    int i = 0;
+                    if (i/5 == 0)
+                    {
+
+                    }
+                    g.FillEllipse(Brushes.Black, lastPosition.X, lastPosition.Y, 20, 20);
+                }
+                
             }
 
             lastPosition = e.Location;
@@ -130,27 +154,23 @@ namespace Painting
         //shapes
         private void ellipse_Click(object sender, EventArgs e)
         {
-            while (!drawingActive)
-            {
-                Point start = lastPosition;
-            }
-            while (drawingActive) 
-            { 
-                Point end = lastPosition;
-            }
-            
+            penActive = 1;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //eraser
         private void Eraser_Click(object sender, EventArgs e)
         {
             basicPen.Color = panel1.BackColor;
-            basicPen.Width = 10;
+        }
 
+        private void rectangle_Click(object sender, EventArgs e)
+        {
+            penActive = 2;
+        }
+
+        private void Pen_Click(object sender, EventArgs e)
+        {
+            penActive = 0;
         }
     }
     }

@@ -3,15 +3,11 @@
   "WorkspaceRootPath": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\painting\\eraser_cursor.cur||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|solutionrelative:eraser_cursor.cur||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\painting\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\painting\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -27,14 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "eraser_cursor.cur - Cursor [32x32, 1 bit, BMP]",
-              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\eraser_cursor.cur",
-              "RelativeDocumentMoniker": "eraser_cursor.cur",
-              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\eraser_cursor.cur - Cursor [32x32, 1 bit, BMP]",
-              "RelativeToolTip": "eraser_cursor.cur - Cursor [32x32, 1 bit, BMP]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000812|",
-              "WhenOpened": "2025-03-30T19:36:17.446Z",
-              "EditorCaption": " - Cursor [32x32, 1 bit, BMP]"
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAAEUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T19:10:37.841Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -43,27 +40,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAcwJgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T19:10:37.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:54:14.764Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-22T07:54:14.764Z"
             }
           ]
         }
