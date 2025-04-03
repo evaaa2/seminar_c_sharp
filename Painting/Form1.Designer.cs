@@ -46,8 +46,9 @@
             this.refreshButton = new System.Windows.Forms.PictureBox();
             this.Eraser = new System.Windows.Forms.Button();
             this.ellipse = new System.Windows.Forms.Button();
-            this.rectangle = new System.Windows.Forms.Button();
+            this.kapatko = new System.Windows.Forms.Button();
             this.Pen = new System.Windows.Forms.Button();
+            this.rectangle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
@@ -228,7 +229,7 @@
             // 
             // ellipse
             // 
-            this.ellipse.Location = new System.Drawing.Point(421, 28);
+            this.ellipse.Location = new System.Drawing.Point(397, 17);
             this.ellipse.Name = "ellipse";
             this.ellipse.Size = new System.Drawing.Size(74, 32);
             this.ellipse.TabIndex = 22;
@@ -236,15 +237,15 @@
             this.ellipse.UseVisualStyleBackColor = true;
             this.ellipse.Click += new System.EventHandler(this.ellipse_Click);
             // 
-            // rectangle
+            // kapatko
             // 
-            this.rectangle.Location = new System.Drawing.Point(421, 66);
-            this.rectangle.Name = "rectangle";
-            this.rectangle.Size = new System.Drawing.Size(113, 28);
-            this.rectangle.TabIndex = 24;
-            this.rectangle.Text = "kapátko rtuti";
-            this.rectangle.UseVisualStyleBackColor = true;
-            this.rectangle.Click += new System.EventHandler(this.rectangle_Click);
+            this.kapatko.Location = new System.Drawing.Point(421, 66);
+            this.kapatko.Name = "kapatko";
+            this.kapatko.Size = new System.Drawing.Size(113, 28);
+            this.kapatko.TabIndex = 24;
+            this.kapatko.Text = "kapátko rtuti";
+            this.kapatko.UseVisualStyleBackColor = true;
+            this.kapatko.Click += new System.EventHandler(this.rectangle_Click);
             // 
             // Pen
             // 
@@ -256,14 +257,25 @@
             this.Pen.UseVisualStyleBackColor = true;
             this.Pen.Click += new System.EventHandler(this.Pen_Click);
             // 
+            // rectangle
+            // 
+            this.rectangle.Location = new System.Drawing.Point(477, 20);
+            this.rectangle.Name = "rectangle";
+            this.rectangle.Size = new System.Drawing.Size(75, 27);
+            this.rectangle.TabIndex = 26;
+            this.rectangle.Text = "rectangle";
+            this.rectangle.UseVisualStyleBackColor = true;
+            this.rectangle.Click += new System.EventHandler(this.rectangle_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
-            this.Controls.Add(this.Pen);
             this.Controls.Add(this.rectangle);
+            this.Controls.Add(this.Pen);
+            this.Controls.Add(this.kapatko);
             this.Controls.Add(this.Eraser);
             this.Controls.Add(this.ellipse);
             this.Controls.Add(this.paperLime);
@@ -311,8 +323,9 @@
         private System.Windows.Forms.Button paperWhite;
         private System.Windows.Forms.Button Eraser;
         private System.Windows.Forms.Button ellipse;
-        private System.Windows.Forms.Button rectangle;
+        private System.Windows.Forms.Button kapatko;
         private System.Windows.Forms.Button Pen;
+        private System.Windows.Forms.Button rectangle;
     }
 }
 

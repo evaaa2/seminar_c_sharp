@@ -26,7 +26,8 @@ namespace Painting
         };
         Brush basicBrush = new SolidBrush(Color.Black);
         
-        Pen objectsPen = new Pen(Color.Black, 1);
+        Pen objectsPen = new Pen(Color.Black, 3);
+        Pen deleteObjectsPen = new Pen(Color.White, width: 3);
         Graphics g;
         int penActive = 0;
         Point start;
@@ -56,7 +57,11 @@ namespace Painting
 
             if (penActive == 1)
             {
-                g.DrawEllipse(basicPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+            }
+            if (penActive == 4)
+            {
+                g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
             }
         }
 
@@ -74,6 +79,8 @@ namespace Painting
         {
             if (drawingActive)
             {
+                
+                deleteObjectsPen.Color = panel1.BackColor;
                 if  (penActive == 0)
                 {
                     g.DrawLine(basicPen, e.Location, lastPosition);
@@ -84,7 +91,17 @@ namespace Painting
                     Thread.Sleep(200);
 
                 }
-                
+                if (penActive == 1)
+                {
+                    //g.DrawEllipse(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
+                    g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - e.X), Math.Abs(start.Y - e.Y));
+                }
+                if (penActive == 4)
+                {
+                    //g.DrawRectangle(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
+                    g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+
             }
 
             lastPosition = e.Location;
@@ -184,6 +201,11 @@ namespace Painting
         private void Pen_Click(object sender, EventArgs e)
         {
             penActive = 0;
+        }
+
+        private void rectangle_Click_1(object sender, EventArgs e)
+        {
+            penActive = 4;
         }
     }
     }
