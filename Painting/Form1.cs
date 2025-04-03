@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -23,15 +24,20 @@ namespace Painting
             StartCap = LineCap.Round,
             EndCap = LineCap.Round
         };
+        Brush basicBrush = new SolidBrush(Color.Black);
         
         Pen objectsPen = new Pen(Color.Black, 1);
         Graphics g;
         int penActive = 0;
+        Point start;
+        Point end;
 
         public Form1()
         {
             InitializeComponent();
             g = panel1.CreateGraphics();
+            
+            basicPen.Width = 5;
             changeWidth.Value = (decimal)basicPen.Width;
         }
 
@@ -39,11 +45,19 @@ namespace Painting
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             drawingActive = true;
+            start = e.Location; 
+
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             drawingActive = false;
+            end = e.Location;
+
+            if (penActive == 1)
+            {
+                g.DrawEllipse(basicPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+            }
         }
 
     /*Legenda pro penActive:
@@ -66,12 +80,9 @@ namespace Painting
                 }
                 else if (penActive == 2)
                 {
-                    int i = 0;
-                    if (i/5 == 0)
-                    {
+                    g.FillEllipse(basicBrush, lastPosition.X, lastPosition.Y, basicPen.Width, basicPen.Width);
+                    Thread.Sleep(200);
 
-                    }
-                    g.FillEllipse(Brushes.Black, lastPosition.X, lastPosition.Y, 20, 20);
                 }
                 
             }
@@ -96,6 +107,8 @@ namespace Painting
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Black;
+            
+            
         }
 
         private void buttonRed_Click(object sender, EventArgs e)

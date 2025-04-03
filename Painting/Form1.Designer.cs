@@ -240,9 +240,9 @@
             // 
             this.rectangle.Location = new System.Drawing.Point(421, 66);
             this.rectangle.Name = "rectangle";
-            this.rectangle.Size = new System.Drawing.Size(63, 28);
+            this.rectangle.Size = new System.Drawing.Size(113, 28);
             this.rectangle.TabIndex = 24;
-            this.rectangle.Text = "rectangle";
+            this.rectangle.Text = "kapátko rtuti";
             this.rectangle.UseVisualStyleBackColor = true;
             this.rectangle.Click += new System.EventHandler(this.rectangle_Click);
             // 
