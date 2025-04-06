@@ -18,17 +18,24 @@ namespace Painting
     {
         bool drawingActive = false;
         Point lastPosition;
-        Pen basicPen = new Pen(Color.Black, 1)
+        static Color customColor = Color.FromArgb(70, Color.Black);
+
+        Pen basicPen = new Pen(Color.Black, 5)
+        {
+        };
+
+        Pen highlighterPen = new Pen(customColor, 15)
         {
             LineJoin = LineJoin.Round,
             StartCap = LineCap.Round,
             EndCap = LineCap.Round
         };
+
         Brush basicBrush = new SolidBrush(Color.Black);
-        
         Pen objectsPen = new Pen(Color.Black, 3);
         Pen deleteObjectsPen = new Pen(Color.White, width: 3);
-        Graphics g;
+        
+    Graphics g;
         int penActive = 0;
         Point start;
         Point end;
@@ -37,9 +44,15 @@ namespace Painting
         {
             InitializeComponent();
             g = panel1.CreateGraphics();
+            if (penActive == 0)
+            {
+                changeWidth.Value = (decimal)basicPen.Width;
+            }
+            else if (penActive == 3)
+            {
+                changeWidth.Value = (decimal)highlighterPen.Width;
+            }
             
-            basicPen.Width = 5;
-            changeWidth.Value = (decimal)basicPen.Width;
         }
 
         //painting
@@ -54,14 +67,18 @@ namespace Painting
         {
             drawingActive = false;
             end = e.Location;
+            Point rectangleStart = start;
+            if (start.X > end.X) rectangleStart.X = end.X;
+            if (start.Y > end.Y) rectangleStart.Y = end.Y;
 
             if (penActive == 1)
             {
-                g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                g.DrawEllipse(objectsPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
             }
             if (penActive == 4)
             {
-                g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                g.DrawRectangle(objectsPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                
             }
         }
 
@@ -85,6 +102,10 @@ namespace Painting
                 {
                     g.DrawLine(basicPen, e.Location, lastPosition);
                 }
+                else if (penActive == 3)
+                {
+                    g.DrawLine(highlighterPen, e.Location, lastPosition);
+                }
                 else if (penActive == 2)
                 {
                     g.FillEllipse(basicBrush, lastPosition.X, lastPosition.Y, basicPen.Width, basicPen.Width);
@@ -94,12 +115,13 @@ namespace Painting
                 if (penActive == 1)
                 {
                     //g.DrawEllipse(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
-                    g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - e.X), Math.Abs(start.Y - e.Y));
+                    //g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - e.X), Math.Abs(start.Y - e.Y));
                 }
                 if (penActive == 4)
                 {
                     //g.DrawRectangle(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
-                    g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                    //g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                   
                 }
 
             }
@@ -117,6 +139,7 @@ namespace Painting
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             basicPen.Width = (float)changeWidth.Value;
+            highlighterPen.Width = (float)changeWidth.Value;
             
         }
 
@@ -124,43 +147,51 @@ namespace Painting
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Black;
-            
-            
+            highlighterPen.Color = Color.Black;
+
+
         }
 
         private void buttonRed_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Red;
+            highlighterPen.Color = Color.Red;
         }
 
         private void buttonBlue_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Blue;
+            highlighterPen.Color = Color.Blue;
         }
 
         private void buttonGreen_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Green;
+            highlighterPen.Color = Color.Green;
         }
 
         private void buttonYellow_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Yellow;
+            highlighterPen.Color = Color.Yellow;
         }
 
         private void buttonOrange_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Orange;
+            highlighterPen.Color= Color.Orange;
         }
 
         private void buttonLightBlue_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.LightBlue;
+            highlighterPen.Color = Color.LightBlue;
         }
 
         private void buttonPink_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.DeepPink;
+            highlighterPen.Color = Color.DeepPink;
         }
 
         //paper color
@@ -206,6 +237,11 @@ namespace Painting
         private void rectangle_Click_1(object sender, EventArgs e)
         {
             penActive = 4;
+        }
+
+        private void marker_Click(object sender, EventArgs e)
+        {
+            penActive = 3;
         }
     }
     }

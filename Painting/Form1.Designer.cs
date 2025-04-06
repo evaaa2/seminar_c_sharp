@@ -49,6 +49,7 @@
             this.kapatko = new System.Windows.Forms.Button();
             this.Pen = new System.Windows.Forms.Button();
             this.rectangle = new System.Windows.Forms.Button();
+            this.marker = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
@@ -267,12 +268,23 @@
             this.rectangle.UseVisualStyleBackColor = true;
             this.rectangle.Click += new System.EventHandler(this.rectangle_Click_1);
             // 
+            // marker
+            // 
+            this.marker.Location = new System.Drawing.Point(215, 76);
+            this.marker.Name = "marker";
+            this.marker.Size = new System.Drawing.Size(56, 24);
+            this.marker.TabIndex = 27;
+            this.marker.Text = "Marker";
+            this.marker.UseVisualStyleBackColor = true;
+            this.marker.Click += new System.EventHandler(this.marker_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.marker);
             this.Controls.Add(this.rectangle);
             this.Controls.Add(this.Pen);
             this.Controls.Add(this.kapatko);
@@ -326,6 +338,7 @@
         private System.Windows.Forms.Button kapatko;
         private System.Windows.Forms.Button Pen;
         private System.Windows.Forms.Button rectangle;
+        private System.Windows.Forms.Button marker;
     }
 }
 
