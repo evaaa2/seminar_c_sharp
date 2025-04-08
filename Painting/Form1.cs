@@ -22,13 +22,14 @@ namespace Painting
 
         Pen basicPen = new Pen(Color.Black, 5)
         {
+            LineJoin = LineJoin.Round,
+            StartCap = LineCap.Round,
+            EndCap = LineCap.Round
         };
 
         Pen highlighterPen = new Pen(customColor, 15)
         {
-            LineJoin = LineJoin.Round,
-            StartCap = LineCap.Round,
-            EndCap = LineCap.Round
+            
         };
 
         Brush basicBrush = new SolidBrush(Color.Black);
