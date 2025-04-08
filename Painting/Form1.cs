@@ -18,7 +18,7 @@ namespace Painting
     {
         bool drawingActive = false;
         Point lastPosition;
-        static Color customColor = Color.FromArgb(70, Color.Black);
+        static Color highlighterColor = Color.FromArgb(70, Color.Black);
 
         Pen basicPen = new Pen(Color.Black, 5)
         {
@@ -27,16 +27,18 @@ namespace Painting
             EndCap = LineCap.Round
         };
 
-        Pen highlighterPen = new Pen(customColor, 15)
+        Pen highlighterPen = new Pen(highlighterColor, 15)
         {
-            
+            LineJoin = LineJoin.Round,
+            StartCap = LineCap.Round,
+            EndCap = LineCap.Round
         };
-
+        SolidBrush highlighterBrush = new SolidBrush(highlighterColor);
         Brush basicBrush = new SolidBrush(Color.Black);
-        Pen objectsPen = new Pen(Color.Black, 3);
+        //Pen objectsPen = new Pen(Color.Black, 3);
         Pen deleteObjectsPen = new Pen(Color.White, width: 3);
         
-    Graphics g;
+        Graphics g;
         int penActive = 0;
         Point start;
         Point end;
@@ -45,6 +47,7 @@ namespace Painting
         {
             InitializeComponent();
             g = panel1.CreateGraphics();
+            g.CompositingMode = CompositingMode.SourceOver;
             if (penActive == 0)
             {
                 changeWidth.Value = (decimal)basicPen.Width;
@@ -74,12 +77,16 @@ namespace Painting
 
             if (penActive == 1)
             {
-                g.DrawEllipse(objectsPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                g.DrawEllipse(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
             }
             if (penActive == 4)
             {
-                g.DrawRectangle(objectsPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                g.DrawRectangle(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
                 
+            }
+            if (penActive == 5)
+            {
+                g.DrawLine(basicPen, start, end);
             }
         }
 
@@ -105,7 +112,7 @@ namespace Painting
                 }
                 else if (penActive == 3)
                 {
-                    g.DrawLine(highlighterPen, e.Location, lastPosition);
+                    DrawSmoothHighlighter(g, highlighterPen.Width, lastPosition, e.Location);
                 }
                 else if (penActive == 2)
                 {
@@ -136,19 +143,21 @@ namespace Painting
             panel1.Refresh();
         }
 
+
+
         //changing pen width
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             basicPen.Width = (float)changeWidth.Value;
             highlighterPen.Width = (float)changeWidth.Value;
-            
+
         }
 
         //pen color
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Black;
-            highlighterPen.Color = Color.Black;
+            ChangeHighlighterColor(Color.Black);
 
 
         }
@@ -156,43 +165,43 @@ namespace Painting
         private void buttonRed_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Red;
-            highlighterPen.Color = Color.Red;
+            ChangeHighlighterColor(Color.Red);
         }
 
         private void buttonBlue_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Blue;
-            highlighterPen.Color = Color.Blue;
+            ChangeHighlighterColor(Color.Blue);
         }
 
         private void buttonGreen_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Green;
-            highlighterPen.Color = Color.Green;
+            ChangeHighlighterColor(Color.Green);
         }
 
         private void buttonYellow_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Yellow;
-            highlighterPen.Color = Color.Yellow;
+            ChangeHighlighterColor(Color.Yellow);
         }
 
         private void buttonOrange_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Orange;
-            highlighterPen.Color= Color.Orange;
+            ChangeHighlighterColor(Color.Orange);
         }
 
         private void buttonLightBlue_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.LightBlue;
-            highlighterPen.Color = Color.LightBlue;
+            highlighterColor = Color.FromArgb(70, Color.LightBlue);
         }
 
         private void buttonPink_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.DeepPink;
-            highlighterPen.Color = Color.DeepPink;
+            ChangeHighlighterColor(Color.DeepPink);
         }
 
         //paper color
@@ -219,16 +228,23 @@ namespace Painting
             penActive = 1;
         }
 
+        private void rectangle_Click(object sender, EventArgs e)
+        {
+            penActive = 2;
+        }
+
+        private void line_Click(object sender, EventArgs e)
+        {
+            penActive = 5;
+        }
+
         //eraser
         private void Eraser_Click(object sender, EventArgs e)
         {
             basicPen.Color = panel1.BackColor;
         }
 
-        private void rectangle_Click(object sender, EventArgs e)
-        {
-            penActive = 2;
-        }
+        
 
         private void Pen_Click(object sender, EventArgs e)
         {
@@ -244,6 +260,33 @@ namespace Painting
         {
             penActive = 3;
         }
+
+        private void ChangeHighlighterColor(Color color)
+        {
+            highlighterColor = Color.FromArgb(10, color);
+            highlighterPen.Color = highlighterColor;
+
+            if (highlighterBrush != null)
+                highlighterBrush.Dispose();
+            highlighterBrush = new SolidBrush(highlighterColor);
+        }
+        private void DrawSmoothHighlighter(Graphics g, float width, Point p1, Point p2)//from ChatGPT
+        {
+            int dx = p2.X - p1.X;
+            int dy = p2.Y - p1.Y;
+            int distance = Math.Max(Math.Abs(dx), Math.Abs(dy));
+
+            for (int i = 0; i <= distance; i++)
+            {
+                float t = (float)i / distance;
+                int x = (int)(p1.X + t * dx);
+                int y = (int)(p1.Y + t * dy);
+                g.FillEllipse(highlighterBrush, x - width / 2, y - width / 2, width, width);
+            }
+        }
+
+        
     }
     }
+    
 

@@ -50,6 +50,7 @@
             this.Pen = new System.Windows.Forms.Button();
             this.rectangle = new System.Windows.Forms.Button();
             this.marker = new System.Windows.Forms.Button();
+            this.line = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +79,7 @@
             // buttonBlack
             // 
             this.buttonBlack.BackColor = System.Drawing.Color.Black;
-            this.buttonBlack.Location = new System.Drawing.Point(271, 13);
+            this.buttonBlack.Location = new System.Drawing.Point(442, 19);
             this.buttonBlack.Margin = new System.Windows.Forms.Padding(1);
             this.buttonBlack.Name = "buttonBlack";
             this.buttonBlack.Size = new System.Drawing.Size(30, 30);
@@ -89,7 +90,7 @@
             // buttonRed
             // 
             this.buttonRed.BackColor = System.Drawing.Color.Red;
-            this.buttonRed.Location = new System.Drawing.Point(301, 13);
+            this.buttonRed.Location = new System.Drawing.Point(472, 19);
             this.buttonRed.Name = "buttonRed";
             this.buttonRed.Size = new System.Drawing.Size(30, 30);
             this.buttonRed.TabIndex = 6;
@@ -99,7 +100,7 @@
             // buttonYellow
             // 
             this.buttonYellow.BackColor = System.Drawing.Color.Yellow;
-            this.buttonYellow.Location = new System.Drawing.Point(271, 43);
+            this.buttonYellow.Location = new System.Drawing.Point(442, 49);
             this.buttonYellow.Name = "buttonYellow";
             this.buttonYellow.Size = new System.Drawing.Size(30, 30);
             this.buttonYellow.TabIndex = 7;
@@ -109,7 +110,7 @@
             // buttonOrange
             // 
             this.buttonOrange.BackColor = System.Drawing.Color.Orange;
-            this.buttonOrange.Location = new System.Drawing.Point(301, 43);
+            this.buttonOrange.Location = new System.Drawing.Point(472, 49);
             this.buttonOrange.Name = "buttonOrange";
             this.buttonOrange.Size = new System.Drawing.Size(30, 30);
             this.buttonOrange.TabIndex = 8;
@@ -119,7 +120,7 @@
             // buttonBlue
             // 
             this.buttonBlue.BackColor = System.Drawing.Color.Blue;
-            this.buttonBlue.Location = new System.Drawing.Point(331, 13);
+            this.buttonBlue.Location = new System.Drawing.Point(502, 19);
             this.buttonBlue.Name = "buttonBlue";
             this.buttonBlue.Size = new System.Drawing.Size(30, 30);
             this.buttonBlue.TabIndex = 9;
@@ -129,7 +130,7 @@
             // buttonLightBlue
             // 
             this.buttonLightBlue.BackColor = System.Drawing.Color.LightBlue;
-            this.buttonLightBlue.Location = new System.Drawing.Point(331, 43);
+            this.buttonLightBlue.Location = new System.Drawing.Point(502, 49);
             this.buttonLightBlue.Name = "buttonLightBlue";
             this.buttonLightBlue.Size = new System.Drawing.Size(30, 30);
             this.buttonLightBlue.TabIndex = 10;
@@ -139,7 +140,7 @@
             // buttonGreen
             // 
             this.buttonGreen.BackColor = System.Drawing.Color.Green;
-            this.buttonGreen.Location = new System.Drawing.Point(361, 13);
+            this.buttonGreen.Location = new System.Drawing.Point(532, 19);
             this.buttonGreen.Name = "buttonGreen";
             this.buttonGreen.Size = new System.Drawing.Size(30, 30);
             this.buttonGreen.TabIndex = 11;
@@ -149,7 +150,7 @@
             // buttonPink
             // 
             this.buttonPink.BackColor = System.Drawing.Color.DeepPink;
-            this.buttonPink.Location = new System.Drawing.Point(361, 43);
+            this.buttonPink.Location = new System.Drawing.Point(532, 49);
             this.buttonPink.Name = "buttonPink";
             this.buttonPink.Size = new System.Drawing.Size(30, 30);
             this.buttonPink.TabIndex = 12;
@@ -159,7 +160,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(575, 36);
+            this.label1.Location = new System.Drawing.Point(784, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 13;
@@ -168,7 +169,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(214, 13);
+            this.label2.Location = new System.Drawing.Point(385, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 15;
@@ -177,7 +178,7 @@
             // paperLime
             // 
             this.paperLime.BackColor = System.Drawing.Color.Lime;
-            this.paperLime.Location = new System.Drawing.Point(674, 36);
+            this.paperLime.Location = new System.Drawing.Point(883, 36);
             this.paperLime.Name = "paperLime";
             this.paperLime.Size = new System.Drawing.Size(32, 30);
             this.paperLime.TabIndex = 20;
@@ -187,7 +188,7 @@
             // paperBlack
             // 
             this.paperBlack.BackColor = System.Drawing.Color.Black;
-            this.paperBlack.Location = new System.Drawing.Point(644, 36);
+            this.paperBlack.Location = new System.Drawing.Point(853, 36);
             this.paperBlack.Name = "paperBlack";
             this.paperBlack.Size = new System.Drawing.Size(32, 30);
             this.paperBlack.TabIndex = 18;
@@ -197,7 +198,7 @@
             // paperWhite
             // 
             this.paperWhite.BackColor = System.Drawing.Color.White;
-            this.paperWhite.Location = new System.Drawing.Point(614, 36);
+            this.paperWhite.Location = new System.Drawing.Point(823, 36);
             this.paperWhite.Name = "paperWhite";
             this.paperWhite.Size = new System.Drawing.Size(32, 30);
             this.paperWhite.TabIndex = 16;
@@ -230,7 +231,7 @@
             // 
             // ellipse
             // 
-            this.ellipse.Location = new System.Drawing.Point(397, 17);
+            this.ellipse.Location = new System.Drawing.Point(623, 28);
             this.ellipse.Name = "ellipse";
             this.ellipse.Size = new System.Drawing.Size(74, 32);
             this.ellipse.TabIndex = 22;
@@ -240,7 +241,7 @@
             // 
             // kapatko
             // 
-            this.kapatko.Location = new System.Drawing.Point(421, 66);
+            this.kapatko.Location = new System.Drawing.Point(229, 76);
             this.kapatko.Name = "kapatko";
             this.kapatko.Size = new System.Drawing.Size(113, 28);
             this.kapatko.TabIndex = 24;
@@ -250,7 +251,7 @@
             // 
             // Pen
             // 
-            this.Pen.Location = new System.Drawing.Point(142, 72);
+            this.Pen.Location = new System.Drawing.Point(227, 7);
             this.Pen.Name = "Pen";
             this.Pen.Size = new System.Drawing.Size(67, 32);
             this.Pen.TabIndex = 25;
@@ -260,7 +261,7 @@
             // 
             // rectangle
             // 
-            this.rectangle.Location = new System.Drawing.Point(477, 20);
+            this.rectangle.Location = new System.Drawing.Point(703, 31);
             this.rectangle.Name = "rectangle";
             this.rectangle.Size = new System.Drawing.Size(75, 27);
             this.rectangle.TabIndex = 26;
@@ -270,7 +271,7 @@
             // 
             // marker
             // 
-            this.marker.Location = new System.Drawing.Point(215, 76);
+            this.marker.Location = new System.Drawing.Point(238, 45);
             this.marker.Name = "marker";
             this.marker.Size = new System.Drawing.Size(56, 24);
             this.marker.TabIndex = 27;
@@ -278,16 +279,27 @@
             this.marker.UseVisualStyleBackColor = true;
             this.marker.Click += new System.EventHandler(this.marker_Click);
             // 
+            // line
+            // 
+            this.line.Location = new System.Drawing.Point(623, 66);
+            this.line.Name = "line";
+            this.line.Size = new System.Drawing.Size(75, 24);
+            this.line.TabIndex = 28;
+            this.line.Text = "line";
+            this.line.UseVisualStyleBackColor = true;
+            this.line.Click += new System.EventHandler(this.line_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.line);
+            this.Controls.Add(this.kapatko);
             this.Controls.Add(this.marker);
             this.Controls.Add(this.rectangle);
             this.Controls.Add(this.Pen);
-            this.Controls.Add(this.kapatko);
             this.Controls.Add(this.Eraser);
             this.Controls.Add(this.ellipse);
             this.Controls.Add(this.paperLime);
@@ -339,6 +351,7 @@
         private System.Windows.Forms.Button Pen;
         private System.Windows.Forms.Button rectangle;
         private System.Windows.Forms.Button marker;
+        private System.Windows.Forms.Button line;
     }
 }
 
