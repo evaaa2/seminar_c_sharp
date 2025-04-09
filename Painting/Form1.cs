@@ -16,17 +16,19 @@ namespace Painting
 {
     public partial class Form1 : Form
     {
+        //defining
         bool drawingActive = false;
         Point lastPosition;
         static Color highlighterColor = Color.FromArgb(70, Color.Black);
 
+        //defining basic pen
         Pen basicPen = new Pen(Color.Black, 5)
         {
             LineJoin = LineJoin.Round,
             StartCap = LineCap.Round,
             EndCap = LineCap.Round
         };
-
+        //defining highlighter pen + brush
         Pen highlighterPen = new Pen(highlighterColor, 15)
         {
             LineJoin = LineJoin.Round,
@@ -34,10 +36,12 @@ namespace Painting
             EndCap = LineCap.Round
         };
         SolidBrush highlighterBrush = new SolidBrush(highlighterColor);
-        Brush basicBrush = new SolidBrush(Color.Black);
-        //Pen objectsPen = new Pen(Color.Black, 3);
+
+        Brush dropperBrush = new SolidBrush(Color.Black);
+
         Pen deleteObjectsPen = new Pen(Color.White, width: 3);
         
+        //more defining
         Graphics g;
         int penActive = 0;
         Point start;
@@ -48,6 +52,8 @@ namespace Painting
             InitializeComponent();
             g = panel1.CreateGraphics();
             g.CompositingMode = CompositingMode.SourceOver;
+
+            //ensuring that the size in the form equals the actual size
             if (penActive == 0)
             {
                 changeWidth.Value = (decimal)basicPen.Width;
@@ -72,19 +78,21 @@ namespace Painting
             drawingActive = false;
             end = e.Location;
             Point rectangleStart = start;
+
+            //adapting to the orientation
             if (start.X > end.X) rectangleStart.X = end.X;
             if (start.Y > end.Y) rectangleStart.Y = end.Y;
 
-            if (penActive == 1)
+            if (penActive == 1)//ellipse
             {
                 g.DrawEllipse(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
             }
-            if (penActive == 4)
+            if (penActive == 4)//rectangle
             {
                 g.DrawRectangle(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
                 
             }
-            if (penActive == 5)
+            if (penActive == 5)//line
             {
                 g.DrawLine(basicPen, start, end);
             }
@@ -93,8 +101,11 @@ namespace Painting
     /*Legenda pro penActive:
      * 0 ... basicPen
      * 1 ... ellipse
-     * 2 ... rectangle
-     * 3 ... 
+     * 2 ... highlighter
+     * 3 ... dropper
+     * 4 ... rectangle
+     * 5 ... line
+     * 
      * 
      * 
      * 
@@ -106,26 +117,26 @@ namespace Painting
             {
                 
                 deleteObjectsPen.Color = panel1.BackColor;
-                if  (penActive == 0)
+                if  (penActive == 0)//basic drawing
                 {
                     g.DrawLine(basicPen, e.Location, lastPosition);
                 }
-                else if (penActive == 3)
+                else if (penActive == 3)//highlighter
                 {
                     DrawSmoothHighlighter(g, highlighterPen.Width, lastPosition, e.Location);
                 }
-                else if (penActive == 2)
+                else if (penActive == 2)//dropper
                 {
-                    g.FillEllipse(basicBrush, lastPosition.X, lastPosition.Y, basicPen.Width, basicPen.Width);
+                    g.FillEllipse(dropperBrush, lastPosition.X, lastPosition.Y, basicPen.Width, basicPen.Width);
                     Thread.Sleep(200);
 
                 }
-                if (penActive == 1)
+                if (penActive == 1)//for showing the ellipse continuously while stretching
                 {
                     //g.DrawEllipse(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
                     //g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - e.X), Math.Abs(start.Y - e.Y));
                 }
-                if (penActive == 4)
+                if (penActive == 4)//for showing the rectangle continuously while stretching
                 {
                     //g.DrawRectangle(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
                     //g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
@@ -144,7 +155,6 @@ namespace Painting
         }
 
 
-
         //changing pen width
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -153,13 +163,11 @@ namespace Painting
 
         }
 
-        //pen color
+        //pen colors
         private void buttonBlack_Click(object sender, EventArgs e)
         {
             basicPen.Color = Color.Black;
             ChangeHighlighterColor(Color.Black);
-
-
         }
 
         private void buttonRed_Click(object sender, EventArgs e)
@@ -204,8 +212,8 @@ namespace Painting
             ChangeHighlighterColor(Color.DeepPink);
         }
 
-        //paper color
-        private void button6_Click(object sender, EventArgs e)
+        //background color
+        private void paperWhite_Click(object sender, EventArgs e)
         {
             panel1.BackColor = Color.White;
         }
@@ -228,14 +236,15 @@ namespace Painting
             penActive = 1;
         }
 
-        private void rectangle_Click(object sender, EventArgs e)
-        {
-            penActive = 2;
-        }
 
         private void line_Click(object sender, EventArgs e)
         {
             penActive = 5;
+        }
+
+        private void rectangle_Click(object sender, EventArgs e)
+        {
+            penActive = 4;
         }
 
         //eraser
@@ -245,16 +254,18 @@ namespace Painting
         }
 
         
-
+        //pens
         private void Pen_Click(object sender, EventArgs e)
         {
             penActive = 0;
         }
 
-        private void rectangle_Click_1(object sender, EventArgs e)
+        private void dropper_Click(object sender, EventArgs e)
         {
-            penActive = 4;
+            penActive = 2;
         }
+
+        
 
         private void marker_Click(object sender, EventArgs e)
         {
@@ -285,7 +296,10 @@ namespace Painting
             }
         }
 
-        
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     }
     

@@ -46,7 +46,7 @@
             this.refreshButton = new System.Windows.Forms.PictureBox();
             this.Eraser = new System.Windows.Forms.Button();
             this.ellipse = new System.Windows.Forms.Button();
-            this.kapatko = new System.Windows.Forms.Button();
+            this.dropper = new System.Windows.Forms.Button();
             this.Pen = new System.Windows.Forms.Button();
             this.rectangle = new System.Windows.Forms.Button();
             this.marker = new System.Windows.Forms.Button();
@@ -58,10 +58,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(12, 130);
+            this.panel1.Location = new System.Drawing.Point(12, 150);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(755, 586);
+            this.panel1.Size = new System.Drawing.Size(1007, 468);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
@@ -160,11 +161,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(784, 36);
+            this.label1.Location = new System.Drawing.Point(755, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Paper";
+            this.label1.Text = "Paper Color";
             // 
             // label2
             // 
@@ -203,7 +204,7 @@
             this.paperWhite.Size = new System.Drawing.Size(32, 30);
             this.paperWhite.TabIndex = 16;
             this.paperWhite.UseVisualStyleBackColor = false;
-            this.paperWhite.Click += new System.EventHandler(this.button6_Click);
+            this.paperWhite.Click += new System.EventHandler(this.paperWhite_Click);
             // 
             // refreshButton
             // 
@@ -221,39 +222,39 @@
             // Eraser
             // 
             this.Eraser.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
-            this.Eraser.Location = new System.Drawing.Point(134, 43);
+            this.Eraser.Location = new System.Drawing.Point(144, 43);
             this.Eraser.Name = "Eraser";
             this.Eraser.Size = new System.Drawing.Size(75, 23);
             this.Eraser.TabIndex = 23;
-            this.Eraser.Text = "Guma";
+            this.Eraser.Text = "eraser";
             this.Eraser.UseVisualStyleBackColor = true;
             this.Eraser.Click += new System.EventHandler(this.Eraser_Click);
             // 
             // ellipse
             // 
-            this.ellipse.Location = new System.Drawing.Point(623, 28);
+            this.ellipse.Location = new System.Drawing.Point(592, 53);
             this.ellipse.Name = "ellipse";
-            this.ellipse.Size = new System.Drawing.Size(74, 32);
+            this.ellipse.Size = new System.Drawing.Size(80, 25);
             this.ellipse.TabIndex = 22;
             this.ellipse.Text = "ellipse";
             this.ellipse.UseVisualStyleBackColor = true;
             this.ellipse.Click += new System.EventHandler(this.ellipse_Click);
             // 
-            // kapatko
+            // dropper
             // 
-            this.kapatko.Location = new System.Drawing.Point(229, 76);
-            this.kapatko.Name = "kapatko";
-            this.kapatko.Size = new System.Drawing.Size(113, 28);
-            this.kapatko.TabIndex = 24;
-            this.kapatko.Text = "kapátko rtuti";
-            this.kapatko.UseVisualStyleBackColor = true;
-            this.kapatko.Click += new System.EventHandler(this.rectangle_Click);
+            this.dropper.Location = new System.Drawing.Point(238, 75);
+            this.dropper.Name = "dropper";
+            this.dropper.Size = new System.Drawing.Size(80, 25);
+            this.dropper.TabIndex = 24;
+            this.dropper.Text = "dropper";
+            this.dropper.UseVisualStyleBackColor = true;
+            this.dropper.Click += new System.EventHandler(this.dropper_Click);
             // 
             // Pen
             // 
-            this.Pen.Location = new System.Drawing.Point(227, 7);
+            this.Pen.Location = new System.Drawing.Point(238, 13);
             this.Pen.Name = "Pen";
-            this.Pen.Size = new System.Drawing.Size(67, 32);
+            this.Pen.Size = new System.Drawing.Size(80, 25);
             this.Pen.TabIndex = 25;
             this.Pen.Text = "pen";
             this.Pen.UseVisualStyleBackColor = true;
@@ -261,29 +262,29 @@
             // 
             // rectangle
             // 
-            this.rectangle.Location = new System.Drawing.Point(703, 31);
+            this.rectangle.Location = new System.Drawing.Point(592, 84);
             this.rectangle.Name = "rectangle";
-            this.rectangle.Size = new System.Drawing.Size(75, 27);
+            this.rectangle.Size = new System.Drawing.Size(80, 25);
             this.rectangle.TabIndex = 26;
             this.rectangle.Text = "rectangle";
             this.rectangle.UseVisualStyleBackColor = true;
-            this.rectangle.Click += new System.EventHandler(this.rectangle_Click_1);
+            this.rectangle.Click += new System.EventHandler(this.rectangle_Click);
             // 
             // marker
             // 
-            this.marker.Location = new System.Drawing.Point(238, 45);
+            this.marker.Location = new System.Drawing.Point(238, 44);
             this.marker.Name = "marker";
-            this.marker.Size = new System.Drawing.Size(56, 24);
+            this.marker.Size = new System.Drawing.Size(80, 25);
             this.marker.TabIndex = 27;
-            this.marker.Text = "Marker";
+            this.marker.Text = "highlighter";
             this.marker.UseVisualStyleBackColor = true;
             this.marker.Click += new System.EventHandler(this.marker_Click);
             // 
             // line
             // 
-            this.line.Location = new System.Drawing.Point(623, 66);
+            this.line.Location = new System.Drawing.Point(592, 22);
             this.line.Name = "line";
-            this.line.Size = new System.Drawing.Size(75, 24);
+            this.line.Size = new System.Drawing.Size(80, 25);
             this.line.TabIndex = 28;
             this.line.Text = "line";
             this.line.UseVisualStyleBackColor = true;
@@ -296,7 +297,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
             this.Controls.Add(this.line);
-            this.Controls.Add(this.kapatko);
+            this.Controls.Add(this.dropper);
             this.Controls.Add(this.marker);
             this.Controls.Add(this.rectangle);
             this.Controls.Add(this.Pen);
@@ -347,7 +348,7 @@
         private System.Windows.Forms.Button paperWhite;
         private System.Windows.Forms.Button Eraser;
         private System.Windows.Forms.Button ellipse;
-        private System.Windows.Forms.Button kapatko;
+        private System.Windows.Forms.Button dropper;
         private System.Windows.Forms.Button Pen;
         private System.Windows.Forms.Button rectangle;
         private System.Windows.Forms.Button marker;
