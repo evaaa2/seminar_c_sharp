@@ -20,7 +20,7 @@ namespace Painting
         bool drawingActive = false;
         Point lastPosition;
         static Color highlighterColor = Color.FromArgb(70, Color.Black);
-
+        Random rnd = new Random();
         //defining basic pen
         Pen basicPen = new Pen(Color.Black, 5)
         {
@@ -35,9 +35,10 @@ namespace Painting
             StartCap = LineCap.Round,
             EndCap = LineCap.Round
         };
+
         SolidBrush highlighterBrush = new SolidBrush(highlighterColor);
 
-        Brush dropperBrush = new SolidBrush(Color.Black);
+        Brush basicBrush = new SolidBrush(Color.Black);
 
         Pen deleteObjectsPen = new Pen(Color.White, width: 3);
         
@@ -105,6 +106,7 @@ namespace Painting
      * 3 ... dropper
      * 4 ... rectangle
      * 5 ... line
+     * 6 ... voskovka
      * 
      * 
      * 
@@ -113,6 +115,10 @@ namespace Painting
      */
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
+            if (basicBrush != null)
+                basicBrush.Dispose();
+            basicBrush = new SolidBrush(basicPen.Color);
+
             if (drawingActive)
             {
                 
@@ -127,16 +133,27 @@ namespace Painting
                 }
                 else if (penActive == 2)//dropper
                 {
-                    g.FillEllipse(dropperBrush, lastPosition.X, lastPosition.Y, basicPen.Width, basicPen.Width);
+                    g.FillEllipse(basicBrush, lastPosition.X, lastPosition.Y, basicPen.Width, basicPen.Width);
                     Thread.Sleep(200);
-
                 }
-                if (penActive == 1)//for showing the ellipse continuously while stretching
+                else if (penActive == 6)//crayon
+                {
+                    int randomAmount = rnd.Next((int)(basicPen.Width - basicPen.Width / 2), (int)basicPen.Width);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int radius = Math.Max(2, (int)basicPen.Width / 2);
+                        int rectSize = Math.Max(2, radius / 3);
+                        int randomX = rnd.Next(-radius, radius);
+                        int randomY = rnd.Next(-radius, radius);
+                        g.FillRectangle(basicBrush, lastPosition.X + randomX, lastPosition.Y + randomY, rectSize, rectSize);
+                    }
+                }
+                else if (penActive == 1)//for showing the ellipse continuously while stretching
                 {
                     //g.DrawEllipse(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
                     //g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - e.X), Math.Abs(start.Y - e.Y));
                 }
-                if (penActive == 4)//for showing the rectangle continuously while stretching
+                else if (penActive == 4)//for showing the rectangle continuously while stretching
                 {
                     //g.DrawRectangle(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
                     //g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
@@ -264,12 +281,15 @@ namespace Painting
         {
             penActive = 2;
         }
-
         
-
         private void marker_Click(object sender, EventArgs e)
         {
             penActive = 3;
+        }
+
+        private void Crayon_Click(object sender, EventArgs e)
+        {
+            penActive = 6;
         }
 
         private void ChangeHighlighterColor(Color color)
@@ -300,6 +320,8 @@ namespace Painting
         {
 
         }
+
+        
     }
     }
     
