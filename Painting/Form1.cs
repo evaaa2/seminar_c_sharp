@@ -23,6 +23,7 @@ namespace Painting
         Random rnd = new Random();
         Bitmap panelBefore;
         bool filled;
+
         //defining basic pen
         Pen basicPen = new Pen(Color.Black, 5)
         {
@@ -40,9 +41,9 @@ namespace Painting
 
         SolidBrush highlighterBrush = new SolidBrush(highlighterColor);
 
+        //special brushes + pens
         Brush basicBrush = new SolidBrush(Color.Black);
-
-        Pen deleteObjectsPen = new Pen(Color.White, width: 3);
+        //Pen deleteObjectsPen = new Pen(Color.White, width: 3);
 
         //more defining
         Graphics g;
@@ -58,8 +59,8 @@ namespace Painting
             g.CompositingMode = CompositingMode.SourceOver;
 
             invisible = invisiblePanel.CreateGraphics();
-            basicPen.Width = 30;
-            highlighterPen.Width = 30;
+            basicPen.Width = 10;
+            highlighterPen.Width = 10;
 
             changeWidth.Value = (decimal)basicPen.Width;
 
@@ -71,6 +72,7 @@ namespace Painting
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             drawingActive = true;
+            Cursor = Cursors.Cross;
             start = e.Location;
             panelBefore = new Bitmap(panel1.Width, panel1.Height);
             panel1.DrawToBitmap(panelBefore, new Rectangle(0, 0, panel1.Width, panel1.Height));
@@ -80,11 +82,12 @@ namespace Painting
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            Cursor = Cursors.Default;
             drawingActive = false;
             end = e.Location;
             Point rectangleStart = start;
             panel1.BackgroundImage = null;
+            basicPen.Width = (float)changeWidth.Value;
 
 
 
@@ -163,6 +166,7 @@ namespace Painting
          * 5 ... line
          * 6 ... voskovka
          * 7 ... random image
+         * 8 ... graphic pen
          * 
          * 
          * 
@@ -208,7 +212,29 @@ namespace Painting
                         g.FillRectangle(basicBrush, lastPosition.X + randomX, lastPosition.Y + randomY, rectSize, rectSize);
                     }
                 }
-
+                else if (penActive == 8)// graphic pen
+                {
+                    double differenceX = Math.Abs(e.X - lastPosition.Y);
+                    double differenceY = Math.Abs(e.Y - lastPosition.X);
+                    if (differenceX < differenceY)
+                    {
+                        basicPen.Width += (float)0.3;
+                    }
+                    else
+                    {
+                        basicPen.Width -= (float)0.3;
+                    }
+                    if (basicPen.Width > 2* (float)changeWidth.Value)
+                    {
+                        basicPen.Width = 2 * (float)changeWidth.Value;
+                    }
+                    else if (basicPen.Width < (float)changeWidth.Value/2)
+                    {
+                        basicPen.Width = (float)changeWidth.Value/2;
+                    }
+                    g.DrawLine(basicPen, e.Location, lastPosition);
+                    
+                }
 
                 end = e.Location;
                 Point rectangleStart = start;
@@ -356,7 +382,7 @@ namespace Painting
 
 
 
-        //shapes
+        //objects
         private void ellipse_Click(object sender, EventArgs e)
         {
             penActive = 1;
@@ -372,6 +398,10 @@ namespace Painting
         {
             penActive = 4;
         }
+        private void image_Click(object sender, EventArgs e)
+        {
+            penActive = 7;
+        }
 
         //eraser
         private void Eraser_Click(object sender, EventArgs e)
@@ -379,7 +409,6 @@ namespace Painting
             basicPen.Color = panel1.BackColor;
             penActive = 0;
         }
-
 
         //pens
         private void Pen_Click(object sender, EventArgs e)
@@ -400,6 +429,10 @@ namespace Painting
         private void Crayon_Click(object sender, EventArgs e)
         {
             penActive = 6;
+        }
+        private void graphicPen_Click(object sender, EventArgs e)
+        {
+            penActive = 8;
         }
 
         private void ChangeHighlighterColor(Color color)
@@ -425,15 +458,6 @@ namespace Painting
             }
         }
 
-
-
-        private void image_Click(object sender, EventArgs e)
-        {
-            penActive = 7;
-        }
-
-
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (filled == true)
@@ -445,6 +469,8 @@ namespace Painting
                 filled = true;
             }
         }
+
+        
     }
 }
 

@@ -84,28 +84,7 @@
     <None Include="Resources\iconmonstr-reload-alt-filled-2401.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ctvrtka.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\squaredPaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\dottedPaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ctvrtka1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\none.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\whitePaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\blackPaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rubber.bmp" />
@@ -115,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="eraser_cursor.cur" />
-    <None Include="Resources\aaa.bmp" />
     <None Include="Resources\hedgehog.bmp" />
     <None Include="Resources\dog_2.bmp" />
     <None Include="Resources\apple.bmp" />

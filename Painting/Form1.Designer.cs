@@ -55,6 +55,7 @@
             this.image = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.PictureBox();
             this.filledObject = new System.Windows.Forms.CheckBox();
+            this.graphicPen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
@@ -332,12 +333,23 @@
             this.filledObject.UseVisualStyleBackColor = true;
             this.filledObject.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // graphicPen
+            // 
+            this.graphicPen.Location = new System.Drawing.Point(324, 45);
+            this.graphicPen.Name = "graphicPen";
+            this.graphicPen.Size = new System.Drawing.Size(80, 25);
+            this.graphicPen.TabIndex = 32;
+            this.graphicPen.Text = "graphic pen";
+            this.graphicPen.UseVisualStyleBackColor = true;
+            this.graphicPen.Click += new System.EventHandler(this.graphicPen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.graphicPen);
             this.Controls.Add(this.filledObject);
             this.Controls.Add(this.image);
             this.Controls.Add(this.Crayon);
@@ -403,6 +415,7 @@
         private System.Windows.Forms.Panel invisiblePanel;
         private System.Windows.Forms.Button image;
         private System.Windows.Forms.CheckBox filledObject;
+        private System.Windows.Forms.Button graphicPen;
     }
 }
 

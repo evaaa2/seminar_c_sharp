@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Painting||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\painting\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,6 +16,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83E9BDC4-152B-4B83-9CAE-1F084CC540BF}|Painting.csproj|c:\\eva\\\u0161kola\\c#\\seminar_c_sharp\\painting\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +28,27 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Painting",
+              "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Painting.csproj",
+              "RelativeDocumentMoniker": "Painting.csproj",
+              "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Painting.csproj",
+              "RelativeToolTip": "Painting.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-11T18:00:24.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Form1.Designer.cs",
@@ -39,7 +61,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
@@ -51,13 +73,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Eva\\\u0160kola\\C#\\seminar_c_sharp\\Painting\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAcwD0AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAwwKgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T19:10:37.841Z",
               "EditorCaption": ""
