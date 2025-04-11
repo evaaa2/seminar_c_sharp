@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.changeWidth = new System.Windows.Forms.NumericUpDown();
             this.buttonBlack = new System.Windows.Forms.Button();
@@ -53,11 +54,12 @@
             this.Crayon = new System.Windows.Forms.Button();
             this.invisiblePanel = new System.Windows.Forms.Panel();
             this.image = new System.Windows.Forms.Button();
-            this.refreshButton = new System.Windows.Forms.PictureBox();
             this.filledObject = new System.Windows.Forms.CheckBox();
             this.graphicPen = new System.Windows.Forms.Button();
+            this.eraser_1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eraser_1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,9 +76,9 @@
             // changeWidth
             // 
             this.changeWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.changeWidth.Location = new System.Drawing.Point(75, 41);
+            this.changeWidth.Location = new System.Drawing.Point(122, 31);
             this.changeWidth.Name = "changeWidth";
-            this.changeWidth.Size = new System.Drawing.Size(53, 29);
+            this.changeWidth.Size = new System.Drawing.Size(65, 29);
             this.changeWidth.TabIndex = 4;
             this.changeWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.changeWidth.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
@@ -84,7 +86,7 @@
             // buttonBlack
             // 
             this.buttonBlack.BackColor = System.Drawing.Color.Black;
-            this.buttonBlack.Location = new System.Drawing.Point(554, 19);
+            this.buttonBlack.Location = new System.Drawing.Point(465, 37);
             this.buttonBlack.Margin = new System.Windows.Forms.Padding(1);
             this.buttonBlack.Name = "buttonBlack";
             this.buttonBlack.Size = new System.Drawing.Size(30, 30);
@@ -95,7 +97,7 @@
             // buttonRed
             // 
             this.buttonRed.BackColor = System.Drawing.Color.Red;
-            this.buttonRed.Location = new System.Drawing.Point(584, 19);
+            this.buttonRed.Location = new System.Drawing.Point(495, 37);
             this.buttonRed.Name = "buttonRed";
             this.buttonRed.Size = new System.Drawing.Size(30, 30);
             this.buttonRed.TabIndex = 6;
@@ -105,7 +107,7 @@
             // buttonYellow
             // 
             this.buttonYellow.BackColor = System.Drawing.Color.Yellow;
-            this.buttonYellow.Location = new System.Drawing.Point(554, 49);
+            this.buttonYellow.Location = new System.Drawing.Point(465, 67);
             this.buttonYellow.Name = "buttonYellow";
             this.buttonYellow.Size = new System.Drawing.Size(30, 30);
             this.buttonYellow.TabIndex = 7;
@@ -115,7 +117,7 @@
             // buttonOrange
             // 
             this.buttonOrange.BackColor = System.Drawing.Color.Orange;
-            this.buttonOrange.Location = new System.Drawing.Point(584, 49);
+            this.buttonOrange.Location = new System.Drawing.Point(495, 67);
             this.buttonOrange.Name = "buttonOrange";
             this.buttonOrange.Size = new System.Drawing.Size(30, 30);
             this.buttonOrange.TabIndex = 8;
@@ -125,7 +127,7 @@
             // buttonBlue
             // 
             this.buttonBlue.BackColor = System.Drawing.Color.Blue;
-            this.buttonBlue.Location = new System.Drawing.Point(614, 19);
+            this.buttonBlue.Location = new System.Drawing.Point(525, 37);
             this.buttonBlue.Name = "buttonBlue";
             this.buttonBlue.Size = new System.Drawing.Size(30, 30);
             this.buttonBlue.TabIndex = 9;
@@ -135,7 +137,7 @@
             // buttonLightBlue
             // 
             this.buttonLightBlue.BackColor = System.Drawing.Color.LightBlue;
-            this.buttonLightBlue.Location = new System.Drawing.Point(614, 49);
+            this.buttonLightBlue.Location = new System.Drawing.Point(525, 67);
             this.buttonLightBlue.Name = "buttonLightBlue";
             this.buttonLightBlue.Size = new System.Drawing.Size(30, 30);
             this.buttonLightBlue.TabIndex = 10;
@@ -145,7 +147,7 @@
             // buttonGreen
             // 
             this.buttonGreen.BackColor = System.Drawing.Color.Green;
-            this.buttonGreen.Location = new System.Drawing.Point(644, 19);
+            this.buttonGreen.Location = new System.Drawing.Point(555, 37);
             this.buttonGreen.Name = "buttonGreen";
             this.buttonGreen.Size = new System.Drawing.Size(30, 30);
             this.buttonGreen.TabIndex = 11;
@@ -155,7 +157,7 @@
             // buttonPink
             // 
             this.buttonPink.BackColor = System.Drawing.Color.DeepPink;
-            this.buttonPink.Location = new System.Drawing.Point(644, 49);
+            this.buttonPink.Location = new System.Drawing.Point(555, 67);
             this.buttonPink.Name = "buttonPink";
             this.buttonPink.Size = new System.Drawing.Size(30, 30);
             this.buttonPink.TabIndex = 12;
@@ -165,7 +167,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(867, 41);
+            this.label1.Location = new System.Drawing.Point(760, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 13;
@@ -174,7 +176,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(497, 19);
+            this.label2.Location = new System.Drawing.Point(408, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 15;
@@ -183,7 +185,7 @@
             // paperLime
             // 
             this.paperLime.BackColor = System.Drawing.Color.Lime;
-            this.paperLime.Location = new System.Drawing.Point(995, 36);
+            this.paperLime.Location = new System.Drawing.Point(886, 49);
             this.paperLime.Name = "paperLime";
             this.paperLime.Size = new System.Drawing.Size(32, 30);
             this.paperLime.TabIndex = 20;
@@ -193,7 +195,7 @@
             // paperBlack
             // 
             this.paperBlack.BackColor = System.Drawing.Color.Black;
-            this.paperBlack.Location = new System.Drawing.Point(965, 36);
+            this.paperBlack.Location = new System.Drawing.Point(856, 49);
             this.paperBlack.Name = "paperBlack";
             this.paperBlack.Size = new System.Drawing.Size(32, 30);
             this.paperBlack.TabIndex = 18;
@@ -203,7 +205,7 @@
             // paperWhite
             // 
             this.paperWhite.BackColor = System.Drawing.Color.White;
-            this.paperWhite.Location = new System.Drawing.Point(935, 36);
+            this.paperWhite.Location = new System.Drawing.Point(826, 49);
             this.paperWhite.Name = "paperWhite";
             this.paperWhite.Size = new System.Drawing.Size(32, 30);
             this.paperWhite.TabIndex = 16;
@@ -213,17 +215,18 @@
             // Eraser
             // 
             this.Eraser.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
-            this.Eraser.Location = new System.Drawing.Point(144, 43);
+            this.Eraser.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Eraser.BackgroundImage")));
+            this.Eraser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Eraser.Location = new System.Drawing.Point(122, 66);
             this.Eraser.Name = "Eraser";
-            this.Eraser.Size = new System.Drawing.Size(75, 23);
+            this.Eraser.Size = new System.Drawing.Size(65, 65);
             this.Eraser.TabIndex = 23;
-            this.Eraser.Text = "eraser";
             this.Eraser.UseVisualStyleBackColor = true;
             this.Eraser.Click += new System.EventHandler(this.Eraser_Click);
             // 
             // ellipse
             // 
-            this.ellipse.Location = new System.Drawing.Point(704, 53);
+            this.ellipse.Location = new System.Drawing.Point(618, 71);
             this.ellipse.Name = "ellipse";
             this.ellipse.Size = new System.Drawing.Size(80, 25);
             this.ellipse.TabIndex = 22;
@@ -233,7 +236,7 @@
             // 
             // dropper
             // 
-            this.dropper.Location = new System.Drawing.Point(238, 75);
+            this.dropper.Location = new System.Drawing.Point(218, 97);
             this.dropper.Name = "dropper";
             this.dropper.Size = new System.Drawing.Size(80, 25);
             this.dropper.TabIndex = 24;
@@ -243,7 +246,7 @@
             // 
             // Pen
             // 
-            this.Pen.Location = new System.Drawing.Point(238, 13);
+            this.Pen.Location = new System.Drawing.Point(218, 35);
             this.Pen.Name = "Pen";
             this.Pen.Size = new System.Drawing.Size(80, 25);
             this.Pen.TabIndex = 25;
@@ -253,7 +256,7 @@
             // 
             // rectangle
             // 
-            this.rectangle.Location = new System.Drawing.Point(704, 84);
+            this.rectangle.Location = new System.Drawing.Point(618, 102);
             this.rectangle.Name = "rectangle";
             this.rectangle.Size = new System.Drawing.Size(80, 25);
             this.rectangle.TabIndex = 26;
@@ -263,7 +266,7 @@
             // 
             // marker
             // 
-            this.marker.Location = new System.Drawing.Point(238, 44);
+            this.marker.Location = new System.Drawing.Point(218, 66);
             this.marker.Name = "marker";
             this.marker.Size = new System.Drawing.Size(80, 25);
             this.marker.TabIndex = 27;
@@ -273,7 +276,7 @@
             // 
             // line
             // 
-            this.line.Location = new System.Drawing.Point(704, 22);
+            this.line.Location = new System.Drawing.Point(618, 40);
             this.line.Name = "line";
             this.line.Size = new System.Drawing.Size(80, 25);
             this.line.TabIndex = 28;
@@ -283,7 +286,7 @@
             // 
             // Crayon
             // 
-            this.Crayon.Location = new System.Drawing.Point(324, 13);
+            this.Crayon.Location = new System.Drawing.Point(304, 35);
             this.Crayon.Name = "Crayon";
             this.Crayon.Size = new System.Drawing.Size(80, 25);
             this.Crayon.TabIndex = 29;
@@ -301,31 +304,19 @@
             // 
             // image
             // 
-            this.image.Location = new System.Drawing.Point(444, 98);
+            this.image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.image.Location = new System.Drawing.Point(939, 62);
             this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(139, 27);
+            this.image.Size = new System.Drawing.Size(105, 50);
             this.image.TabIndex = 30;
-            this.image.Text = "random image";
-            this.image.UseVisualStyleBackColor = true;
+            this.image.Text = "?random image?";
+            this.image.UseVisualStyleBackColor = false;
             this.image.Click += new System.EventHandler(this.image_Click);
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.BackgroundImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
-            this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refreshButton.Image = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
-            this.refreshButton.InitialImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
-            this.refreshButton.Location = new System.Drawing.Point(12, 28);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(45, 45);
-            this.refreshButton.TabIndex = 2;
-            this.refreshButton.TabStop = false;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // filledObject
             // 
             this.filledObject.AutoSize = true;
-            this.filledObject.Location = new System.Drawing.Point(790, 75);
+            this.filledObject.Location = new System.Drawing.Point(704, 91);
             this.filledObject.Name = "filledObject";
             this.filledObject.Size = new System.Drawing.Size(53, 17);
             this.filledObject.TabIndex = 31;
@@ -335,7 +326,7 @@
             // 
             // graphicPen
             // 
-            this.graphicPen.Location = new System.Drawing.Point(324, 45);
+            this.graphicPen.Location = new System.Drawing.Point(304, 67);
             this.graphicPen.Name = "graphicPen";
             this.graphicPen.Size = new System.Drawing.Size(80, 25);
             this.graphicPen.TabIndex = 32;
@@ -343,15 +334,38 @@
             this.graphicPen.UseVisualStyleBackColor = true;
             this.graphicPen.Click += new System.EventHandler(this.graphicPen_Click);
             // 
+            // eraser_1
+            // 
+            this.eraser_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("eraser_1.BackgroundImage")));
+            this.eraser_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.eraser_1.Location = new System.Drawing.Point(12, 36);
+            this.eraser_1.Name = "eraser_1";
+            this.eraser_1.Size = new System.Drawing.Size(85, 85);
+            this.eraser_1.TabIndex = 33;
+            this.eraser_1.TabStop = false;
+            this.eraser_1.Click += new System.EventHandler(this.Eraser_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(304, 96);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 25);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "graphic pen";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.image);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.eraser_1);
             this.Controls.Add(this.graphicPen);
             this.Controls.Add(this.filledObject);
-            this.Controls.Add(this.image);
             this.Controls.Add(this.Crayon);
             this.Controls.Add(this.line);
             this.Controls.Add(this.dropper);
@@ -374,13 +388,12 @@
             this.Controls.Add(this.buttonRed);
             this.Controls.Add(this.buttonBlack);
             this.Controls.Add(this.changeWidth);
-            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.invisiblePanel);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eraser_1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,7 +402,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox refreshButton;
         private System.Windows.Forms.NumericUpDown changeWidth;
         private System.Windows.Forms.Button buttonBlack;
         private System.Windows.Forms.Button buttonRed;
@@ -416,6 +428,8 @@
         private System.Windows.Forms.Button image;
         private System.Windows.Forms.CheckBox filledObject;
         private System.Windows.Forms.Button graphicPen;
+        private System.Windows.Forms.PictureBox eraser_1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

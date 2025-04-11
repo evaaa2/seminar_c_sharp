@@ -183,8 +183,6 @@ namespace Painting
 
             if (drawingActive)
             {
-
-                deleteObjectsPen.Color = panel1.BackColor;
                 if (penActive == 0)//basic drawing
                 {
                     g.DrawLine(basicPen, e.Location, lastPosition);
@@ -400,6 +398,7 @@ namespace Painting
         }
         private void image_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("be prepared for something extra!");
             penActive = 7;
         }
 
@@ -470,7 +469,10 @@ namespace Painting
             }
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
