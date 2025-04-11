@@ -148,11 +148,10 @@ namespace Painting
                 {
                     g.DrawImage(Properties.Resources.dog_2, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
                 }
-                else
+                else if (imgNmb == 6)
                 {
                     g.DrawImage(Properties.Resources.apple, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
                 }
-
             }
 
         }
@@ -164,9 +163,10 @@ namespace Painting
          * 3 ... dropper
          * 4 ... rectangle
          * 5 ... line
-         * 6 ... voskovka
+         * 6 ... crayon
          * 7 ... random image
          * 8 ... graphic pen
+         * 9 ... spray
          * 
          * 
          * 
@@ -234,6 +234,18 @@ namespace Painting
                     
                 }
 
+                else if (penActive == 9)//spray
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        int radius = Math.Max(2, (int)basicPen.Width / 2);
+                        float ellipseSize = Math.Max(2, radius/2);
+                        int randomX = rnd.Next(-radius, radius);
+                        int randomY = rnd.Next(-radius, radius);
+                        basicBrush = new SolidBrush(basicPen.Color);
+                        g.FillEllipse(basicBrush, lastPosition.X + randomX, lastPosition.Y + randomY, ellipseSize, ellipseSize);
+                    }
+                }
                 end = e.Location;
                 Point rectangleStart = start;
                 invisiblePanel.Refresh();
@@ -365,16 +377,29 @@ namespace Painting
         //background color
         private void paperWhite_Click(object sender, EventArgs e)
         {
+            if (basicPen.Color == panel1.BackColor)
+            {
+                basicPen.Color = Color.White;
+            }
             panel1.BackColor = Color.White;
+            
         }
 
         private void paperBlack_Click(object sender, EventArgs e)
         {
+            if (basicPen.Color == panel1.BackColor)
+            {
+                basicPen.Color = Color.Black;
+            }
             panel1.BackColor = Color.Black;
         }
 
         private void paperLime_Click(object sender, EventArgs e)
         {
+            if (basicPen.Color == panel1.BackColor)
+            {
+                basicPen.Color = Color.Lime;
+            }
             panel1.BackColor = Color.Lime;
         }
 
@@ -398,7 +423,8 @@ namespace Painting
         }
         private void image_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("be prepared for something extra!");
+            MessageBox.Show("here comes your picture lucky box! stretch the image");
+
             penActive = 7;
         }
 
@@ -432,6 +458,10 @@ namespace Painting
         private void graphicPen_Click(object sender, EventArgs e)
         {
             penActive = 8;
+        }
+        private void spray_Click(object sender, EventArgs e)
+        {
+            penActive = 9;
         }
 
         private void ChangeHighlighterColor(Color color)
@@ -469,10 +499,8 @@ namespace Painting
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
+        
     }
 }
 

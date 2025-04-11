@@ -57,7 +57,7 @@
             this.filledObject = new System.Windows.Forms.CheckBox();
             this.graphicPen = new System.Windows.Forms.Button();
             this.eraser_1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.spray = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eraser_1)).BeginInit();
             this.SuspendLayout();
@@ -345,15 +345,15 @@
             this.eraser_1.TabStop = false;
             this.eraser_1.Click += new System.EventHandler(this.Eraser_Click);
             // 
-            // button1
+            // spray
             // 
-            this.button1.Location = new System.Drawing.Point(304, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 25);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "graphic pen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.spray.Location = new System.Drawing.Point(304, 98);
+            this.spray.Name = "spray";
+            this.spray.Size = new System.Drawing.Size(80, 25);
+            this.spray.TabIndex = 34;
+            this.spray.Text = "spray";
+            this.spray.UseVisualStyleBackColor = true;
+            this.spray.Click += new System.EventHandler(this.spray_Click);
             // 
             // Form1
             // 
@@ -361,8 +361,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.spray);
             this.Controls.Add(this.image);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.eraser_1);
             this.Controls.Add(this.graphicPen);
             this.Controls.Add(this.filledObject);
@@ -429,7 +429,7 @@
         private System.Windows.Forms.CheckBox filledObject;
         private System.Windows.Forms.Button graphicPen;
         private System.Windows.Forms.PictureBox eraser_1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button spray;
     }
 }
 

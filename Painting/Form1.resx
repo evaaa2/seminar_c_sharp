@@ -998,7 +998,7 @@
   <data name="eraser_1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAYAAAA+VemSAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAHgNJREFUeF7tnQtoVFf+x9vJvF+ZVyaTmUSTySQTYxI15lWNrqauuNZH1lrbtdns
+        vwAADr8BOAVTJAAAHgNJREFUeF7tnQtoVFf+x9vJvF+ZVyaTmUSTySQTYxI15lWNrqauuNZH1lrbtdns
         Vlyt1vpad5FSCqWURUoRWUopZSmlFCnLspRSivxZlmUpIkWKlFJKKaUUkVJEZBGRIvv//uy466Ynmtw7
         j3PufD/w5XfuaO4959xz7nmfcx8hhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEII
         IYQQQgghhMyF5cuXL0in02ui0ehUMBg8Dv3R7/e/4/P5/ubxeM7D/XVDQ8MlXF+H/o3f/o3rWxK3/AZd
@@ -1128,5 +1128,12 @@
         5qz8La7fkHvJPROJxLZcLjcyPj6eKD2WEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQ
         QgghhBBCCCGEEELuwn33/T+VHvhzxNjyqwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dog_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\dog_3.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="surikaty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\surikaty.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
