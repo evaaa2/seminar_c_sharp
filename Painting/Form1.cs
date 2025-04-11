@@ -21,6 +21,8 @@ namespace Painting
         Point lastPosition;
         static Color highlighterColor = Color.FromArgb(70, Color.Black);
         Random rnd = new Random();
+        Bitmap panelBefore;
+        bool filled;
         //defining basic pen
         Pen basicPen = new Pen(Color.Black, 5)
         {
@@ -44,6 +46,7 @@ namespace Painting
         
         //more defining
         Graphics g;
+        Graphics invisible;
         int penActive = 0;
         Point start;
         Point end;
@@ -54,6 +57,8 @@ namespace Painting
             g = panel1.CreateGraphics();
             g.CompositingMode = CompositingMode.SourceOver;
 
+            invisible = invisiblePanel.CreateGraphics();
+
             //ensuring that the size in the form equals the actual size
             if (penActive == 0)
             {
@@ -63,6 +68,7 @@ namespace Painting
             {
                 changeWidth.Value = (decimal)highlighterPen.Width;
             }
+            ChangeHighlighterColor(basicPen.Color);
             
         }
 
@@ -70,12 +76,14 @@ namespace Painting
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             drawingActive = true;
-            start = e.Location; 
+            start = e.Location;
+            //panel1.DrawToBitmap(panelBefore, new Rectangle(0, 0, panel1.Width, panel1.Height));
 
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
+            invisiblePanel.Refresh();
             drawingActive = false;
             end = e.Location;
             Point rectangleStart = start;
@@ -84,19 +92,66 @@ namespace Painting
             if (start.X > end.X) rectangleStart.X = end.X;
             if (start.Y > end.Y) rectangleStart.Y = end.Y;
 
+            
             if (penActive == 1)//ellipse
             {
-                g.DrawEllipse(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                if (filled)
+                {
+                    g.FillEllipse(basicBrush, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else
+                {
+                    g.DrawEllipse(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                
             }
             if (penActive == 4)//rectangle
             {
-                g.DrawRectangle(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                if (filled)
+                {
+                    g.FillRectangle(basicBrush, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else
+                {
+                    g.DrawRectangle(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                
                 
             }
             if (penActive == 5)//line
             {
                 g.DrawLine(basicPen, start, end);
             }
+            if (penActive == 7)//random image
+            {
+                int imgNmb = rnd.Next(1, 7);
+                if (imgNmb == 1)
+                {
+                    g.DrawImage(Properties.Resources.iconmonstr_reload_alt_filled_240, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else if (imgNmb == 2)
+                {
+                    g.DrawImage(Properties.Resources.cat, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else if (imgNmb == 3)
+                {
+                    g.DrawImage(Properties.Resources.dog, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else if (imgNmb == 4)
+                {
+                    g.DrawImage(Properties.Resources.hedgehog, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else if (imgNmb == 5)
+                {
+                    g.DrawImage(Properties.Resources.dog_2, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.apple, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                }
+                
+            }
+            
         }
 
     /*Legenda pro penActive:
@@ -115,6 +170,7 @@ namespace Painting
      */
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (basicBrush != null)
                 basicBrush.Dispose();
             basicBrush = new SolidBrush(basicPen.Color);
@@ -148,22 +204,41 @@ namespace Painting
                         g.FillRectangle(basicBrush, lastPosition.X + randomX, lastPosition.Y + randomY, rectSize, rectSize);
                     }
                 }
-                else if (penActive == 1)//for showing the ellipse continuously while stretching
+               /*
+                end = e.Location;
+                Point rectangleStart = start;
+                invisiblePanel.Refresh();
+                //adapting to the orientation
+                if (start.X > end.X) rectangleStart.X = end.X;
+                if (start.Y > end.Y) rectangleStart.Y = end.Y;
+
+
+                
+                if (penActive == 1)//for showing the ellipse continuously while stretching
                 {
-                    //g.DrawEllipse(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
-                    //g.DrawEllipse(objectsPen, start.X, start.Y, Math.Abs(start.X - e.X), Math.Abs(start.Y - e.Y));
+                    //g.DrawImageUnscaled(panelBefore, 0, 0);
+                    //g.DrawEllipse(deleteObjectsPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                    invisible.DrawEllipse(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
                 }
-                else if (penActive == 4)//for showing the rectangle continuously while stretching
+                if (penActive == 4)//for showing the rectangle continuously while stretching
                 {
-                    //g.DrawRectangle(deleteObjectsPen, start.X, start.Y, Math.Abs(start.X - lastPosition.X), Math.Abs(start.Y - lastPosition.Y));
-                    //g.DrawRectangle(objectsPen, start.X, start.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                    //g.DrawRectangle(deleteObjectsPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
+                    invisible.DrawRectangle(basicPen, rectangleStart.X, rectangleStart.Y, Math.Abs(start.X - end.X), Math.Abs(start.Y - end.Y));
                    
                 }
+                if (penActive == 5)//line
+                {
+                    //g.DrawLine(deleteObjectsPen, start, end);
+                    invisible.DrawLine(basicPen, start, end);
+                }
+               */
+                
 
             }
 
             lastPosition = e.Location;
         }
+
 
         //refresh button
         private void refreshButton_Click(object sender, EventArgs e)
@@ -268,6 +343,7 @@ namespace Painting
         private void Eraser_Click(object sender, EventArgs e)
         {
             basicPen.Color = panel1.BackColor;
+            penActive = 0;
         }
 
         
@@ -316,12 +392,26 @@ namespace Painting
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+        
 
+        private void image_Click(object sender, EventArgs e)
+        {
+            penActive = 7;
         }
 
         
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (filled == true)
+            {
+                filled = false;
+            }
+            else
+            {
+                filled = true;
+            }
+        }
     }
     }
     

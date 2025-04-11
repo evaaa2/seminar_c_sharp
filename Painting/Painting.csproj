@@ -115,6 +115,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="eraser_cursor.cur" />
+    <None Include="Resources\aaa.bmp" />
+    <None Include="Resources\hedgehog.bmp" />
+    <None Include="Resources\dog_2.bmp" />
+    <None Include="Resources\apple.bmp" />
+    <None Include="Resources\dog.bmp" />
+    <None Include="Resources\cat.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

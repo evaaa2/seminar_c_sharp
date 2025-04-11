@@ -43,7 +43,6 @@
             this.paperLime = new System.Windows.Forms.Button();
             this.paperBlack = new System.Windows.Forms.Button();
             this.paperWhite = new System.Windows.Forms.Button();
-            this.refreshButton = new System.Windows.Forms.PictureBox();
             this.Eraser = new System.Windows.Forms.Button();
             this.ellipse = new System.Windows.Forms.Button();
             this.dropper = new System.Windows.Forms.Button();
@@ -52,18 +51,21 @@
             this.marker = new System.Windows.Forms.Button();
             this.line = new System.Windows.Forms.Button();
             this.Crayon = new System.Windows.Forms.Button();
+            this.invisiblePanel = new System.Windows.Forms.Panel();
+            this.image = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.PictureBox();
+            this.filledObject = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(12, 150);
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Location = new System.Drawing.Point(20, 150);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1007, 468);
+            this.panel1.Size = new System.Drawing.Size(1000, 500);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
@@ -207,19 +209,6 @@
             this.paperWhite.UseVisualStyleBackColor = false;
             this.paperWhite.Click += new System.EventHandler(this.paperWhite_Click);
             // 
-            // refreshButton
-            // 
-            this.refreshButton.BackgroundImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
-            this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refreshButton.Image = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
-            this.refreshButton.InitialImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
-            this.refreshButton.Location = new System.Drawing.Point(12, 28);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(45, 45);
-            this.refreshButton.TabIndex = 2;
-            this.refreshButton.TabStop = false;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
-            // 
             // Eraser
             // 
             this.Eraser.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
@@ -301,12 +290,56 @@
             this.Crayon.UseVisualStyleBackColor = true;
             this.Crayon.Click += new System.EventHandler(this.Crayon_Click);
             // 
+            // invisiblePanel
+            // 
+            this.invisiblePanel.BackColor = System.Drawing.Color.Transparent;
+            this.invisiblePanel.Location = new System.Drawing.Point(20, 150);
+            this.invisiblePanel.Name = "invisiblePanel";
+            this.invisiblePanel.Size = new System.Drawing.Size(1000, 500);
+            this.invisiblePanel.TabIndex = 0;
+            // 
+            // image
+            // 
+            this.image.Location = new System.Drawing.Point(444, 98);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(139, 27);
+            this.image.TabIndex = 30;
+            this.image.Text = "random image";
+            this.image.UseVisualStyleBackColor = true;
+            this.image.Click += new System.EventHandler(this.image_Click);
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.BackgroundImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
+            this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refreshButton.Image = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
+            this.refreshButton.InitialImage = global::Painting.Properties.Resources.iconmonstr_reload_alt_filled_240;
+            this.refreshButton.Location = new System.Drawing.Point(12, 28);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(45, 45);
+            this.refreshButton.TabIndex = 2;
+            this.refreshButton.TabStop = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // filledObject
+            // 
+            this.filledObject.AutoSize = true;
+            this.filledObject.Location = new System.Drawing.Point(790, 75);
+            this.filledObject.Name = "filledObject";
+            this.filledObject.Size = new System.Drawing.Size(53, 17);
+            this.filledObject.TabIndex = 31;
+            this.filledObject.Text = "filled?";
+            this.filledObject.UseVisualStyleBackColor = true;
+            this.filledObject.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1044, 737);
+            this.Controls.Add(this.filledObject);
+            this.Controls.Add(this.image);
             this.Controls.Add(this.Crayon);
             this.Controls.Add(this.line);
             this.Controls.Add(this.dropper);
@@ -331,6 +364,7 @@
             this.Controls.Add(this.changeWidth);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.invisiblePanel);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.changeWidth)).EndInit();
@@ -366,6 +400,9 @@
         private System.Windows.Forms.Button marker;
         private System.Windows.Forms.Button line;
         private System.Windows.Forms.Button Crayon;
+        private System.Windows.Forms.Panel invisiblePanel;
+        private System.Windows.Forms.Button image;
+        private System.Windows.Forms.CheckBox filledObject;
     }
 }
 
